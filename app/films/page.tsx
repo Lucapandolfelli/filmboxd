@@ -22,12 +22,12 @@ export default async function FilmsPage () {
         <div className='mb-[3rem]'> 
           <h2 className='text-lg mb-1 uppercase'>Newest Films</h2>
           <hr className='mb-[1rem] border-[#445566]'/>
-          <CarouselOfFilms films={newestFilms} width={250} height={370} />
+          <CarouselOfFilms films={newestFilms} width={245} height={365} />
         </div>
         <div> 
           <h2 className='text-lg mb-1 uppercase'>Popular Films</h2>
           <hr className='mb-[1rem] border-[#445566]'/>
-          <CarouselOfFilms films={films} width={250} height={370} />
+          <CarouselOfFilms films={films} width={245} height={365} />
         </div>
       </section>
     </main>

@@ -1,4 +1,4 @@
-import { Film, Director } from "types";
+import { Film, Director, Actor } from "types";
 
 export const films: Film[] = [
   {
@@ -6,7 +6,7 @@ export const films: Film[] = [
     title: "Babylon",
     slug: "babylon",
     synopsis:
-      "From Damien Chazelle, BABYLON is an original epic set in 1920s Los Angeles led by Brad Pitt, Margot Robbie and Diego Calva, with an ensemble cast including Jovan Adepo, Li Jun Li and Jean Smart. A tale of outsized ambition and outrageous excess, it traces the rise and fall of multiple characters during an era of unbridled decadence and depravity in early Hollywood.",
+      "A tale of outsized ambition and outrageous excess, tracing the rise and fall of multiple characters during an era of unbridled decadence and depravity in early Hollywood.",
     year: 2023,
     directors: [
       {
@@ -20,8 +20,8 @@ export const films: Film[] = [
       },
     ],
     cast: [
-      "Brad Pitt",
-      "Margot Robbie",
+      "brad-pitt",
+      "margot-robbie",
       "Diego Calva",
       "Jean Smart",
       "Flea",
@@ -56,9 +56,41 @@ export const films: Film[] = [
         },
         publish_date: Date.now(),
         text: "had such a great time. felt like i got cornered at a party by the lamest film major but was just drunk enough after the first 20 minutes to hear him out. tom cruise and brad pitt made two VERY different movies this year where they acknowledge their own legacy in the industry…and i don’t know how to expand on that but one being a record-breaking box office smash and the other being one of the biggest flops of the year is kinda funny. but i like pitt’s approach more, enough to forget bullet train ever happened. such a sequel to la la land it almost feels like that movie should be the cute pixar short that plays before this one. one of those movies where i’m gonna wake up tomorrow and be like “what happened last night?” i’m just rambling now.",
-        likes: 7336,
+        likes: 300,
         replies: [],
         punctuation: 3,
+      },
+      {
+        id: 3,
+        user: {
+          id: 1,
+          username: "homero",
+          email: "email",
+          password: "1234",
+          avatar: "avatar.jpg",
+          reviews: [],
+        },
+        publish_date: Date.now(),
+        text: "in the name of the father (boogie nights), the son (the wolf of wall street), and the holy spirit (babylon)",
+        likes: 5000,
+        replies: [],
+        punctuation: 5,
+      },
+      {
+        id: 4,
+        user: {
+          id: 1,
+          username: "pepe",
+          email: "email",
+          password: "1234",
+          avatar: "avatar.jpg",
+          reviews: [],
+        },
+        publish_date: Date.now(),
+        text: "I thoroughly enjoyed this movie despite some negative reviews.",
+        likes: 7336,
+        replies: [],
+        punctuation: 5,
       },
     ],
     thubmnail: "babylon.jpg",
@@ -470,5 +502,28 @@ export const directors: Director[] = [
     biography:
       "Jean-Francois Richet is a French screenwriter, director, and producer, born on July 2, 1966 in Paris. He grew up in Meaux, a suburb east of Paris.",
     tmdb_link: "https://www.themoviedb.org/person/58324/",
+  },
+];
+
+export const actors: Actor[] = [
+  {
+    id: 1,
+    name: "Brad Pitt",
+    slug: "brad-pitt",
+    films: [],
+    thumbnail: "brad-pitt.jpg",
+    biography:
+      "William Bradley Pitt (born December 18, 1963) is an American actor and film producer. He is the recipient of various accolades, including an Academy Award, a British Academy Film Award, and two Golden Globe Awards for his acting, in addition to a second Academy Award, a second British Academy Film Award, a third Golden Globe Award, and a Primetime Emmy Award as a producer under his production company, Plan B Entertainment.",
+    tmdb_link: "https://www.themoviedb.org/person/287/",
+  },
+  {
+    id: 2,
+    name: "Margot Robbie",
+    slug: "margot-robbie",
+    films: [],
+    thumbnail: "margot-robbie.jpg",
+    biography:
+      "Margot Elise Robbie (born 2 July 1990) is an Australian actress and producer. Known for her work in both blockbuster and independent films, she has received several accolades, including nominations for two Academy Awards, four Golden Globe Awards, and five British Academy Film Awards. Time magazine named her one of the 100 most influential people in the world in 2017 and she was ranked as one of the world's highest-paid actresses by Forbes in 2019.",
+    tmdb_link: "https://www.themoviedb.org/person/234352/",
   },
 ];

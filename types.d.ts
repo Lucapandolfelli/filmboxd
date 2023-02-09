@@ -42,3 +42,13 @@ export interface Director {
   tmdb_link: string;
   thumbnail: string;
 }
+
+export interface Actor {
+  id: number;
+  name: string;
+  slug: string;
+  biography: string;
+  films: Film[];
+  tmdb_link: string;
+  thumbnail: string;
+}
