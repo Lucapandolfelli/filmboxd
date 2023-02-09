@@ -1,4 +1,4 @@
-import { Film } from "types";
+import { Film, Director } from "types";
 
 export const films: Film[] = [
   {
@@ -8,7 +8,17 @@ export const films: Film[] = [
     synopsis:
       "From Damien Chazelle, BABYLON is an original epic set in 1920s Los Angeles led by Brad Pitt, Margot Robbie and Diego Calva, with an ensemble cast including Jovan Adepo, Li Jun Li and Jean Smart. A tale of outsized ambition and outrageous excess, it traces the rise and fall of multiple characters during an era of unbridled decadence and depravity in early Hollywood.",
     year: 2023,
-    directors: ["Damien Chazelle"],
+    directors: [
+      {
+        id: 1,
+        name: "Damien Chazelle",
+        slug: "damien-chazelle",
+        films: [],
+        thumbnail: "",
+        biography: "",
+        tmdb_link: "https://www.themoviedb.org/person/136495/",
+      },
+    ],
     cast: [
       "Brad Pitt",
       "Margot Robbie",
@@ -32,6 +42,23 @@ export const films: Film[] = [
         text: "in the name of the father (boogie nights), the son (the wolf of wall street), and the holy spirit (babylon)",
         likes: 7336,
         replies: [],
+        punctuation: 5,
+      },
+      {
+        id: 2,
+        user: {
+          id: 1,
+          username: "tyler",
+          email: "email",
+          password: "1234",
+          avatar: "avatar.jpg",
+          reviews: [],
+        },
+        publish_date: Date.now(),
+        text: "had such a great time. felt like i got cornered at a party by the lamest film major but was just drunk enough after the first 20 minutes to hear him out. tom cruise and brad pitt made two VERY different movies this year where they acknowledge their own legacy in the industry…and i don’t know how to expand on that but one being a record-breaking box office smash and the other being one of the biggest flops of the year is kinda funny. but i like pitt’s approach more, enough to forget bullet train ever happened. such a sequel to la la land it almost feels like that movie should be the cute pixar short that plays before this one. one of those movies where i’m gonna wake up tomorrow and be like “what happened last night?” i’m just rambling now.",
+        likes: 7336,
+        replies: [],
+        punctuation: 3,
       },
     ],
     thubmnail: "babylon.jpg",
@@ -47,7 +74,17 @@ export const films: Film[] = [
     synopsis:
       "Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.",
     year: 2022,
-    directors: ["James Cameron"],
+    directors: [
+      {
+        id: 2,
+        name: "James Cameron",
+        slug: "james-cameron",
+        films: [],
+        thumbnail: "",
+        biography: "",
+        tmdb_link: "https://www.themoviedb.org/person/2710/",
+      },
+    ],
     cast: [
       "Sam Worthington",
       "Zoe Saldana",
@@ -56,7 +93,7 @@ export const films: Film[] = [
       "Kate Winslet",
     ],
     reviews: [],
-    thubmnail: "avatar2.jpg",
+    thubmnail: "avatar-the-way-of-water.jpg",
     background_thumbnail: "avatar-the-way-of-water-background.jpg",
     imdb_link: "http://www.imdb.com/title/tt1630029/maindetails",
     tmdb_link: "https://www.themoviedb.org/movie/76600/",
@@ -69,7 +106,17 @@ export const films: Film[] = [
     synopsis:
       "A couple travels to a coastal island to eat at an exclusive restaurant where the chef has prepared a lavish menu, with some shocking surprises.",
     year: 2022,
-    directors: ["Mark Mylod"],
+    directors: [
+      {
+        id: 3,
+        name: "Mark Mylod",
+        slug: "mark-mylod",
+        films: [],
+        thumbnail: "",
+        biography: "",
+        tmdb_link: "https://www.themoviedb.org/person/57199/",
+      },
+    ],
     cast: [
       "Ralph Fiennes",
       "Anya Taylor-Joy",
@@ -91,7 +138,17 @@ export const films: Film[] = [
     synopsis:
       "Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives.",
     year: 2023,
-    directors: ["Joel Crawford"],
+    directors: [
+      {
+        id: 4,
+        name: "Joel Crawford",
+        slug: "joel-crawford",
+        films: [],
+        thumbnail: "",
+        biography: "",
+        tmdb_link: "https://www.themoviedb.org/person/1450348/",
+      },
+    ],
     cast: [
       "Antonio Banderas",
       "Salma Hayek",
@@ -113,7 +170,17 @@ export const films: Film[] = [
     synopsis:
       "After more than thirty years of service as one of the Navy’s top aviators, and dodging the advancement in rank that would ground him, Pete “Maverick” Mitchell finds himself training a detachment of TOP GUN graduates for a specialized mission the likes of which no living pilot has ever seen. Facing an uncertain future and confronting the ghosts of his past, Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it.",
     year: 2022,
-    directors: ["Joseph Kosinski"],
+    directors: [
+      {
+        id: 5,
+        name: "Joseph Kosinski",
+        slug: "joseph-kosinski",
+        films: [],
+        thumbnail: "",
+        biography: "",
+        tmdb_link: "https://www.themoviedb.org/person/86270/",
+      },
+    ],
     cast: [
       "Tom Cruise",
       "Miles Teller",
@@ -137,7 +204,17 @@ export const films: Film[] = [
     synopsis:
       "While vacationing at a remote cabin, a young girl and her parents are taken hostage by four armed strangers who demand that the family make an unthinkable choice to avert the apocalypse. With limited access to the outside world, the family must decide what they believe before all is lost.",
     year: 2023,
-    directors: ["M. Night Shyamalan"],
+    directors: [
+      {
+        id: 6,
+        name: "M. Night Shyamalan",
+        slug: "m-night-shyamalan",
+        films: [],
+        thumbnail: "",
+        biography: "",
+        tmdb_link: "https://www.themoviedb.org/person/11614/",
+      },
+    ],
     cast: [
       "Dave Bautista",
       "Ben Aldridge",
@@ -153,5 +230,245 @@ export const films: Film[] = [
     imdb_link: "http://www.imdb.com/title/tt15679400/maindetails",
     tmdb_link: "https://www.themoviedb.org/movie/631842/",
     runtime: 100,
+  },
+  {
+    id: 7,
+    title: "Once Upon a Time in Hollywood",
+    slug: "once-upon-a-time-in-hollywood",
+    synopsis:
+      "Los Angeles, 1969. TV star Rick Dalton, a struggling actor specializing in westerns, and stuntman Cliff Booth, his best friend, try to survive in a constantly changing movie industry. Dalton is the neighbor of the young and promising actress and model Sharon Tate, who has just married the prestigious Polish director Roman Polanski…",
+    year: 2019,
+    directors: [
+      {
+        id: 7,
+        name: "Quentin Tarantino",
+        slug: "quentin-tarantino",
+        films: [],
+        thumbnail: "",
+        biography: "",
+        tmdb_link: "https://www.themoviedb.org/person/138/",
+      },
+    ],
+    cast: [
+      "Leonardo DiCaprio",
+      "Brad Pitt",
+      "Margot Robbie",
+      "Emile Hirsch",
+      "Margaret Qualley",
+      "Timothy Olypanth",
+      "Julia Butters",
+    ],
+    reviews: [],
+    thubmnail: "once-upon-a-time-in-hollywood.jpg",
+    background_thumbnail: "once-upon-a-time-in-hollywood-background.jpg",
+    imdb_link: "http://www.imdb.com/title/tt7131622/maindetails",
+    tmdb_link: "https://www.themoviedb.org/movie/466272/",
+    runtime: 162,
+  },
+  {
+    id: 8,
+    title: "The Batman",
+    slug: "the-batman",
+    synopsis:
+      "In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.",
+    year: 2022,
+    directors: [
+      {
+        id: 8,
+        name: "Matt Reeves",
+        slug: "matt-reeves",
+        films: [],
+        thumbnail: "",
+        biography: "",
+        tmdb_link: "https://www.themoviedb.org/person/32278/",
+      },
+    ],
+    cast: [
+      "Robert Pattinson",
+      "Zoë Kravitz",
+      "Paul Dano",
+      "Jeffrey Wright",
+      "John Truturro",
+      "Peter Sarsgaard",
+      "Andy Serkis",
+    ],
+    reviews: [],
+    thubmnail: "the-batman.jpg",
+    background_thumbnail: "the-batman-background.jpeg",
+    imdb_link: "http://www.imdb.com/title/tt1877830/maindetails",
+    tmdb_link: "https://www.themoviedb.org/movie/414906/",
+    runtime: 177,
+  },
+  {
+    id: 9,
+    title: "Thor: Love and Thunder",
+    slug: "thor-love-and-thunder",
+    synopsis:
+      "After his retirement is interrupted by Gorr the God Butcher, a galactic killer who seeks the extinction of the gods, Thor enlists the help of King Valkyrie, Korg, and ex-girlfriend Jane Foster, who now inexplicably wields Mjolnir as the Mighty Thor. Together, they embark upon a harrowing cosmic adventure to uncover the mystery of the God Butcher’s vengeance and stop him before it’s too late.",
+    year: 2022,
+    directors: [
+      {
+        id: 9,
+        name: "Taika Waititi",
+        slug: "taika-waititi",
+        films: [],
+        thumbnail: "",
+        biography: "",
+        tmdb_link: "https://www.themoviedb.org/person/55934/",
+      },
+    ],
+    cast: [
+      "Chris Hemsworth",
+      "Natalie Portman",
+      "Christian Bale",
+      "Tessa Thompson",
+      "Taika Waititi",
+      "Jaimie Alexander",
+      "Russell Crowe",
+    ],
+    reviews: [],
+    thubmnail: "thor-love-and-thunder.jpg",
+    background_thumbnail: "thor-love-and-thunder-background.jpg",
+    imdb_link: "http://www.imdb.com/title/tt10648342/maindetails",
+    tmdb_link: "https://www.themoviedb.org/movie/616037/",
+    runtime: 119,
+  },
+  {
+    id: 10,
+    title: "Plane",
+    slug: "plane-2023",
+    synopsis:
+      "After a heroic job of successfully landing his storm-damaged aircraft in a war zone, a fearless pilot finds himself between the agendas of multiple militias planning to take the plane and its passengers hostage.",
+    year: 2023,
+    directors: [
+      {
+        id: 10,
+        name: "Jean-François Richet",
+        slug: "jean-françois-richet",
+        films: [],
+        thumbnail: "jean-françois-richet.jpg",
+        biography:
+          "Jean-Francois Richet is a French screenwriter, director, and producer, born on July 2, 1966 in Paris. He grew up in Meaux, a suburb east of Paris.",
+        tmdb_link: "https://www.themoviedb.org/person/58324/",
+      },
+    ],
+    cast: [
+      "Gerard Butler",
+      "Mike Colter",
+      "Yoson An",
+      "Tony Goldwyn",
+      "Daniella Pineda",
+      "Paul Ben-Victor",
+      "Remi Adeleke",
+    ],
+    reviews: [],
+    thubmnail: "plane-2023.jpg",
+    background_thumbnail: "plane-2023-background.jpg",
+    imdb_link: "http://www.imdb.com/title/tt5884796/maindetails",
+    tmdb_link: "https://www.themoviedb.org/movie/646389/",
+    runtime: 107,
+  },
+];
+
+export const directors: Director[] = [
+  {
+    id: 1,
+    name: "Damien Chazelle",
+    slug: "damien-chazelle",
+    films: [],
+    thumbnail: "damien-chazelle.jpg",
+    biography:
+      "Damien Sayre Chazelle (born January 19, 1985) is a French-American film director, screenwriter, and producer. He is known for directing the films Whiplash (2014), La La Land (2016), First Man (2018), and Babylon (2022). For Whiplash, he was nominated for the Academy Award for Best Adapted Screenplay. His biggest commercial success came with La La Land, which was nominated for 14 Academy Awards, winning six including Best Director, making him the youngest person to win the award at age 32. He made his television debut directing the Netflix limited series The Eddy (2020).",
+    tmdb_link: "https://www.themoviedb.org/person/136495/",
+  },
+  {
+    id: 2,
+    name: "James Cameron",
+    slug: "james-cameron",
+    films: [],
+    thumbnail: "james-cameron.jpg",
+    biography:
+      "James Cameron was born in Kapuskasing, Ontario, Canada, on August 16, 1954. He moved to the USA in 1971. The son of an engineer, he majored in physics at California State University but, after graduating, drove a truck to support his screen-writing ambition. He landed his first professional film job as art director, miniature-set builder, and process-projection supervisor on Roger Corman's Battle Beyond the Stars (1980) and debuted as a director with Piranha Part Two: The Spawning (1981) the following year. In 1984, he wrote and directed The Terminator (1984), a futuristic action-thriller starring Arnold Schwarzenegger, Michael Biehn, and Linda Hamilton. It was a huge success. After this came a string of successful science-fiction action films such as Aliens (1986) and Terminator 2: Judgment Day (1991). Cameron is now one of the most sought-after directors in Hollywood. He was formerly married to producer Gale Anne Hurd, who produced several of his films. He married Kathryn Bigelow in 1989.",
+    tmdb_link: "https://www.themoviedb.org/person/2710/",
+  },
+  {
+    id: 3,
+    name: "Mark Mylod",
+    slug: "mark-mylod",
+    films: [],
+    thumbnail: "mark-mylod.jpg",
+    biography:
+      "Mark Mylod is a British director and producer. He is known for his work on the television series Succession and Shameless, as well as for directing the horror-comedy film The Menu (2022).",
+    tmdb_link: "https://www.themoviedb.org/person/57199/",
+  },
+  {
+    id: 4,
+    name: "Joel Crawford",
+    slug: "joel-crawford",
+    films: [],
+    thumbnail: "joel-crawford.jpg",
+    biography:
+      "Joel Crawford is an American storyboard artist and director best known for his work on several DreamWorks Animation films, including The Croods: A New Age (2020) and Puss in Boots: The Last Wish (2022).",
+    tmdb_link: "https://www.themoviedb.org/person/1450348/",
+  },
+  {
+    id: 5,
+    name: "Joseph Kosinski",
+    slug: "joseph-kosinski",
+    films: [],
+    thumbnail: "joseph-kosinski.jpg",
+    biography:
+      'Joseph Kosinski (born May 3, 1974) is an American film director best known for the science-fiction films "Tron: Legacy" (2010) and "Oblivion" (2013), the drama-thriller "Only the Brave" (2017), and the action-thriller "Top Gun: Maverick" (2022). His previous work has primarily been in the field of CGI television commercials, most notably his 2007 commercials for the video games "Halo 3" and "Gears of War".',
+    tmdb_link: "https://www.themoviedb.org/person/86270/",
+  },
+  {
+    id: 6,
+    name: "M. Night Shyamalan",
+    slug: "m-night-shyamalan",
+    films: [],
+    thumbnail: "m-night-shyamalan.jpg",
+    biography:
+      'Manoj Nelliyattu "M. Night" Shyamalan, born August 6, 1970, is an American filmmaker and actor. He is known for making original films with contemporary supernatural plots and twist endings. He was born in Mahé, India, and raised in Penn Valley, Pennsylvania. The cumulative gross of his films exceeds $3 billion globally.He made his directorial debut in 1992 with his first movie Praying with Anger. His second movie was the comedy-drama film Wide Awake (1998). His most well-received films include the supernatural thriller The Sixth Sense (1999), the superhero thriller Unbreakable (2000), and the science fiction thriller Signs (2002). For The Sixth Sense, Shyamalan received nominations for the Academy Award for Best Director and the Academy Award for Best Original Screenplay. Afterward, Shyamalan released a series of poorly received but sometimes financially successful movies, including the period-piece thriller The Village (2004), the dark fantasy Lady in the Water (2006), the eco-thriller The Happening (2008)...',
+    tmdb_link: "https://www.themoviedb.org/person/11614/",
+  },
+  {
+    id: 7,
+    name: "Quentin Tarantino",
+    slug: "quentin-tarantino",
+    films: [],
+    thumbnail: "quentin-tarantino.jpg",
+    biography:
+      "Quentin Jerome Tarantino (born March 27, 1963) is an American film director, screenwriter, producer, cinematographer and actor. In the early 1990s he was an independent filmmaker whose films used nonlinear storylines and aestheticization of violence. His films have earned him a variety of Academy Award, Golden Globe, BAFTA and Palme d´Or Awards and he has been nominated for Emmy and Grammy Awards. In 2007, Total Film named him the 12th-greatest director of all time. Tarantino was born in Knoxville, Tennessee, the son of Connie McHugh Tarantino Zastoupil, a health care executive and nurse born in Knoxville, and Tony Tarantino, an actor and amateur musician born in Queens, New York. Tarantino´s mother allowed him to quit school at age 17, to attend an acting class full time. Tarantino gave up acting while attending the acting school, saying that he admired directors more than actors. Tarantino also worked in a video rental store before becoming a filmmaker, paid close attention to the types of films people liked to rent, and has cited that experience as inspiration for his directorial career.",
+    tmdb_link: "https://www.themoviedb.org/person/138/",
+  },
+  {
+    id: 8,
+    name: "Matt Reeves",
+    slug: "matt-reeves",
+    films: [],
+    thumbnail: "matt-reeves.jpg",
+    biography:
+      'Matthew George "Matt" Reeves (born April 27, 1966 in Rockville Center, New York, USA) is an American screenwriter, director, and producer. He began making movies at age eight, directing friends and using a wind-up camera. Reeves befriended filmmaker J.J. Abrams when both were 13 years old and they were making short films together. When Reeves and Abrams were 15 or 16 years old, Steven Spielberg hired them to transfer some of his own Super 8 films to videotape. Reeves began his career as a screenwriter for the films Under Siege 2: Dark Territory (1995) and The Pallbearer (1996), the latter of which marked his feature-length directorial debut. He then transitioned into television as a director and co-creator of the drama series Felicity (1998–2002) alongside J.J. Abrams. Reeves has since directed the horror film Cloverfield (2008), the romantic horror film Let Me In (2010), and the science fiction sequels Dawn of the Planet of the Apes (2014) and War for the Planet of the Apes (2017). In February 2017, Warner Bros. announced that Reeves would direct The Batman (2022) by DC, starring Robert Pattinson.',
+    tmdb_link: "https://www.themoviedb.org/person/32278/",
+  },
+  {
+    id: 9,
+    name: "Taika Waititi",
+    slug: "taika-waititi",
+    films: [],
+    thumbnail: "taika-waititi.jpg",
+    biography:
+      "Taika David Cohen ONZM (born 16 August 1975), known professionally as Taika Waititi, is a New Zealand film and television director, producer, screenwriter, actor, and comedian. He is the recipient of an Academy Award, BAFTA Award and a Grammy Award, and has been nominated for two Primetime Emmy Awards. His feature films Boy (2010) and Hunt for the Wilderpeople (2016) have each been the top-grossing New Zealand film. Waititi´s 2004 short film Two Cars, One Night earned him an Academy Award nomination for Best Live Action Short Film. He co-directed and starred in the horror comedy film What We Do in the Shadows (2014) with Jemaine Clement, which was adapted into a television series of the same name (2019–present). The series has been nominated for the Primetime Emmy Award for Outstanding Comedy Series. His most recent directing credits include the superhero film Thor: Ragnarok (2017)...",
+    tmdb_link: "https://www.themoviedb.org/person/55934/",
+  },
+  {
+    id: 10,
+    name: "Jean-François Richet",
+    slug: "jean-françois-richet",
+    films: [],
+    thumbnail: "jean-françois-richet.jpg",
+    biography:
+      "Jean-Francois Richet is a French screenwriter, director, and producer, born on July 2, 1966 in Paris. He grew up in Meaux, a suburb east of Paris.",
+    tmdb_link: "https://www.themoviedb.org/person/58324/",
   },
 ];

@@ -1,16 +1,20 @@
-import { Review } from "types"
+import { Review as TypeReview } from "types"
+import Review from "./Review"
 
 type Props = {
-  reviews: Review[]
+  reviews: TypeReview[]
 }
 
 export default function ReviewsList ({ reviews }: Props) {
   return (
-    <ul>
-      {reviews.map(review => (
-        <li key={ review.id }>
-          <p>{ review.text }</p>
-        </li>
+    <ul className='flex flex-col gap-[2rem]'>
+      {reviews.map((review, index) => (
+        <>
+          <li key={ review.id }>
+            <Review review={review} />
+          </li>
+          { index < reviews.length - 1 ? <hr className='border-[#2c3440]' /> : ''}
+        </>
       ))}
     </ul>
   )

@@ -3,14 +3,16 @@ import Link from "next/link"
 import { Film as TypeFilm } from "types"
 
 type Props = {
-  data: TypeFilm
+  data: TypeFilm,
+  width: number,
+  height: number
 }
 
-export default function Film ({ data }: Props) {
+export default function Film ({ data, width, height }: Props) {
   return (
     <Link href='/films/[slug]' as={`/films/${ data.slug }`}>
-      <article className='w-[250px] h-[370px] hover:cursor-pointer relative'>
-        <Image src={`/images/${ data.thubmnail }`} alt={ data.title} fill />
+      <article className='hover:cursor-pointer relative' style={{ width: `${width}px`, height: `${height}px`}}>
+        <Image src={`/images/films/${ data.thubmnail }`} alt={ data.title} fill />
       </article>
     </Link>
   )

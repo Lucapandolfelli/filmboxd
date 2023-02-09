@@ -4,7 +4,7 @@ export interface Film {
   slug: string;
   synopsis: string;
   year: number;
-  directors: string[];
+  directors: Director[];
   cast: string[];
   reviews: Review[];
   thubmnail: string;
@@ -21,6 +21,7 @@ export interface Review {
   text: string;
   likes: number;
   replies: Review[];
+  punctuation: number;
 }
 
 export interface User {
@@ -30,4 +31,14 @@ export interface User {
   password: string;
   avatar: string;
   reviews: Review[];
+}
+
+export interface Director {
+  id: number;
+  name: string;
+  slug: string;
+  biography: string;
+  films: Film[];
+  tmdb_link: string;
+  thumbnail: string;
 }

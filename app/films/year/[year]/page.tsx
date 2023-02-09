@@ -17,7 +17,7 @@ export default async function YearPages ({ params }: any) {
       <div className=''> 
           <h1 className='text-lg mb-1 uppercase'>{ year } Films</h1>
           <hr className='mb-[1rem] border-[#445566]'/>
-          <ListOfFilms films={films} />
+          <ListOfFilms films={films} width={250} height={370} />
         </div>
       </section>
     </main>
