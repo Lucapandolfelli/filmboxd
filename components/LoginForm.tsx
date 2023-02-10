@@ -9,8 +9,14 @@ export default function LoginForm () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    await signIn('credentials', {
+      email,
+      password,
+      redirect: false,
+      callbackUrl: 'http://localhost:3000'
+    })
   }
 
   const handleGoogleSignIn = async () => {
@@ -33,7 +39,7 @@ export default function LoginForm () {
       <div className='mt-[2rem] flex flex-col items-center gap-[1rem]'>
         <span className='text-sm text-[#a2a4a7]'>Or Sign Up Using</span>
         <div className='flex gap-[.5rem] justify-center'>
-          <button onClick={handleGoogleSignIn} className='bg-[#4982cf] text-white h-[40px] w-[40px] rounded-full flex justify-center items-center transition-all duration-300 ease-in hover:bg-[#386eb4]'><BsGoogle /></button>
+          <button onClick={(handleGoogleSignIn)} className='bg-[#4982cf] text-white h-[40px] w-[40px] rounded-full flex justify-center items-center transition-all duration-300 ease-in hover:bg-[#386eb4]'><BsGoogle /></button>
           <button onClick={handleFacebookSignIn} className='bg-[#4982cf] text-white h-[40px] w-[40px] rounded-full flex justify-center items-center transition-all duration-300 ease-in hover:bg-[#386eb4]'><FaFacebookF /></button>
           <button className='bg-[#4982cf] text-white h-[40px] w-[40px] rounded-full flex justify-center items-center transition-all duration-300 ease-in hover:bg-[#386eb4]'><BsTwitter /></button>
         </div>

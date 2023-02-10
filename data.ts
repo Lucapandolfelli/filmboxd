@@ -407,7 +407,7 @@ export const directors: Director[] = [
     id: 1,
     name: "Damien Chazelle",
     slug: "damien-chazelle",
-    films: [],
+    films: [1, 3],
     thumbnail: "damien-chazelle.jpg",
     biography:
       "Damien Sayre Chazelle (born January 19, 1985) is a French-American film director, screenwriter, and producer. He is known for directing the films Whiplash (2014), La La Land (2016), First Man (2018), and Babylon (2022). For Whiplash, he was nominated for the Academy Award for Best Adapted Screenplay. His biggest commercial success came with La La Land, which was nominated for 14 Academy Awards, winning six including Best Director, making him the youngest person to win the award at age 32. He made his television debut directing the Netflix limited series The Eddy (2020).",

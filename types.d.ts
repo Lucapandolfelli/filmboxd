@@ -38,7 +38,7 @@ export interface Director {
   name: string;
   slug: string;
   biography: string;
-  films: Film[];
+  films: number[];
   tmdb_link: string;
   thumbnail: string;
 }

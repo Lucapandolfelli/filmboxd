@@ -10,15 +10,8 @@ export default function RegisterForm () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const router = useRouter()
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    router.push('/login')
-  }
-
   return (
-    <form className='flex flex-col gap-[1rem] w-[300px]' onSubmit={handleSubmit}>
+    <form className='flex flex-col gap-[1rem] w-[300px]' action='/api/auth/register' method='POST'>
       <input className='border-[1px] border-[#d7dadf] rounded-[.25rem] p-[.75rem]' onChange={e => setUsername(e.target.value)} value={username} type="text" name="username" id="username" placeholder="Username" />
       <input className='border-[1px] border-[#d7dadf] rounded-[.25rem] p-[.75rem]' onChange={e => setEmail(e.target.value)} value={email} type="mail" name="email" id="email" placeholder="Email" />
       <input className='border-[1px] border-[#d7dadf] rounded-[.25rem] p-[.75rem]' onChange={e => setPassword(e.target.value)} value={password} type="password" name="password" id="password" placeholder="Password" />

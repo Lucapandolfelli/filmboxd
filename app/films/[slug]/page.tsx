@@ -5,16 +5,7 @@ import Link from "next/link"
 import ReviewsList from "@/components/ReviewsList"
 import CarouselOfFilms from "@/components/CarouselOfFilms"
 import { Actor, Director, Film, Review } from "types"
-
-const fetchFilmBySlug = (slug: string) => {
-  return fetch(`http://localhost:3000/api/v1/films/${slug}`, { next: { revalidate: 120 }})
-    .then(res => res.json())
-}
-
-const fetchAllFilms = () => {
-  return fetch(`http://localhost:3000/api/v1/films`, { next: { revalidate: 120 }})
-    .then(res => res.json())
-}
+import { fetchAllFilms, fetchFilmBySlug } from "@/services/films"
 
 export default async function FilmDetailPage ({ params }: any) {
   const { slug } = params
@@ -49,13 +40,11 @@ export default async function FilmDetailPage ({ params }: any) {
           </div>
         </div>
         {/* Reviews section */}
-        { film.reviews.length > 0
-          ? <div className='mb-[2rem]'>
-              <h3 className='uppercase mb-1'>Popular Reviews</h3>
-              <hr className='mb-[2rem] border-[#445566]'/>
-              <ReviewsList reviews={ film.reviews.slice(0, 3).sort((a: Review, b: Review) => b.likes - a.likes) } />
-            </div>
-          : ''}
+        <div className='mb-[2rem]'>
+          <h3 className='uppercase mb-1'>Popular Reviews</h3>
+          <hr className='mb-[2rem] border-[#445566]'/>
+          <ReviewsList reviews={ film.reviews.slice(0, 3).sort((a: Review, b: Review) => b.likes - a.likes) } />
+        </div>
           { film.reviews.length > 0
           ? <div className='mb-[2rem]'>
               <h3 className='uppercase mb-1'>Recent Reviews</h3>
