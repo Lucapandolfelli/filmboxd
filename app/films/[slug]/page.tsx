@@ -5,7 +5,16 @@ import Link from "next/link"
 import ReviewsList from "@/components/ReviewsList"
 import CarouselOfFilms from "@/components/CarouselOfFilms"
 import { Actor, Director, Film, Review } from "types"
-import { fetchAllFilms, fetchFilmBySlug } from "@/services/films"
+ 
+const fetchFilmBySlug = async (slug: string): Promise<Film> => {
+  const res = await fetch(`http://localhost:3000/api/v1/films/${slug}`);
+  return await res.json();
+};
+
+const fetchAllFilms = async (): Promise<Film[]> => {
+  const res = await fetch('http://localhost:3000/api/v1/films');
+  return await res.json();
+};
 
 export default async function FilmDetailPage ({ params }: any) {
   const { slug } = params
@@ -29,7 +38,7 @@ export default async function FilmDetailPage ({ params }: any) {
             <h5 className='text-lg mb-[1.25rem]'>Directed by <Link href={`/director/${ director.slug }`} className='underline text-[#ffffe9] hover:text-amber-600'>{ director.name }</Link></h5>
             <p className='mb-[1rem]'>{ film?.synopsis }</p>
             <h3 className='uppercase mb-[.75rem]'>Cast</h3>
-            <CastList cast={ film.cast } />
+            {/* <CastList cast={ film.cast } /> */}
             <p className='mt-[2rem] text-sm font-lighter flex gap-[.5rem]'>
               <span>{ film.runtime } mins</span>
               <span>More at 

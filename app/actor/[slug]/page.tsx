@@ -1,14 +1,22 @@
 import ListOfFilms from "@/components/ListOfFilms";
-import { fecthActorBySlug } from "@/services/actors";
-import { fetchAllFilms } from "@/services/films";
 import Image from "next/image";
 import Link from "next/link";
 import { Actor, Film } from "types";
 
+const getAllFilms = async (): Promise<Film[]> => {
+  const res = await fetch('http://localhost:3000/api/v1/films', { cache: "no-store" });
+  return await res.json();
+};
+
+const getActorBySlug = async (slug: string): Promise<Actor> => {
+  const res = await fetch(`'http://localhost:3000/api/v1/actor/${slug}`, { cache: "no-store" });
+  return res.json();
+};
+
 export default async function DirectorDetailPage ({ params }: any) {
   const { slug } = params
-  const actor: Actor = await fecthActorBySlug(slug)
-  const films: Film[] = await fetchAllFilms()
+  const actor: Actor = await getActorBySlug(slug)
+  const films: Film[] = await getAllFilms()
 
   return (
     <main className='text-[#99aabb]'>

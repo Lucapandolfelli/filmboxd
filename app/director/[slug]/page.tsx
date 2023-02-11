@@ -1,9 +1,17 @@
 import ListOfFilms from "@/components/ListOfFilms";
-import { fecthDirectorBySlug } from "@/services/director";
-import { fetchAllFilms } from "@/services/films";
 import Image from "next/image";
 import Link from "next/link";
 import { Director, Film } from "types";
+
+const fecthDirectorBySlug = async (slug: string): Promise<Director> => {
+  const res = await fetch(`http://localhost:3000/api/v1/director/${slug}`, { cache: "no-store" });
+  return res.json();
+};
+
+const fetchAllFilms = async (): Promise<Film[]> => {
+  const res = await fetch('http://localhost:3000/api/v1/films', { cache: "no-store" });
+  return await res.json();
+}
 
 export default async function DirectorDetailPage ({ params }: any) {
   const { slug } = params
