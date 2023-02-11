@@ -4,7 +4,7 @@ import ListOfFilms from "@/components/ListOfFilms";
 import Loading from "./loading";
 
 const fetchFilmsByYear = async (year: string): Promise<Film[]> => {
-  const res = await fetch(`${ process.env.HOST }/api/v1/films/year/${year}`, { cache: "no-store" });
+  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films/year/${year}`, { cache: "no-store" });
   return await res.json();
 };
 

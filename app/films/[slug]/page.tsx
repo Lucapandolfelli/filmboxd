@@ -7,12 +7,12 @@ import CarouselOfFilms from "@/components/CarouselOfFilms"
 import { Actor, Director, Film, Review } from "types"
  
 const fetchFilmBySlug = async (slug: string): Promise<Film> => {
-  const res = await fetch(`${ process.env.HOST }/api/v1/films/${slug}`);
+  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films/${slug}`);
   return await res.json();
 };
 
 const fetchAllFilms = async (): Promise<Film[]> => {
-  const res = await fetch(`${ process.env.HOST }/api/v1/films`);
+  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films`);
   return await res.json();
 };
 
@@ -29,7 +29,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
         <div className='flex gap-[3rem] mb-[2rem]'>
           <div className='min-w-[280px] w-[280px]'>
             <div className='relative w-full h-[400px] mb-[1rem]'>
-              <Image src={`/images/${ film?.thubmnail }`} alt={ film.title } fill />
+              <Image src={`/images/films/${ film?.thubmnail }`} alt={ film.title } fill />
             </div>
             <FilmInteractions />
           </div>  

@@ -1,7 +1,7 @@
 namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV: string;
-    HOST: string;
+    NEXT_PUBLIC_HOST: string;
     NEXTAUTH_SECRET: string;
     NEXTAUTH_URL: string;
     GOOGLE_CLIENT_ID: string;
