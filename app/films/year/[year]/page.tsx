@@ -8,7 +8,7 @@ const fetchFilmsByYear = async (year: string): Promise<Film[]> => {
   return await res.json();
 };
 
-export default async function YearPages ({ params }: any) {
+export default async function YearPages ({ params }: { params: { year: string } }) {
   const { year } = params
   const films: Film[] = await fetchFilmsByYear(year)
   

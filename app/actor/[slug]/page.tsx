@@ -13,7 +13,7 @@ const getActorBySlug = async (slug: string): Promise<Actor> => {
   return res.json();
 };
 
-export default async function DirectorDetailPage ({ params }: any) {
+export default async function DirectorDetailPage ({ params }: { params: { slug: string }}) {
   const { slug } = params
   const actor: Actor = await getActorBySlug(slug)
   const films: Film[] = await getAllFilms()

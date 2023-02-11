@@ -13,7 +13,7 @@ const fetchAllFilms = async (): Promise<Film[]> => {
   return await res.json();
 }
 
-export default async function DirectorDetailPage ({ params }: any) {
+export default async function DirectorDetailPage ({ params }: { params: { slug: string }}) {
   const { slug } = params
   const director: Director = await fecthDirectorBySlug(slug)
   const films = await fetchAllFilms()
