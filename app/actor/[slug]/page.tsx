@@ -4,12 +4,12 @@ import Link from "next/link";
 import { Actor, Film } from "types";
 
 const getAllFilms = async (): Promise<Film[]> => {
-  const res = await fetch('http://localhost:3000/api/v1/films', { cache: "no-store" });
+  const res = await fetch(`${ process.env.HOST }/api/v1/films`, { cache: "no-store" });
   return await res.json();
 };
 
 const getActorBySlug = async (slug: string): Promise<Actor> => {
-  const res = await fetch(`'http://localhost:3000/api/v1/actor/${slug}`, { cache: "no-store" });
+  const res = await fetch(`${ process.env.HOST }/api/v1/actor/${slug}`, { cache: "no-store" });
   return res.json();
 };
 

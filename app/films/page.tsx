@@ -2,12 +2,12 @@ import CarouselOfFilms from "@/components/CarouselOfFilms";
 import { Film } from "types";
 
 const fetchFilmsByYear = async (year: string): Promise<Film[]> => {
-  const res = await fetch(`http://localhost:3000/api/v1/films/year/${year}`, { cache: "no-store" });
+  const res = await fetch(`${ process.env.HOST }/api/v1/films/year/${year}`, { cache: "no-store" });
   return await res.json();
 };
 
 const fetchAllFilms = async (): Promise<Film[]> => {
-  const res = await fetch('http://localhost:3000/api/v1/films', { cache: "no-store" });
+  const res = await fetch(`${ process.env.HOST }/api/v1/films`, { cache: "no-store" });
   return await res.json();
 }
 

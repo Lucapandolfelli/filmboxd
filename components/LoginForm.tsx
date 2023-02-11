@@ -15,19 +15,19 @@ export default function LoginForm () {
       email,
       password,
       redirect: false,
-      callbackUrl: 'http://localhost:3000'
+      callbackUrl: `${ process.env.HOST }`
     })
   }
 
   const handleGoogleSignIn = async () => {
     signIn('google', {
-      callbackUrl: "http://localhost:3000"
+      callbackUrl: `${ process.env.HOST }`
     })
   }
 
   const handleFacebookSignIn = async () => {
     signIn('facebook', {
-      callbackUrl: "http://localhost:3000"
+      callbackUrl: `${ process.env.HOST }`
     })
   }
 

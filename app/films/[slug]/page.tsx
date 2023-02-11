@@ -7,12 +7,12 @@ import CarouselOfFilms from "@/components/CarouselOfFilms"
 import { Actor, Director, Film, Review } from "types"
  
 const fetchFilmBySlug = async (slug: string): Promise<Film> => {
-  const res = await fetch(`http://localhost:3000/api/v1/films/${slug}`);
+  const res = await fetch(`${ process.env.HOST }/api/v1/films/${slug}`);
   return await res.json();
 };
 
 const fetchAllFilms = async (): Promise<Film[]> => {
-  const res = await fetch('http://localhost:3000/api/v1/films');
+  const res = await fetch(`${ process.env.HOST }/api/v1/films`);
   return await res.json();
 };
 
