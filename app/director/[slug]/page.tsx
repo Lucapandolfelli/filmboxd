@@ -29,8 +29,8 @@ export default async function DirectorDetailPage ({ params }: { params: { slug: 
             </div>
           </div>  
           <div className='lg:w-[600px]'>
-            <h1 className='text-[#ffffe9] text-[2rem] lg:text-[2rem] mb-[.75rem]'>{ director.name }</h1>
-            <p className='text-sm lg:text-base mb-[1rem] leading-[1.7]'>{ director.biography }</p>
+            <h1 className='text-[#ffffe9] text-[1.5rem] lg:text-[2rem] mb-[.75rem]'>{ director.name }</h1>
+            <p className='text-sm lg:text-base mb-[1rem] leading-[1.8]'>{ director.biography }</p>
             <p className='mt-[2rem] text-sm font-lighter flex gap-[.5rem]'>
               <span>More details at 
                 <Link className='text-[.7rem] border-2 border-[#465058] rounded-sm py-[.125rem] px-[.25rem] ml-[.25rem] transition-all duration-300 ease-linear hover:border-[#8295a4]' href={ director.tmdb_link }>TMDB</Link>
@@ -41,7 +41,7 @@ export default async function DirectorDetailPage ({ params }: { params: { slug: 
         <div className='my-[1rem]'>
           <h3 className='uppercase mb-1'>Known For</h3>
           <hr className='mb-[1rem] border-[#445566]'/>
-          <ListOfFilms films={ films } width={234} height={354} />
+          <ListOfFilms films={ films } width={155} height={234} /> {/* 234px x 354px */}
         </div>
       </section>
     </main>
