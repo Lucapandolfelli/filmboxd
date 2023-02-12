@@ -1,5 +1,5 @@
 async function getActor(slug: string) {
-  const res = await fetch(`http://localhost:3000/api/v1/actor/${slug}`);
+  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/actor/${slug}`);
   return res.json();
 }
 

@@ -1,5 +1,5 @@
 async function getFilmTitle(slug: string) {
-  const res = await fetch(`http://localhost:3000/api/v1/films/${slug}`);
+  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films/${slug}`);
   return res.json();
 }
 

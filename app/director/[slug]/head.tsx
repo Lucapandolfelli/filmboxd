@@ -1,5 +1,5 @@
 async function getDirector(slug: string) {
-  const res = await fetch(`http://localhost:3000/api/v1/director/${slug}`);
+  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/director/${slug}`);
   return res.json();
 }
 
