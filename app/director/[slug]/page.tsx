@@ -21,7 +21,7 @@ export default async function DirectorDetailPage ({ params }: { params: { slug: 
   return (
     <main className='text-[#99aabb]'>
       <section className='w-full h-[160px] bg-center bg-cover' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('/images/login_background.jpg')` }}></section>
-      <section className='bg-[#161b20] max-w-5xl h-fit mx-auto p-[2rem] flex flex-col gap-[1rem] shadow-md'>
+      <section className='bg-[#161b20] max-w-6xl h-fit mx-auto p-[1.5rem] lg:p-[2rem] flex flex-col gap-[1rem] shadow-md'>
         <div className='flex items-center flex-col gap-[1rem] lg:flex-row lg:gap-[3rem]'>
           <div className='min-w-[280px] w-[280px]'>
             <div className='relative w-full h-[400px] mb-[1rem]'>
