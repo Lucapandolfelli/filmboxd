@@ -21,16 +21,16 @@ export default async function DirectorDetailPage ({ params }: { params: { slug: 
   return (
     <main className='text-[#99aabb]'>
       <section className='w-full h-[160px] bg-center bg-cover' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('/images/login_background.jpg')` }}></section>
-      <section className='bg-[#161b20] max-w-5xl h-fit mx-auto p-[2rem] flex flex-col gap-[1rem] shadow-md'>
-        <div className='flex gap-[3rem]'>
+      <section className='bg-[#161b20] max-w-5xl h-fit mx-auto px-[1.25rem] py-[2rem] lg:px-[2rem] flex flex-col gap-[1rem] shadow-md'>
+        <div className='flex items-center flex-col gap-[1rem] lg:flex-row lg:gap-[3rem]'>
           <div className='min-w-[280px] w-[280px]'>
             <div className='relative w-full h-[400px] mb-[1rem]'>
               <Image src={`/images/actors/${ actor.thumbnail }`} alt={ actor.name } fill />
             </div>
           </div>  
-          <div className='w-[600px]'>
-            <h1 className='text-[#ffffe9] text-[2rem] mb-[.75rem]'>{ actor.name }</h1>
-            <p className='mb-[1rem]'>{ actor.biography }</p>
+          <div className='lg:w-[600px]'>
+            <h1 className='text-[#ffffe9] text-[1.5rem] lg:text-[2rem] mb-[.75rem]'>{ actor.name }</h1>
+            <p className='text-sm lg:text-base mb-[1rem] leading-[1.8]'>{ actor.biography }</p>
             <p className='mt-[2rem] text-sm font-lighter flex gap-[.5rem]'>
               <span>More details at 
                 <Link className='text-[.7rem] border-2 border-[#465058] rounded-sm py-[.125rem] px-[.25rem] ml-[.25rem] transition-all duration-300 ease-linear hover:border-[#8295a4]' href={ actor.tmdb_link }>TMDB</Link>

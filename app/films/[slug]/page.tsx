@@ -26,7 +26,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
     <main className='text-[#99aabb]'>
       <section className='w-full h-[360px] bg-center bg-cover relative' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('/images/films/${ film.background_thumbnail }')` }}></section>
       <section className='max-w-5xl h-fit mx-auto pb-[4rem] px-[2rem] pt-[2rem] flex flex-col gap-[1rem]'>{/* bg-[#161b20] */}
-        <div className='flex gap-[3rem] mb-[2rem]'>
+        <div className='flex items-center flex-col gap-[1rem] lg:flex-row lg:gap-[3rem]'>
           <div className='min-w-[280px] w-[280px]'>
             <div className='relative w-full h-[400px] mb-[1rem]'>
               <Image src={`/images/films/${ film?.thubmnail }`} alt={ film.title } fill />
@@ -65,7 +65,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
         <div className='overflow-hidden'>
           <h3 className='uppercase mb-1'>Related Films</h3>
           <hr className='mb-[1rem] border-[#445566]'/>
-          <CarouselOfFilms films={ films.filter((film) => film.slug != slug) } width={230} height={350} />
+          <CarouselOfFilms films={ films.filter((film) => film.slug != slug) } width={155} height={234} /> {/* 230px x 350px */}
         </div>
       </section>
     </main>
