@@ -26,7 +26,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
     <main className='text-[#99aabb]'>
       <section className='w-full h-[260px] md:h-[360px] bg-center bg-cover relative' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('/images/films/${ film.background_thumbnail }')` }}></section>
       <section className='max-w-5xl h-fit mx-auto pb-[4rem] px-[1.25rem] lg:px-[2rem] pt-[2rem] flex flex-col gap-[1rem]'>{/* bg-[#161b20] */}
-        <div className='flex items-center flex-col gap-[1rem] lg:flex-row lg:gap-[3rem]'>
+        <div className='flex items-center sm:items-start flex-col gap-[1rem] lg:flex-row lg:gap-[3rem]'>
           <div className='hidden md:block min-w-[280px] w-[280px]'>
             <div className='relative w-full h-[400px] mb-[1rem]'>
               <Image src={`/images/films/${ film?.thubmnail }`} alt={ film.title } fill />
