@@ -11,9 +11,9 @@ export default function Review ({ review }: { review: TypeReview} ) {
         <Image src={`/images/${ review.user.avatar }`} alt={`Review by ${ review.user.username }`} fill />
       </div>
       <div>
-        <span className='text-[#667788] mb-4 flex items-center gap-[.25rem]'>Review by<Link className='text-amber-600 font-semibold' href={''}>{ review.user.username }</Link><Punctuation stars={ review.punctuation } /></span>
-        <p className='mb-4'>{ review.text }</p>
-        <div className='flex gap-[.5rem] items-center'>
+        <span className='text-[#667788] text-sm md:text-base mb-4 flex items-center gap-[.25rem]'>Review by<Link className='text-amber-600 font-semibold' href={''}>{ review.user.username }</Link><Punctuation stars={ review.punctuation } /></span>
+        <p className='text-sm lg:text-base mb-4 leading-[1.8]'>{ review.text }</p>
+        <div className='flex gap-[.5rem] items-center text-sm md:text-base'>
           <BsFillSuitHeartFill />
           { review.likes.toLocaleString('es-AR') }
           <p>likes</p>

@@ -36,7 +36,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
           <div className='lg:w-[600px]'>
             <h1 className='text-[#ffffe9] text-[2rem] mb-[.75rem]'>{ film?.title } (<Link className='underline px-[.25rem] hover:text-amber-600' href={'/films/year/[year]'} as={`/films/year/${ film.year }`}>{ film?.year }</Link>)</h1>
             <h5 className='text-lg mb-[1.25rem]'>Directed by <Link href={`/director/${ director.slug }`} className='underline text-[#ffffe9] hover:text-amber-600'>{ director.name }</Link></h5>
-            <p className='mb-[1rem]'>{ film?.synopsis }</p>
+            <p className='text-sm lg:text-base mb-[1rem] leading-[1.8]'>{ film?.synopsis }</p>
             <h3 className='uppercase mb-[.75rem]'>Cast</h3>
             {/* <CastList cast={ film.cast } /> */}
             <p className='mt-[2rem] text-sm font-lighter flex gap-[.5rem]'>
