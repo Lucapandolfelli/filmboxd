@@ -39,7 +39,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
             <p className='text-sm lg:text-base mb-[1rem] leading-[1.8]'>{ film?.synopsis }</p>
             <h3 className='uppercase mb-[.75rem]'>Cast</h3>
             {/* <CastList cast={ film.cast } /> */}
-            <p className='mt-[2rem] text-sm font-lighter flex gap-[.5rem]'>
+            <p className='mt-[2rem] mb-[1rem] text-sm font-lighter flex gap-[.5rem]'>
               <span>{ film.runtime } mins</span>
               <span>More at 
                 <Link className='text-[.7rem] border-2 border-[#465058] rounded-sm py-[.125rem] px-[.25rem] ml-[.25rem] transition-all duration-300 ease-linear hover:border-[#8295a4]' href={ film.imdb_link }>IMBD</Link> 
@@ -49,15 +49,15 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
           </div>
         </div>
         {/* Reviews section */}
-        <div className='mb-[2rem]'>
+        <div className='mb-[1rem] lg:mb-[2rem]'>
           <h3 className='uppercase mb-1'>Popular Reviews</h3>
-          <hr className='mb-[2rem] border-[#445566]'/>
+          <hr className='mb-[1rem] lg:mb-[2rem] border-[#445566]'/>
           <ReviewsList reviews={ film.reviews.slice(0, 3).sort((a: Review, b: Review) => b.likes - a.likes) } />
         </div>
           { film.reviews.length > 0
-          ? <div className='mb-[2rem]'>
+          ? <div className='mb-[1rem] lg:mb-[2rem]'>
               <h3 className='uppercase mb-1'>Recent Reviews</h3>
-              <hr className='mb-[2rem] border-[#445566]'/>
+              <hr className='mb-[1rem] lg:mb-[2rem] border-[#445566]'/>
               <ReviewsList reviews={ film.reviews.slice(0, 2).sort((a: Review, b: Review) => b.publish_date - a.publish_date) } />
             </div>
           : ''}
