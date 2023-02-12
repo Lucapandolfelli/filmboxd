@@ -34,8 +34,8 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
             <FilmInteractions />
           </div>  
           <div className='lg:w-[600px]'>
-            <h1 className='text-[#ffffe9] text-[2rem] mb-[.75rem]'>{ film?.title } (<Link className='underline px-[.25rem] hover:text-amber-600' href={'/films/year/[year]'} as={`/films/year/${ film.year }`}>{ film?.year }</Link>)</h1>
-            <h5 className='text-lg mb-[1.25rem]'>Directed by <Link href={`/director/${ director.slug }`} className='underline text-[#ffffe9] hover:text-amber-600'>{ director.name }</Link></h5>
+            <h1 className='text-[#ffffe9] text-[1.5rem] lg:text-[2rem] mb-[.75rem]'>{ film?.title } (<Link className='underline px-[.25rem] hover:text-amber-600' href={'/films/year/[year]'} as={`/films/year/${ film.year }`}>{ film?.year }</Link>)</h1>
+            <h5 className='text-md lg:text-lg mb-[1.25rem]'>Directed by <Link href={`/director/${ director.slug }`} className='underline text-[#ffffe9] hover:text-amber-600'>{ director.name }</Link></h5>
             <p className='text-sm lg:text-base mb-[1rem] leading-[1.8]'>{ film?.synopsis }</p>
             <h3 className='uppercase mb-[.75rem]'>Cast</h3>
             {/* <CastList cast={ film.cast } /> */}
