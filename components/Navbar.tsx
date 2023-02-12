@@ -23,7 +23,7 @@ export default function Navbar () {
   return (
     <header className={ pathname == '/login' || pathname == '/register' ? 'hidden' : showNavbar}>
       <div className='mx-auto h-full max-w-5xl flex justify-between items-center uppercase'>
-        <h1 className='text-2xl'>App</h1>
+        <h1 className='text-2xl'>{ process.env.NEXT_PUBLIC_APP_NAME }</h1>
         <nav>
           <ul className='flex items-center gap-[.75rem]'>
             {navbarItems.map((navItem) => (
