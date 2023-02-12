@@ -22,10 +22,10 @@ export default function Navbar () {
   
   return (
     <header className={ pathname == '/login' || pathname == '/register' ? 'hidden' : showNavbar}>
-      <div className='mx-auto h-full max-w-5xl flex justify-between items-center uppercase'>
+      <div className='mx-auto h-full max-w-5xl flex justify-between items-center'>
         <h1 className='text-2xl'>{ process.env.NEXT_PUBLIC_APP_NAME }</h1>
         <nav>
-          <ul className='flex items-center gap-[.75rem]'>
+          <ul className='flex items-center gap-[.75rem] uppercase'>
             {navbarItems.map((navItem) => (
               <li key={ navItem.id }><Link className={ pathname == navItem.href ? 'text-[#99aabb]' : 'transition-all duration-100 ease-linear hover:text-[#99aabb]'} href={ navItem.href }>{ navItem.label }</Link></li>
             ))}
