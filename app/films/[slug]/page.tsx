@@ -24,7 +24,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
 
   return (
     <main className='text-[#99aabb]'>
-      <section className='w-full h-[360px] bg-center bg-cover relative' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('/images/films/${ film.background_thumbnail }')` }}></section>
+      <section className='w-full h-[160px] md:h-[360px] bg-center bg-cover relative' style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('/images/films/${ film.background_thumbnail }')` }}></section>
       <section className='max-w-5xl h-fit mx-auto pb-[4rem] px-[2rem] pt-[2rem] flex flex-col gap-[1rem]'>{/* bg-[#161b20] */}
         <div className='flex items-center flex-col gap-[1rem] lg:flex-row lg:gap-[3rem]'>
           <div className='min-w-[280px] w-[280px]'>
@@ -33,7 +33,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
             </div>
             <FilmInteractions />
           </div>  
-          <div className='w-[600px]'>
+          <div className='lg:w-[600px]'>
             <h1 className='text-[#ffffe9] text-[2rem] mb-[.75rem]'>{ film?.title } (<Link className='underline px-[.25rem] hover:text-amber-600' href={'/films/year/[year]'} as={`/films/year/${ film.year }`}>{ film?.year }</Link>)</h1>
             <h5 className='text-lg mb-[1.25rem]'>Directed by <Link href={`/director/${ director.slug }`} className='underline text-[#ffffe9] hover:text-amber-600'>{ director.name }</Link></h5>
             <p className='mb-[1rem]'>{ film?.synopsis }</p>
