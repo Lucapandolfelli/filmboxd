@@ -42,7 +42,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
           </div>  
         </aside>
         <div className='md:w-[680px]'>
-          <div className='flex items-center sm:items-start flex-col gap-[2rem] lg:gap-[3rem] mb-[1rem]'>
+          <div className='flex items-center sm:items-start flex-col gap-[3rem] mb-[1rem]'>
             <div className='w-full'>
               <small className='text-lg text-[#667788]'><Link className='hover:text-amber-600' href={'/films/year/[year]'} as={`/films/year/${ film.year }`}>{ film?.year }</Link></small>
               <h1 className='text-[#ffffe9] text-[2rem] font-semibold lg:text-[2.5rem] mb-[.75rem]'>{ film?.title }</h1>
@@ -78,7 +78,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
           </div>
             { film.reviews.length > 0
             ? <div className='mb-[1rem] lg:mb-[2rem]'>
-                <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[2rem]'>Recent Reviews</h3>
+                <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[1rem] md:mb-[2rem]'>Recent Reviews</h3>
                 <ReviewsList reviews={ film.reviews.slice(0, 2).sort((a: Review, b: Review) => b.publish_date - a.publish_date) } />
               </div>
             : ''}
