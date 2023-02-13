@@ -7,12 +7,11 @@ type Props = {
 
 export default function ReviewsList ({ reviews }: Props) {
   return (
-    <ul className='flex flex-col gap-[2rem]'>
+    <ul className='flex flex-col gap-[1.25rem]'>
       { reviews.length > 0 
       ? reviews.map((review, index) => (
         <li key={ review.id } className='flex flex-col gap-[2rem]'>
           <Review review={review} />
-          { index < reviews.length - 1 ? <hr className='border-[#2c3440]' /> : ''}
         </li>
       ))
       : <li>

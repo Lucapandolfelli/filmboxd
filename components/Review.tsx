@@ -6,7 +6,7 @@ import Punctuation from "./Punctuation"
 
 export default function Review ({ review }: { review: TypeReview} ) {
   return (
-    <article className='flex gap-[1rem]'>
+    <article className='bg-[#242C33] rounded-[1rem] px-[1rem] py-[1.5rem] flex gap-[1rem]'>
       <div className='min-w-[40px] w-[40px] h-[40px] rounded-full relative overflow-hidden'>
         <Image src={`/images/${ review.user.avatar }`} alt={`Review by ${ review.user.username }`} fill />
       </div>
