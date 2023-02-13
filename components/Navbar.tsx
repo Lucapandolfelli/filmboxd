@@ -27,7 +27,7 @@ export default function Navbar () {
         <nav>
           <ul className='flex items-center gap-[.75rem] uppercase'>
             {navbarItems.map((navItem) => (
-              <li key={ navItem.id }><Link className={ pathname == navItem.href ? 'text-[#99aabb]' : 'transition-all duration-100 ease-linear hover:text-[#99aabb]'} href={ navItem.href }>{ navItem.label }</Link></li>
+              <li key={ navItem.id }><Link className={ pathname == navItem.href ? 'text-amber-600' : 'transition-all duration-100 ease-linear hover:text-amber-600'} href={ navItem.href }>{ navItem.label }</Link></li>
             ))}
             <li><Link href='/login' className='bg-white text-[#14181c] py-[.25rem] px-[.5rem] rounded-[.25rem] transition-all duration-300 ease-linear hover:bg-[#99aabb] hover:text-white'>Sign In</Link></li>
             {/* { session 

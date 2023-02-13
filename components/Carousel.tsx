@@ -7,12 +7,12 @@ import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
 import { useInView } from "react-intersection-observer";
 
 type Props = {
-  films: FilmType[],
+  data: FilmType[],
   width: number,
   height: number
 }
 
-export default function CarouselOfFilms ({ films, width, height }: Props) {
+export default function Carousel ({ data, width, height }: Props) {
   const { ref: firstFilm, inView: inViewFirstFilm } = useInView({
     threshold: .75,
   })
@@ -40,14 +40,14 @@ export default function CarouselOfFilms ({ films, width, height }: Props) {
   return (
     <div className='relative'>
       <ul className='flex gap-[.5rem] overflow-x-hidden scroll-smooth' ref={carousel}>
-        {films.map((film, index) => {
+        {data.map((film, index) => {
           if (index == 0){
             return (
               <li key={ film.id } ref={firstFilm}>
                 <Film data={film} width={width} height={height} />
               </li>
             )
-          } else if (index == films.length - 1) {
+          } else if (index == data.length - 1) {
             return (
               <li key={ film.id } ref={lastFilm}>
                 <Film data={film} width={width} height={height} />
@@ -61,10 +61,10 @@ export default function CarouselOfFilms ({ films, width, height }: Props) {
             )
           }
         })}
-        { films.length > 4
+        { data.length > 4
           ? <>
-            <button onClick={handleLeftClick} className={ !inViewFirstFilm ? 'bg-black/75 text-white w-[35px] h-[35px] rounded-full grid place-items-center absolute top-[calc(50%_-_17.5px)] left-[.5rem] hover:bg-black hover:scale-[1.125]' : 'hidden'}><MdArrowBackIos /></button>
-            <button onClick={handleRightClick} className={ !inViewLastFilm ? 'bg-black/75 text-white w-[35px] h-[35px] rounded-full grid place-items-center absolute top-[calc(50%_-_17.5px)] right-[.5rem] hover:bg-black hover:scale-[1.125]' : 'hidden'}><MdArrowForwardIos /></button>
+            <button onClick={handleLeftClick} className={ !inViewFirstFilm ? 'bg-black/75 text-white w-[35px] h-[35px] rounded-full grid place-items-center absolute top-[calc(50%_-_17.5px)] left-[.5rem] hover:bg-black hover:scale-[1.125]' : 'hidden'}><span className='sr-only'>Previous</span><MdArrowBackIos /></button>
+            <button onClick={handleRightClick} className={ !inViewLastFilm ? 'bg-black/75 text-white w-[35px] h-[35px] rounded-full grid place-items-center absolute top-[calc(50%_-_17.5px)] right-[.5rem] hover:bg-black hover:scale-[1.125]' : 'hidden'}><span className='sr-only'>Next</span><MdArrowForwardIos /></button>
           </>
           : ''}
       </ul>
