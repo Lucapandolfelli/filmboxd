@@ -36,9 +36,9 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
               <h1 className='text-[#ffffe9] text-[2rem] font-semibold lg:text-[2.5rem] mb-[.75rem]'>{ film?.title }</h1>
               <h5 className='text-[#667788] mb-[.75rem]'>Directed by <Link href={`/director/${ director.slug }`} className='text-[#ffffe9] hover:text-amber-600'>{ director.name }</Link></h5>
             </div> */}
-            {/* <div className='flex flex-col items-center gap-[1rem]'>
+            <div className='hidden sm:flex flex-col items-center gap-[1rem]'>
               <FilmInteractions />
-            </div> */}
+            </div>
           </div>  
         </aside>
         <div className='md:w-[680px]'>
@@ -64,7 +64,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
               </div> 
             </div>
           </div>
-          <div className='flex flex-col items-center gap-[1rem]'>
+          <div className='sm:hidden flex flex-col items-center gap-[1rem]'>
             <FilmInteractions />
           </div>
           <div className='mb-[1rem] lg:mb-[2rem]'>
