@@ -24,7 +24,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
 
   return (
     <main className='text-[#99aabb]'>
-      <section className='w-full h-[560px] bg-center bg-cover relative' style={{ backgroundImage: `linear-gradient(0deg, rgba(20,24,28,1) 2%, rgba(20,24,28,0.725910432532388) 18%, rgba(20,24,28,0.01162471824667366) 100%), url('/images/films/${ film.background_thumbnail }')` }}></section>
+      <section className='w-full h-[360px] md:h-[560px] bg-center bg-cover relative' style={{ backgroundImage: `linear-gradient(0deg, rgba(20,24,28,1) 2%, rgba(20,24,28,0.725910432532388) 18%, rgba(20,24,28,0.01162471824667366) 100%), url('/images/films/${ film.background_thumbnail }')` }}></section>
       <section className='max-w-5xl h-fit mx-auto pb-[4rem] px-[1.25rem] md:px-0 flex flex-col md:flex-row gap-[4rem] relative'>{/* bg-[#161b20] */}
         <aside className='w-full mx-[1.25rem] flex items-center'>
           <div className='w-[calc(100%_-_2.5rem)] md:min-w-[280px] md:w-[280px] absolute top-[-12rem] md:top-[-7rem] right-0 md:right-[unset] left-0 mx-auto'>
