@@ -15,7 +15,7 @@ export default function ReviewsList ({ reviews }: Props) {
         </li>
       ))
       : <li>
-        <p className='text-sm md:text-base'>Todavía nadie hizo una review de esta película. Sé el primero en hacerla.</p>
+        <p className='text-[#667788] text-sm md:text-base'>Todavía nadie hizo una review de esta película. Sé el primero en hacerla.</p>
       </li>
       }
     </ul>
