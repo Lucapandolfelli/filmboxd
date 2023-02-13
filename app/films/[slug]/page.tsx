@@ -28,7 +28,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
       <section className='max-w-5xl h-fit mx-auto pb-[4rem] px-[1.25rem] md:px-0 flex flex-col md:flex-row gap-[4rem] relative'>{/* bg-[#161b20] */}
         <aside className='hidden md:block min-w-[280px]'>
           <div className='min-w-[280px] w-[280px] md:absolute top-[-7rem] left-0'>
-            <div className='relative w-full h-[400px] mb-[2rem]'>
+            <div className='relative w-full h-[400px] mb-[2rem] shadow-xl'>
               <Image src={`/images/films/${ film?.thubmnail }`} alt={ film.title } fill />
             </div>
             <FilmInteractions />
@@ -41,12 +41,12 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
               <h1 className='text-[#ffffe9] text-[2rem] font-semibold lg:text-[2.5rem] mb-[.75rem]'>{ film?.title }</h1>
               <h5 className='text-[#667788] mb-[.75rem]'>Directed by <Link href={`/director/${ director.slug }`} className='text-[#ffffe9] hover:text-amber-600'>{ director.name }</Link></h5>
               <p className='mb-[1rem] leading-[1.8]'>{ film?.synopsis }</p>
-              <p className='w-full mt-[2rem] mb-[1rem] font-lighter flex gap-[1.25rem]'>
-                <span className='flex gap-[.25rem] text-[#ffffe9]'>
+              <div className='w-full mt-[2rem] mb-[1rem] font-lighter flex gap-[1.25rem]'>
+                <span className='flex gap-[.5rem] text-[#ffffe9]'>
                   <p className='text-[#667788]'>Duration</p>
                   { film.runtime } mins
                 </span>
-                <span className='flex gap-[.25rem] text-[#ffffe9]'>
+                <span className='flex gap-[.5rem] text-[#ffffe9]'>
                   <p className='text-[#667788]'>Released</p>
                   5 January 2023
                 </span>
@@ -54,7 +54,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
                   <Link className='text-[.7rem] border-2 border-[#465058] rounded-sm py-[.125rem] px-[.25rem] ml-[.25rem] transition-all duration-300 ease-linear hover:border-[#8295a4]' href={ film.imdb_link }>IMBD</Link> 
                   <Link className='text-[.7rem] border-2 border-[#465058] rounded-sm py-[.125rem] px-[.25rem] ml-[.25rem] transition-all duration-300 ease-linear hover:border-[#8295a4]' href={ film.tmdb_link }>TMDB</Link>
                 </span>
-              </p> 
+              </div> 
             </div>
           </div>
           <div className='mb-[1rem] lg:mb-[2rem]'>

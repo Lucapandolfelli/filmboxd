@@ -126,7 +126,7 @@ export const films: Film[] = [
     ],
     reviews: [],
     thubmnail: "avatar-the-way-of-water.jpg",
-    background_thumbnail: "avatar-the-way-of-water-background.jpg",
+    background_thumbnail: "avatar-the-way-of-water-background.png",
     imdb_link: "http://www.imdb.com/title/tt1630029/maindetails",
     tmdb_link: "https://www.themoviedb.org/movie/76600/",
     runtime: 192,

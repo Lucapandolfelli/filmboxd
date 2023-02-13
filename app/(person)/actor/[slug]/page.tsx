@@ -20,7 +20,7 @@ export default async function DirectorDetailPage ({ params }: { params: { slug: 
 
   return (
     <>
-      <div className='flex items-center flex-col gap-[1rem] lg:flex-row lg:gap-[3rem]'>
+      <div className='flex items-center flex-col gap-[1rem] lg:flex-row lg:items-start lg:gap-[3rem]'>
         <div className='min-w-[280px] w-[280px]'>
           <div className='relative w-full h-[400px] mb-[1rem]'>
             <Image src={`/images/actors/${ actor.thumbnail }`} alt={ actor.name } fill />
@@ -37,9 +37,8 @@ export default async function DirectorDetailPage ({ params }: { params: { slug: 
         </div>
       </div>
       <div className='my-[1rem]'>
-        <h3 className='uppercase mb-1'>Known For</h3>
-        <hr className='mb-[1rem] border-[#445566]'/>
-        <ListOfFilms films={ films } width={234} height={354} />
+      <h3 className='text-[1.5rem] text-[#ffffe9] font-semibold mb-[1.5rem]'>Known For</h3>
+        <ListOfFilms films={ films } width={250} height={370} />
       </div>
     </>
   )
