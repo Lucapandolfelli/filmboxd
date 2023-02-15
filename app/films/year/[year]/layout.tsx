@@ -1,4 +1,4 @@
-export default async function Layout ({ children, params }: { children: React.ReactNode, params: any }) {
+export default async function Layout ({ children, params }: { children: React.ReactNode, params: { year: string } }) {
   const { year } = params
   
   return (
