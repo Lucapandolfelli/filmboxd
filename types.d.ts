@@ -7,7 +7,7 @@ export interface Film {
   directors: Director[];
   cast: string[];
   reviews: Review[];
-  thubmnail: string;
+  thumbnail: string;
   background_thumbnail: string;
   imdb_link: string;
   tmdb_link: string;

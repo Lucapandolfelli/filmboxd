@@ -34,11 +34,19 @@ export default function FilmInteractions () {
       </div>
       <div className='w-full flex flex-col gap-[1.5rem]'>
         <p className='flex justify-between'>
+          <span className='text-[#667788]'>Rating</span>
+          <span className='text-[#ffffe9] text-lg'>7.645</span>
+        </p>
+        <p className='flex justify-between'>
           <span className='text-[#667788]'>Views</span>
           <span className='text-[#ffffe9] text-lg'>7.645</span>
         </p>
         <p className='flex justify-between'>
           <span className='text-[#667788]'>Likes</span>
+          <span className='text-[#ffffe9] text-lg'>7.645</span>
+        </p>
+        <p className='flex justify-between'>
+          <span className='text-[#667788]'>Lists</span>
           <span className='text-[#ffffe9] text-lg'>7.645</span>
         </p>
       </div>

@@ -16,11 +16,17 @@ const fetchAllFilms = async (): Promise<Film[]> => {
   return await res.json();
 };
 
+const fetchAllActors = async (): Promise<Actor[]> => {
+  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/actor`);
+  return await res.json();
+};
+
 export default async function FilmDetailPage ({ params }: { params: { slug: string }}) {
   const { slug } = params
   const film: Film = await fetchFilmBySlug(slug)
   const films: Film[] = await fetchAllFilms()
   const director: Director = film.directors[0]
+  const actors: Actor[] = await fetchAllActors()
 
   return (
     <main className='text-[#99aabb]'>
@@ -29,13 +35,8 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
         <aside className='w-full mx-[1.25rem] flex items-center'>
           <div className='w-[calc(100%_-_2.5rem)] md:min-w-[280px] md:w-[280px] absolute top-[-11rem] md:top-[-7rem] right-0 md:right-[unset] left-0 mx-auto'>
             <div className='relative w-[150px] md:w-full h-[214px] md:h-[400px] md:mb-[2rem] shadow-xl'>
-              <Image src={`/images/films/${ film?.thubmnail }`} alt={ film.title } fill />
+              <Image src={`/images/films/${ film?.thumbnail }`} alt={ film.title } fill />
             </div>
-            {/* <div className='mb-[2rem]'>
-              <small className='text-lg text-[#667788]'><Link className='hover:text-amber-600' href={'/films/year/[year]'} as={`/films/year/${ film.year }`}>{ film?.year }</Link></small>
-              <h1 className='text-[#ffffe9] text-[2rem] font-semibold lg:text-[2.5rem] mb-[.75rem]'>{ film?.title }</h1>
-              <h5 className='text-[#667788] mb-[.75rem]'>Directed by <Link href={`/director/${ director.slug }`} className='text-[#ffffe9] hover:text-amber-600'>{ director.name }</Link></h5>
-            </div> */}
             <div className='hidden sm:flex flex-col items-center gap-[1rem]'>
               <FilmInteractions />
             </div>
@@ -64,28 +65,28 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
               </div> 
             </div>
           </div>
-          <div className='sm:hidden flex flex-col items-center gap-[1rem]'>
+          <div className='sm:hidden flex flex-col items-center gap-[1rem] mb-[2rem]'>
             <FilmInteractions />
           </div>
           <div className='mb-[1rem] lg:mb-[2rem]'>
             <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1.25rem]'>Cast</h3>
-            <Carousel data={ films.filter((film) => film.slug != slug) } width={155} height={234} /> {/* 230px x 350px */}
+            <Carousel data={ actors } width={155} height={234} itemPath='actors' /> {/* 230px x 350px */}
           </div>
           {/* Reviews section */}
           <div className='mb-[1rem] lg:mb-[2rem]'>
-            <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[1rem] md:mb-[2rem]'>Popular Reviews</h3>
+            <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[1rem] md:mb-[1.25rem]'>Popular Reviews</h3>
             <ReviewsList reviews={ film.reviews.slice(0, 3).sort((a: Review, b: Review) => b.likes - a.likes) } />
           </div>
             { film.reviews.length > 0
             ? <div className='mb-[1rem] lg:mb-[2rem]'>
-                <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[1rem] md:mb-[2rem]'>Recent Reviews</h3>
+                <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[1rem] md:mb-[1.25rem]'>Recent Reviews</h3>
                 <ReviewsList reviews={ film.reviews.slice(0, 2).sort((a: Review, b: Review) => b.publish_date - a.publish_date) } />
               </div>
             : ''}
           {/* Related Films section */}
           <div>
             <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1.25rem]'>Related Films</h3>
-            <Carousel data={ films.filter((film) => film.slug != slug) } width={155} height={234} /> {/* 230px x 350px */}
+            <Carousel data={ films.filter((film) => film.slug != slug) } width={155} height={234} itemPath='films' /> {/* 230px x 350px */}
           </div>
         </div>
       </section>
