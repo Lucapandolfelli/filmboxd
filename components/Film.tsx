@@ -12,7 +12,7 @@ export default function Film ({ data, width, height }: Props) {
   return (
     <Link href='/films/[slug]' as={`/films/${ data.slug }`}>
       <article className='hover:cursor-pointer relative' style={{ width: `${width}px`, height: `${height}px`}}>
-        <Image src={`/images/films/${ data.thumbnail }`} alt={ data.slug} fill />
+        <Image src={`/images/films/${ data.thumbnail }`} alt={ data.slug} fill className='object-cover' />
       </article>
     </Link>
   )

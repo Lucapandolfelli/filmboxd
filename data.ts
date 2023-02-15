@@ -526,4 +526,44 @@ export const actors: Actor[] = [
       "Margot Elise Robbie (born 2 July 1990) is an Australian actress and producer. Known for her work in both blockbuster and independent films, she has received several accolades, including nominations for two Academy Awards, four Golden Globe Awards, and five British Academy Film Awards. Time magazine named her one of the 100 most influential people in the world in 2017 and she was ranked as one of the world's highest-paid actresses by Forbes in 2019.",
     tmdb_link: "https://www.themoviedb.org/person/234352/",
   },
+  {
+    id: 3,
+    name: "Ralph Fiennes",
+    slug: "ralph-fiennes",
+    films: [],
+    thumbnail: "ralph-fiennes.jpg",
+    biography:
+      "Ralph Nathaniel Twisleton-Wykeham-Fiennes (born December 22, 1962) is an English actor, film producer, and director. Since 1999, Fiennes has served as an ambassador for UNICEF UK. A Shakespeare interpreter, he first achieved success onstage at the Royal National Theatre. He made his film debut playing Heathcliff in Emily Brontë's Wuthering Heights. A noted Shakespeare interpreter, he first achieved success onstage at the Royal National Theatre. Fiennes' portrayal of Nazi war criminal Amon Göth in Schindler's List (1993) earned him nominations for the Academy Award for Best Supporting Actor and the Golden Globe Award for Best Supporting Actor, and he won the BAFTA Award for Best Actor in a Supporting Role. His performance as Count Almásy in The English Patient (1996) garnered him a second Academy Award nomination, for Best Actor, as well as BAFTA and Golden Globe nominations.",
+    tmdb_link: "https://www.themoviedb.org/person/5469/",
+  },
+  {
+    id: 4,
+    name: "Anya Taylor-Joy",
+    slug: "anya-taylor-joy",
+    films: [],
+    thumbnail: "anya-taylor-joy.jpg",
+    biography:
+      "Anya-Josephine Marie Taylor-Joy (born 16 April 1996) is a British-American actress and model. She left school at age sixteen and began to pursue an acting career. After small television roles, she made her film debut with the lead role of Thomasin in the horror film The Witch (2015). She went on to star in the horror film Split and the black comedy Thoroughbreds (both 2017). She also appeared in the drama miniseries The Miniaturist (2017), the fifth and sixth series of Peaky Blinders (2019–2022) and The Dark Crystal: Age of Resistance (2019), and the superhero film Glass (2019), reprising her role from Split. Taylor-Joy will voice Princess Peach in the upcoming Mario film (2022) and portray the title character in Furiosa (2024).",
+    tmdb_link: "https://www.themoviedb.org/person/1397778/",
+  },
+  {
+    id: 5,
+    name: "Tom Cruise",
+    slug: "tom-cruise",
+    films: [],
+    thumbnail: "tom-cruise.jpg",
+    biography:
+      "Thomas Cruise Mapother IV (born July 3, 1962), known professionally as Tom Cruise, is an American actor and producer. One of the world's highest-paid actors, he has received various accolades, including an Honorary Palme d'Or and three Golden Globe Awards, in addition to nominations for three Academy Awards. His films have grossed over $4 billion in North America and over $11.1 billion worldwide, making him one of the highest-grossing box office stars of all time.",
+    tmdb_link: "https://www.themoviedb.org/person/500/",
+  },
+  {
+    id: 6,
+    name: "Miles Teller",
+    slug: "miles-teller",
+    films: [],
+    thumbnail: "miles-teller.jpg",
+    biography:
+      "Miles Alexander Teller (born February 20, 1987) is an American actor and musician. Born in Downingtown, Pennsylvania and an alumnus of NYU's Tisch School of Arts, he appeared in several short films and television movies before making his feature film debut in Rabbit Hole (2010). He had supporting roles in Footloose (2011) and Project X (2012), before garnering critical acclaim for his leading performance as Sutter Keely in The Spectacular Now (2013), for which he was awarded the Sundance Film Festival Special Jury Prize for Dramatic Acting and his role as Andrew Neiman in Whiplash, for which he was nominated for the Gotham Independent Film Award for Best Actor, the Satellite Award for Best Actor - Motion Picture, and the BAFTA Rising Star Award. His other films include: Divergent (2014), Bleed for This (2016), War Dogs (2016) and Top Gun: Maverick (2022).",
+    tmdb_link: "https://www.themoviedb.org/person/996701/",
+  },
 ];

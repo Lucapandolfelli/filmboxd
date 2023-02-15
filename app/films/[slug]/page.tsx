@@ -70,7 +70,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
           </div>
           <div className='mb-[1rem] lg:mb-[2rem]'>
             <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1.25rem]'>Cast</h3>
-            <Carousel data={ actors } width={155} height={234} itemPath='actors' /> {/* 230px x 350px */}
+            <Carousel data={ actors } width={155} height={234} itemPath='actor' /> {/* 230px x 350px */}
           </div>
           {/* Reviews section */}
           <div className='mb-[1rem] lg:mb-[2rem]'>

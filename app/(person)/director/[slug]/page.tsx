@@ -23,7 +23,7 @@ export default async function DirectorDetailPage ({ params }: { params: { slug: 
       <div className='flex items-center flex-col gap-[1rem] md:flex-row md:items-start lg:gap-[3rem]'>
         <div className='min-w-[280px] w-[280px]'>
           <div className='relative w-full h-[400px] mb-[1rem]'>
-            <Image src={`/images/directors/${ director.thumbnail }`} alt={ director.name } fill />
+            <Image src={`/images/directors/${ director.thumbnail }`} alt={ director.name } fill className='object-cover' />
           </div>
         </div>  
         <div className='lg:w-[600px]'>
