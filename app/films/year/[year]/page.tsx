@@ -15,7 +15,7 @@ export default async function YearPages ({ params }: { params: { year: string } 
   return (
     <Suspense fallback={<Loading listLenght={ films.length } />}>
       <div className='block sm:hidden'>
-        <ListOfFilms films={films} width={155} height={234} /> 
+        <ListOfFilms films={films} width={165} height={244} /> 
       </div>
       <div className='hidden sm:block'>
         <ListOfFilms films={films} width={250} height={370} /> 
