@@ -5,13 +5,15 @@ export interface Film {
   synopsis: string;
   year: number;
   directors: Director[];
-  cast: string[];
+  cast: Actor[];
   reviews: Review[];
   thumbnail: string;
   background_thumbnail: string;
   imdb_link: string;
   tmdb_link: string;
   runtime: number;
+  genres: Genre[];
+  release: string;
 }
 
 export interface Review {
@@ -51,4 +53,9 @@ export interface Actor {
   films: Film[];
   tmdb_link: string;
   thumbnail: string;
+}
+
+export interface Genre {
+  id: number;
+  name: string;
 }

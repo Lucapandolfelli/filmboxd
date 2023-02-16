@@ -17,7 +17,7 @@ type Props = {
 
 export default function Carousel ({ data, width, height, itemPath }: Props) {
   const { ref: firstItem, inView: inViewFirstItem } = useInView({
-    threshold: .75,
+    threshold: .45,
   })
   const { ref: lastItem, inView: inViewLastItem } = useInView({
     threshold: .75,

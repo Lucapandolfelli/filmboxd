@@ -1,32 +1,26 @@
 import Image from "next/image"
-import FilmInteractions from "@/components/FilmInteractions"
-import CastList from "@/components/CastList"
 import Link from "next/link"
+import { Actor, Director, Film, Review } from "types"
+import FilmInteractions from "@/components/FilmInteractions"
 import ReviewsList from "@/components/ReviewsList"
 import Carousel from "@/components/Carousel"
-import { Actor, Director, Film, Review } from "types"
+import Genres from "@/components/Genres"
  
-const fetchFilmBySlug = async (slug: string): Promise<Film> => {
+const getFilmBySlug = async (slug: string): Promise<Film> => {
   const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films/${slug}`);
   return await res.json();
 };
 
-const fetchAllFilms = async (): Promise<Film[]> => {
+const getAllFilms = async (): Promise<Film[]> => {
   const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films`);
-  return await res.json();
-};
-
-const fetchAllActors = async (): Promise<Actor[]> => {
-  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/actor`);
   return await res.json();
 };
 
 export default async function FilmDetailPage ({ params }: { params: { slug: string }}) {
   const { slug } = params
-  const film: Film = await fetchFilmBySlug(slug)
-  const films: Film[] = await fetchAllFilms()
+  const film: Film = await getFilmBySlug(slug)
+  const films: Film[] = await getAllFilms()
   const director: Director = film.directors[0]
-  const actors: Actor[] = await fetchAllActors()
 
   return (
     <main className='text-[#99aabb]'>
@@ -49,6 +43,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
               <h1 className='text-[#ffffe9] text-[2rem] font-semibold lg:text-[2.5rem] mb-[.75rem]'>{ film?.title }</h1>
               <h5 className='text-[#667788] mb-[.75rem]'>Directed by <Link href={`/director/${ director.slug }`} className='text-[#ffffe9] hover:text-amber-600'>{ director.name }</Link></h5>
               <p className='mb-[1rem] leading-[1.8]'>{ film?.synopsis }</p>
+              <Genres genres={ film.genres } />
               <div className='w-full mt-[2rem] mb-[1rem] font-lighter flex gap-[1.25rem] flex-wrap'>
                 <span className='flex gap-[.5rem] text-[#ffffe9]'>
                   <p className='text-[#667788]'>Duration</p>
@@ -56,7 +51,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
                 </span>
                 <span className='flex gap-[.5rem] text-[#ffffe9]'>
                   <p className='text-[#667788]'>Released</p>
-                  5 January 2023
+                  <p>{ film?.release }</p>
                 </span>
                 <span>More at 
                   <Link className='text-[.7rem] border-2 border-[#465058] rounded-sm py-[.125rem] px-[.25rem] ml-[.25rem] transition-all duration-300 ease-linear hover:border-[#8295a4]' href={ film.imdb_link }>IMBD</Link> 
@@ -70,7 +65,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
           </div>
           <div className='mb-[1rem] lg:mb-[2rem]'>
             <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1.25rem]'>Cast</h3>
-            <Carousel data={ actors } width={155} height={234} itemPath='actor' /> {/* 230px x 350px */}
+            <Carousel data={ film.cast } width={155} height={234} itemPath='actor' /> {/* 230px x 350px */}
           </div>
           {/* Reviews section */}
           <div className='mb-[1rem] lg:mb-[2rem]'>
@@ -86,7 +81,7 @@ export default async function FilmDetailPage ({ params }: { params: { slug: stri
           {/* Related Films section */}
           <div>
             <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1.25rem]'>Related Films</h3>
-            <Carousel data={ films.filter((film) => film.slug != slug) } width={155} height={234} itemPath='films' /> {/* 230px x 350px */}
+            <Carousel data={ films.filter((f) => f.slug != slug ) } width={155} height={234} itemPath='films' /> {/* 230px x 350px */}
           </div>
         </div>
       </section>

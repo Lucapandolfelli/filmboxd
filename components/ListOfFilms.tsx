@@ -12,7 +12,7 @@ type Props = {
 export default function ListOfFilms ({ films, /* width, height */ }: Props) {
   return (
     <>
-      <ul className='grid grid-cols-[repeat(auto-fit,_minmax(165px,1fr))] gap-[.5rem] justify-center sm:justify-start'>
+      <ul className='grid grid-cols-[repeat(auto-fit,_minmax(165px,250px))] gap-[.5rem] justify-center sm:justify-start'>
         {films.map(film => (
           <li key={ film.id } className='w-full'>
             <Link href='/films/[slug]' as={`/films/${ film.slug }`}>

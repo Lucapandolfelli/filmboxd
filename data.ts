@@ -1,4 +1,4 @@
-import { Film, Director, Actor } from "types";
+import { Film, Director, Actor, Genre } from "types";
 
 export const films: Film[] = [
   {
@@ -20,12 +20,26 @@ export const films: Film[] = [
       },
     ],
     cast: [
-      "brad-pitt",
-      "margot-robbie",
-      "Diego Calva",
-      "Jean Smart",
-      "Flea",
-      "Tobey Maguire",
+      {
+        id: 1,
+        name: "Brad Pitt",
+        slug: "brad-pitt",
+        films: [],
+        thumbnail: "brad-pitt.jpg",
+        biography:
+          "William Bradley Pitt (born December 18, 1963) is an American actor and film producer. He is the recipient of various accolades, including an Academy Award, a British Academy Film Award, and two Golden Globe Awards for his acting, in addition to a second Academy Award, a second British Academy Film Award, a third Golden Globe Award, and a Primetime Emmy Award as a producer under his production company, Plan B Entertainment.",
+        tmdb_link: "https://www.themoviedb.org/person/287/",
+      },
+      {
+        id: 2,
+        name: "Margot Robbie",
+        slug: "margot-robbie",
+        films: [],
+        thumbnail: "margot-robbie.jpg",
+        biography:
+          "Margot Elise Robbie (born 2 July 1990) is an Australian actress and producer. Known for her work in both blockbuster and independent films, she has received several accolades, including nominations for two Academy Awards, four Golden Globe Awards, and five British Academy Film Awards. Time magazine named her one of the 100 most influential people in the world in 2017 and she was ranked as one of the world's highest-paid actresses by Forbes in 2019.",
+        tmdb_link: "https://www.themoviedb.org/person/234352/",
+      },
     ],
     reviews: [
       {
@@ -98,6 +112,17 @@ export const films: Film[] = [
     imdb_link: "http://www.imdb.com/title/tt10640346/maindetails",
     tmdb_link: "https://www.themoviedb.org/movie/615777/",
     runtime: 189,
+    genres: [
+      {
+        id: 1,
+        name: "Comedy",
+      },
+      {
+        id: 2,
+        name: "Drama",
+      },
+    ],
+    release: "19 January, 2023",
   },
   {
     id: 2,
@@ -117,19 +142,28 @@ export const films: Film[] = [
         tmdb_link: "https://www.themoviedb.org/person/2710/",
       },
     ],
-    cast: [
-      "Sam Worthington",
-      "Zoe Saldana",
-      "Sigourney Weaver",
-      "Stephen Lang",
-      "Kate Winslet",
-    ],
+    cast: [],
     reviews: [],
     thumbnail: "avatar-the-way-of-water.jpg",
     background_thumbnail: "avatar-the-way-of-water-background.png",
     imdb_link: "http://www.imdb.com/title/tt1630029/maindetails",
     tmdb_link: "https://www.themoviedb.org/movie/76600/",
     runtime: 192,
+    genres: [
+      {
+        id: 3,
+        name: "Science-fiction",
+      },
+      {
+        id: 4,
+        name: "Action",
+      },
+      {
+        id: 5,
+        name: "Adventure",
+      },
+    ],
+    release: "16 Decemeber, 2022",
   },
   {
     id: 3,
@@ -150,11 +184,26 @@ export const films: Film[] = [
       },
     ],
     cast: [
-      "Ralph Fiennes",
-      "Anya Taylor-Joy",
-      "Nicholas Hoult",
-      "Hong Chau",
-      "Janet McTeer",
+      {
+        id: 3,
+        name: "Ralph Fiennes",
+        slug: "ralph-fiennes",
+        films: [],
+        thumbnail: "ralph-fiennes.jpg",
+        biography:
+          "Ralph Nathaniel Twisleton-Wykeham-Fiennes (born December 22, 1962) is an English actor, film producer, and director. Since 1999, Fiennes has served as an ambassador for UNICEF UK. A Shakespeare interpreter, he first achieved success onstage at the Royal National Theatre. He made his film debut playing Heathcliff in Emily Brontë's Wuthering Heights. A noted Shakespeare interpreter, he first achieved success onstage at the Royal National Theatre. Fiennes' portrayal of Nazi war criminal Amon Göth in Schindler's List (1993) earned him nominations for the Academy Award for Best Supporting Actor and the Golden Globe Award for Best Supporting Actor, and he won the BAFTA Award for Best Actor in a Supporting Role. His performance as Count Almásy in The English Patient (1996) garnered him a second Academy Award nomination, for Best Actor, as well as BAFTA and Golden Globe nominations.",
+        tmdb_link: "https://www.themoviedb.org/person/5469/",
+      },
+      {
+        id: 4,
+        name: "Anya Taylor-Joy",
+        slug: "anya-taylor-joy",
+        films: [],
+        thumbnail: "anya-taylor-joy.jpg",
+        biography:
+          "Anya-Josephine Marie Taylor-Joy (born 16 April 1996) is a British-American actress and model. She left school at age sixteen and began to pursue an acting career. After small television roles, she made her film debut with the lead role of Thomasin in the horror film The Witch (2015). She went on to star in the horror film Split and the black comedy Thoroughbreds (both 2017). She also appeared in the drama miniseries The Miniaturist (2017), the fifth and sixth series of Peaky Blinders (2019–2022) and The Dark Crystal: Age of Resistance (2019), and the superhero film Glass (2019), reprising her role from Split. Taylor-Joy will voice Princess Peach in the upcoming Mario film (2022) and portray the title character in Furiosa (2024).",
+        tmdb_link: "https://www.themoviedb.org/person/1397778/",
+      },
     ],
     reviews: [],
     thumbnail: "the-menu.jpg",
@@ -162,6 +211,17 @@ export const films: Film[] = [
     imdb_link: "http://www.imdb.com/title/tt9764362/maindetails",
     tmdb_link: "https://www.themoviedb.org/movie/593643/",
     runtime: 107,
+    genres: [
+      {
+        id: 6,
+        name: "Thriller",
+      },
+      {
+        id: 7,
+        name: "Horror",
+      },
+    ],
+    release: "18 November, 2022",
   },
   {
     id: 4,
@@ -181,19 +241,36 @@ export const films: Film[] = [
         tmdb_link: "https://www.themoviedb.org/person/1450348/",
       },
     ],
-    cast: [
-      "Antonio Banderas",
-      "Salma Hayek",
-      "Harvey Guillén",
-      "Wagner Moura",
-      "Florence Pugh",
-    ],
+    cast: [],
     reviews: [],
     thumbnail: "puss-in-boots.jpg",
     background_thumbnail: "puss-in-boots-the-last-wish-background.jpg",
     imdb_link: "http://www.imdb.com/title/tt3915174/maindetails",
     tmdb_link: "https://www.themoviedb.org/movie/315162/",
     runtime: 103,
+    genres: [
+      {
+        id: 1,
+        name: "Comedy",
+      },
+      {
+        id: 5,
+        name: "Adventure",
+      },
+      {
+        id: 8,
+        name: "Animation",
+      },
+      {
+        id: 9,
+        name: "Family",
+      },
+      {
+        id: 10,
+        name: "Fantasy",
+      },
+    ],
+    release: "5 January, 2023",
   },
   {
     id: 5,
@@ -214,13 +291,26 @@ export const films: Film[] = [
       },
     ],
     cast: [
-      "Tom Cruise",
-      "Miles Teller",
-      "Jennifer Connelly",
-      "Jon Hamm",
-      "Glen Powell",
-      "Ed Harris",
-      "Val Kilmer",
+      {
+        id: 5,
+        name: "Tom Cruise",
+        slug: "tom-cruise",
+        films: [],
+        thumbnail: "tom-cruise.jpg",
+        biography:
+          "Thomas Cruise Mapother IV (born July 3, 1962), known professionally as Tom Cruise, is an American actor and producer. One of the world's highest-paid actors, he has received various accolades, including an Honorary Palme d'Or and three Golden Globe Awards, in addition to nominations for three Academy Awards. His films have grossed over $4 billion in North America and over $11.1 billion worldwide, making him one of the highest-grossing box office stars of all time.",
+        tmdb_link: "https://www.themoviedb.org/person/500/",
+      },
+      {
+        id: 6,
+        name: "Miles Teller",
+        slug: "miles-teller",
+        films: [],
+        thumbnail: "miles-teller.jpg",
+        biography:
+          "Miles Alexander Teller (born February 20, 1987) is an American actor and musician. Born in Downingtown, Pennsylvania and an alumnus of NYU's Tisch School of Arts, he appeared in several short films and television movies before making his feature film debut in Rabbit Hole (2010). He had supporting roles in Footloose (2011) and Project X (2012), before garnering critical acclaim for his leading performance as Sutter Keely in The Spectacular Now (2013), for which he was awarded the Sundance Film Festival Special Jury Prize for Dramatic Acting and his role as Andrew Neiman in Whiplash, for which he was nominated for the Gotham Independent Film Award for Best Actor, the Satellite Award for Best Actor - Motion Picture, and the BAFTA Rising Star Award. His other films include: Divergent (2014), Bleed for This (2016), War Dogs (2016) and Top Gun: Maverick (2022).",
+        tmdb_link: "https://www.themoviedb.org/person/996701/",
+      },
     ],
     reviews: [],
     thumbnail: "top-gun-maverick.jpg",
@@ -228,6 +318,17 @@ export const films: Film[] = [
     imdb_link: "http://www.imdb.com/title/tt1745960/maindetails",
     tmdb_link: "https://www.themoviedb.org/movie/361743/",
     runtime: 131,
+    genres: [
+      {
+        id: 2,
+        name: "Drama",
+      },
+      {
+        id: 4,
+        name: "Action",
+      },
+    ],
+    release: "26 May, 2022",
   },
   {
     id: 6,
@@ -247,25 +348,32 @@ export const films: Film[] = [
         tmdb_link: "https://www.themoviedb.org/person/11614/",
       },
     ],
-    cast: [
-      "Dave Bautista",
-      "Ben Aldridge",
-      "Jonathan Groff",
-      "Kristen Cui",
-      "Nikki Amuka-Bird",
-      "Abby Quinn",
-      "Rupert Grint",
-    ],
+    cast: [],
     reviews: [],
     thumbnail: "knock-at-the-cabin.jpg",
     background_thumbnail: "knock-at-the-cabin-background.jpg",
     imdb_link: "http://www.imdb.com/title/tt15679400/maindetails",
     tmdb_link: "https://www.themoviedb.org/movie/631842/",
     runtime: 100,
+    genres: [
+      {
+        id: 6,
+        name: "Thriller",
+      },
+      {
+        id: 7,
+        name: "Horror",
+      },
+      {
+        id: 11,
+        name: "Mystery",
+      },
+    ],
+    release: "3 February, 2023",
   },
   {
     id: 7,
-    title: "Once Upon a Time in Hollywood",
+    title: "Once Upon a Time... in Hollywood",
     slug: "once-upon-a-time-in-hollywood",
     synopsis:
       "Los Angeles, 1969. TV star Rick Dalton, a struggling actor specializing in westerns, and stuntman Cliff Booth, his best friend, try to survive in a constantly changing movie industry. Dalton is the neighbor of the young and promising actress and model Sharon Tate, who has just married the prestigious Polish director Roman Polanski…",
@@ -282,13 +390,26 @@ export const films: Film[] = [
       },
     ],
     cast: [
-      "Leonardo DiCaprio",
-      "Brad Pitt",
-      "Margot Robbie",
-      "Emile Hirsch",
-      "Margaret Qualley",
-      "Timothy Olypanth",
-      "Julia Butters",
+      {
+        id: 1,
+        name: "Brad Pitt",
+        slug: "brad-pitt",
+        films: [],
+        thumbnail: "brad-pitt.jpg",
+        biography:
+          "William Bradley Pitt (born December 18, 1963) is an American actor and film producer. He is the recipient of various accolades, including an Academy Award, a British Academy Film Award, and two Golden Globe Awards for his acting, in addition to a second Academy Award, a second British Academy Film Award, a third Golden Globe Award, and a Primetime Emmy Award as a producer under his production company, Plan B Entertainment.",
+        tmdb_link: "https://www.themoviedb.org/person/287/",
+      },
+      {
+        id: 2,
+        name: "Margot Robbie",
+        slug: "margot-robbie",
+        films: [],
+        thumbnail: "margot-robbie.jpg",
+        biography:
+          "Margot Elise Robbie (born 2 July 1990) is an Australian actress and producer. Known for her work in both blockbuster and independent films, she has received several accolades, including nominations for two Academy Awards, four Golden Globe Awards, and five British Academy Film Awards. Time magazine named her one of the 100 most influential people in the world in 2017 and she was ranked as one of the world's highest-paid actresses by Forbes in 2019.",
+        tmdb_link: "https://www.themoviedb.org/person/234352/",
+      },
     ],
     reviews: [],
     thumbnail: "once-upon-a-time-in-hollywood.jpg",
@@ -296,6 +417,21 @@ export const films: Film[] = [
     imdb_link: "http://www.imdb.com/title/tt7131622/maindetails",
     tmdb_link: "https://www.themoviedb.org/movie/466272/",
     runtime: 162,
+    genres: [
+      {
+        id: 6,
+        name: "Thriller",
+      },
+      {
+        id: 1,
+        name: "Comedy",
+      },
+      {
+        id: 2,
+        name: "Drama",
+      },
+    ],
+    release: "22 August, 2019",
   },
   {
     id: 8,
@@ -315,21 +451,28 @@ export const films: Film[] = [
         tmdb_link: "https://www.themoviedb.org/person/32278/",
       },
     ],
-    cast: [
-      "Robert Pattinson",
-      "Zoë Kravitz",
-      "Paul Dano",
-      "Jeffrey Wright",
-      "John Truturro",
-      "Peter Sarsgaard",
-      "Andy Serkis",
-    ],
+    cast: [],
     reviews: [],
     thumbnail: "the-batman.jpg",
     background_thumbnail: "the-batman-background.jpeg",
     imdb_link: "http://www.imdb.com/title/tt1877830/maindetails",
     tmdb_link: "https://www.themoviedb.org/movie/414906/",
     runtime: 177,
+    genres: [
+      {
+        id: 6,
+        name: "Thriller",
+      },
+      {
+        id: 11,
+        name: "Mystery",
+      },
+      {
+        id: 12,
+        name: "Crime",
+      },
+    ],
+    release: "2 March, 2022",
   },
   {
     id: 9,
@@ -349,21 +492,28 @@ export const films: Film[] = [
         tmdb_link: "https://www.themoviedb.org/person/55934/",
       },
     ],
-    cast: [
-      "Chris Hemsworth",
-      "Natalie Portman",
-      "Christian Bale",
-      "Tessa Thompson",
-      "Taika Waititi",
-      "Jaimie Alexander",
-      "Russell Crowe",
-    ],
+    cast: [],
     reviews: [],
     thumbnail: "thor-love-and-thunder.jpg",
     background_thumbnail: "thor-love-and-thunder-background.jpg",
     imdb_link: "http://www.imdb.com/title/tt10648342/maindetails",
     tmdb_link: "https://www.themoviedb.org/movie/616037/",
     runtime: 119,
+    genres: [
+      {
+        id: 1,
+        name: "Comedy",
+      },
+      {
+        id: 4,
+        name: "Action",
+      },
+      {
+        id: 10,
+        name: "Fiction",
+      },
+    ],
+    release: "8 July, 2022",
   },
   {
     id: 10,
@@ -384,21 +534,79 @@ export const films: Film[] = [
         tmdb_link: "https://www.themoviedb.org/person/58324/",
       },
     ],
-    cast: [
-      "Gerard Butler",
-      "Mike Colter",
-      "Yoson An",
-      "Tony Goldwyn",
-      "Daniella Pineda",
-      "Paul Ben-Victor",
-      "Remi Adeleke",
-    ],
+    cast: [],
     reviews: [],
     thumbnail: "plane-2023.jpg",
     background_thumbnail: "plane-2023-background.jpg",
     imdb_link: "http://www.imdb.com/title/tt5884796/maindetails",
     tmdb_link: "https://www.themoviedb.org/movie/646389/",
     runtime: 107,
+    genres: [
+      {
+        id: 5,
+        name: "Adventure",
+      },
+      {
+        id: 4,
+        name: "Action",
+      },
+      {
+        id: 6,
+        name: "Thriller",
+      },
+    ],
+    release: "27 January, 2023",
+  },
+];
+
+export const genres: Genre[] = [
+  {
+    id: 1,
+    name: "Comedy",
+  },
+  {
+    id: 2,
+    name: "Drama",
+  },
+  {
+    id: 3,
+    name: "Science-fiction",
+  },
+  {
+    id: 4,
+    name: "Action",
+  },
+  {
+    id: 5,
+    name: "Adventure",
+  },
+  {
+    id: 6,
+    name: "Thriller",
+  },
+  {
+    id: 7,
+    name: "Horror",
+  },
+  {
+    id: 8,
+    name: "Animation",
+  },
+  {
+    id: 9,
+    name: "Family",
+  },
+  {
+    id: 10,
+    name: "Fantasy",
+  },
+  {
+    id: 11,
+    name: "Mystery",
+  },
+  {
+    id: 12,
+    name: "Crime",
   },
 ];
 
