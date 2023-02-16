@@ -38,7 +38,7 @@ export default async function DirectorDetailPage ({ params }: { params: { slug: 
       </div>
       <div className='my-[1rem]'>
         <h3 className='text-[1.25rem] md:text-[1.5rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1.25rem]'>Known For</h3>
-        <ListOfFilms films={ films } width={250} height={370} />
+        <ListOfFilms films={ films } /* width={250} height={370} */ />
       </div>
     </>
   )
