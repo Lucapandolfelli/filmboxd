@@ -7,7 +7,7 @@ import Carousel from "@/components/Carousel"
 import Genres from "@/components/Genres"
 import { getAllFilms, getFilmBySlug } from "@/lib/films/utils"
 
-export default async function FilmDetailPage ({ params }: { params: { slug: string }}) {
+async function FilmDetailPage ({ params }: { params: { slug: string }}) {
   const { slug } = params
   const film: Film = await getFilmBySlug(slug)
   const films: Film[] = await getAllFilms()
