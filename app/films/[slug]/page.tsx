@@ -5,22 +5,7 @@ import FilmInteractions from "@/components/FilmInteractions"
 import ReviewsList from "@/components/ReviewsList"
 import Carousel from "@/components/Carousel"
 import Genres from "@/components/Genres"
- 
-const getFilmBySlug = async (slug: string): Promise<Film> => {
-  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films/${slug}`);
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  return await res.json();
-};
-
-const getAllFilms = async (): Promise<Film[]> => {
-  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films`);
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  return await res.json();
-};
+import { getAllFilms, getFilmBySlug } from "@/lib/films/utils"
 
 export default async function FilmDetailPage ({ params }: { params: { slug: string }}) {
   const { slug } = params

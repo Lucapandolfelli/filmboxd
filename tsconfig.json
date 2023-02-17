@@ -23,7 +23,7 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/images/*": ["public/images/*"],
-      "@/services/*": ["services/*"]
+      "@/lib/*": ["lib/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "env.d.ts"],

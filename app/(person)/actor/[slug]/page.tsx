@@ -1,17 +1,9 @@
 import ListOfFilms from "@/components/ListOfFilms";
+import { getActorBySlug } from "@/lib/actor/utils";
+import { getAllFilms } from "@/lib/films/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { Actor, Film } from "types";
-
-const getAllFilms = async (): Promise<Film[]> => {
-  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films`, { cache: "no-store" });
-  return await res.json();
-};
-
-const getActorBySlug = async (slug: string): Promise<Actor> => {
-  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/actor/${slug}`, { cache: "no-store" });
-  return res.json();
-};
 
 export default async function DirectorDetailPage ({ params }: { params: { slug: string }}) {
   const { slug } = params

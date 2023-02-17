@@ -2,14 +2,7 @@ import { Suspense } from "react";
 import { Film } from "types";
 import ListOfFilms from "@/components/ListOfFilms";
 import Loading from "./loading";
-
-const getFilmsByGender = async (genre: string): Promise<Film[]> => {
-  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films/genre/${genre}`, { cache: "no-store" });
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  return res.json();
-};
+import { getFilmsByGender } from "@/lib/films/utils";
 
 export default async function GenresPage ({ params }: { params: { genre: string } }) {
   const { genre } = params
