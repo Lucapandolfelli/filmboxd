@@ -3,20 +3,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { Director, Film } from "types";
 
-const fecthDirectorBySlug = async (slug: string): Promise<Director> => {
+const getDirectorBySlug = async (slug: string): Promise<Director> => {
   const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/director/${slug}`, { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
   return res.json();
 };
 
-const fetchAllFilms = async (): Promise<Film[]> => {
+const getAllFilms = async (): Promise<Film[]> => {
   const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films`, { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
   return await res.json();
 }
 
 export default async function DirectorDetailPage ({ params }: { params: { slug: string }}) {
   const { slug } = params
-  const director: Director = await fecthDirectorBySlug(slug)
-  const films = await fetchAllFilms()
+  const director: Director = await getDirectorBySlug(slug)
+  const films = await getAllFilms()
 
   return (
     <>

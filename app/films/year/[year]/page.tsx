@@ -3,14 +3,17 @@ import { Film } from "types";
 import ListOfFilms from "@/components/ListOfFilms";
 import Loading from "./loading";
 
-const fetchFilmsByYear = async (year: string): Promise<Film[]> => {
+const getFilmsByYear = async (year: string): Promise<Film[]> => {
   const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films/year/${year}`, { cache: "no-store" });
-  return await res.json();
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
 };
 
 export default async function YearPages ({ params }: { params: { year: string } }) {
   const { year } = params
-  const films: Film[] = await fetchFilmsByYear(year)
+  const films: Film[] = await getFilmsByYear(year)
   
   return (
     <Suspense fallback={<Loading listLenght={ films.length } />}>

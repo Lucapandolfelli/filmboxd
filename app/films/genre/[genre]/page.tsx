@@ -3,14 +3,17 @@ import { Film } from "types";
 import ListOfFilms from "@/components/ListOfFilms";
 import Loading from "./loading";
 
-const getFilmsByGender = async (slug: string): Promise<Film[]> => {
-  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films/genre/${slug}`, { cache: "no-store" });
-  return await res.json();
+const getFilmsByGender = async (genre: string): Promise<Film[]> => {
+  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films/genre/${genre}`, { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
 };
 
-export default async function GenresPage ({ params }: { params: { slug: string } }) {
-  const { slug } = params
-  const films: Film[] = await getFilmsByGender(slug)
+export default async function GenresPage ({ params }: { params: { genre: string } }) {
+  const { genre } = params
+  const films: Film[] = await getFilmsByGender(genre)
   
   return (
     <Suspense fallback={<Loading listLenght={ films.length } />}>

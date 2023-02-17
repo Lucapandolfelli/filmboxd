@@ -8,11 +8,17 @@ import Genres from "@/components/Genres"
  
 const getFilmBySlug = async (slug: string): Promise<Film> => {
   const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films/${slug}`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
   return await res.json();
 };
 
 const getAllFilms = async (): Promise<Film[]> => {
   const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
   return await res.json();
 };
 

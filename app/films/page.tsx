@@ -1,13 +1,19 @@
 import Carousel from "@/components/Carousel";
 import { Film } from "types";
 
-const getFilmsByYear = async (year: string) => {
+const getFilmsByYear = async (year: string): Promise<Film[]> => {
   const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films/year/${year}`, { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
   return res.json();
 }
 
-const getAllFilms = async () => {
+const getAllFilms = async (): Promise<Film[]> => {
   const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films`, { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
   return res.json();
 }
 
