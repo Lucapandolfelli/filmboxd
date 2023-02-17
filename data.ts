@@ -116,10 +116,12 @@ export const films: Film[] = [
       {
         id: 1,
         name: "Comedy",
+        slug: "comedy",
       },
       {
         id: 2,
         name: "Drama",
+        slug: "drama",
       },
     ],
     release: "19 January, 2023",
@@ -153,14 +155,17 @@ export const films: Film[] = [
       {
         id: 3,
         name: "Science-fiction",
+        slug: "science-fiction",
       },
       {
         id: 4,
         name: "Action",
+        slug: "action",
       },
       {
         id: 5,
         name: "Adventure",
+        slug: "adventure",
       },
     ],
     release: "16 Decemeber, 2022",
@@ -215,10 +220,12 @@ export const films: Film[] = [
       {
         id: 6,
         name: "Thriller",
+        slug: "thriller",
       },
       {
         id: 7,
         name: "Horror",
+        slug: "horror",
       },
     ],
     release: "18 November, 2022",
@@ -252,22 +259,27 @@ export const films: Film[] = [
       {
         id: 1,
         name: "Comedy",
+        slug: "comedy",
       },
       {
         id: 5,
         name: "Adventure",
+        slug: "adventure",
       },
       {
         id: 8,
         name: "Animation",
+        slug: "animation",
       },
       {
         id: 9,
         name: "Family",
+        slug: "family",
       },
       {
         id: 10,
         name: "Fantasy",
+        slug: "fantasy",
       },
     ],
     release: "5 January, 2023",
@@ -322,10 +334,12 @@ export const films: Film[] = [
       {
         id: 2,
         name: "Drama",
+        slug: "drama",
       },
       {
         id: 4,
         name: "Action",
+        slug: "action",
       },
     ],
     release: "26 May, 2022",
@@ -359,14 +373,17 @@ export const films: Film[] = [
       {
         id: 6,
         name: "Thriller",
+        slug: "thriller",
       },
       {
         id: 7,
         name: "Horror",
+        slug: "horror",
       },
       {
         id: 11,
         name: "Mystery",
+        slug: "mystery",
       },
     ],
     release: "3 February, 2023",
@@ -421,14 +438,17 @@ export const films: Film[] = [
       {
         id: 6,
         name: "Thriller",
+        slug: "thriller",
       },
       {
         id: 1,
         name: "Comedy",
+        slug: "comedy",
       },
       {
         id: 2,
         name: "Drama",
+        slug: "drama",
       },
     ],
     release: "22 August, 2019",
@@ -462,14 +482,17 @@ export const films: Film[] = [
       {
         id: 6,
         name: "Thriller",
+        slug: "thriller",
       },
       {
         id: 11,
         name: "Mystery",
+        slug: "mystery",
       },
       {
         id: 12,
         name: "Crime",
+        slug: "crime",
       },
     ],
     release: "2 March, 2022",
@@ -503,14 +526,17 @@ export const films: Film[] = [
       {
         id: 1,
         name: "Comedy",
+        slug: "comedy",
       },
       {
         id: 4,
         name: "Action",
+        slug: "action",
       },
       {
         id: 10,
         name: "Fiction",
+        slug: "fiction",
       },
     ],
     release: "8 July, 2022",
@@ -545,14 +571,17 @@ export const films: Film[] = [
       {
         id: 5,
         name: "Adventure",
+        slug: "adventure",
       },
       {
         id: 4,
         name: "Action",
+        slug: "action",
       },
       {
         id: 6,
         name: "Thriller",
+        slug: "thriller",
       },
     ],
     release: "27 January, 2023",
@@ -563,50 +592,62 @@ export const genres: Genre[] = [
   {
     id: 1,
     name: "Comedy",
+    slug: "comedy",
   },
   {
     id: 2,
     name: "Drama",
+    slug: "drama",
   },
   {
     id: 3,
     name: "Science-fiction",
+    slug: "science-fiction",
   },
   {
     id: 4,
     name: "Action",
+    slug: "action",
   },
   {
     id: 5,
     name: "Adventure",
+    slug: "adventure",
   },
   {
     id: 6,
     name: "Thriller",
+    slug: "thriller",
   },
   {
     id: 7,
     name: "Horror",
+    slug: "horror",
   },
   {
     id: 8,
     name: "Animation",
+    slug: "animation",
   },
   {
     id: 9,
     name: "Family",
+    slug: "family",
   },
   {
     id: 10,
     name: "Fantasy",
+    slug: "fantasy",
   },
   {
     id: 11,
     name: "Mystery",
+    slug: "mystery",
   },
   {
     id: 12,
     name: "Crime",
+    slug: "crime",
   },
 ];
 
