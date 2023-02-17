@@ -7,7 +7,7 @@ export const getFilmBySlug = async (slug: string): Promise<Film> => {
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
-  return await res.json();
+  return res.json();
 };
 
 export const getAllFilms = async (): Promise<Film[]> => {
@@ -15,7 +15,7 @@ export const getAllFilms = async (): Promise<Film[]> => {
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
-  return await res.json();
+  return res.json();
 };
 
 export const getFilmsByGender = async (genre: string): Promise<Film[]> => {
