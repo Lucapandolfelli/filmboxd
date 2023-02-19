@@ -1,14 +1,18 @@
+'use client'
+
+import { useInteraction } from "@/hooks/useInteraction"
 import { BsFillBookmarkFill, BsFillEyeFill, BsFillStarFill, BsFillSuitHeartFill } from "react-icons/bs"
 import { FaListUl, FaShare } from "react-icons/fa"
 import { SlOptionsVertical } from 'react-icons/sl'
 
-function InteractionButton ({ icon }: { icon: React.ReactNode }) {
+function InteractionButton ({ icon, action }: { icon: React.ReactNode, action?: any }) {
   return (
-    <button className='min-w-[50px] w-[50px] h-[50px] rounded-[.25rem] border-[1px] border-[#445566] flex justify-center items-center transition-all duration-150 ease-linear hover:border-[#ffffe9] hover:text-[#ffffe9]'>{ icon }</button>
+    <button onClick={action} className='min-w-[50px] w-[50px] h-[50px] rounded-[.25rem] border-[1px] border-[#445566] flex justify-center items-center transition-all duration-150 ease-linear hover:border-[#ffffe9] hover:text-[#ffffe9]'>{ icon }</button>
   )
 }
 
 export default function FilmInteractions () {
+  const { views, likes, saves, addView, addLike, addSave } = useInteraction({ views: 0, likes: 0, saves: 0 })
   return (
     <>
       <div className='flex justify-between gap-[.5rem] w-full'>
@@ -17,9 +21,9 @@ export default function FilmInteractions () {
       </div>
       <div className='flex justify-between w-full'>
         <InteractionButton icon={<FaShare />} />
-        <InteractionButton icon={<BsFillEyeFill />} />
-        <InteractionButton icon={<BsFillSuitHeartFill />} />
-        <InteractionButton icon={<BsFillBookmarkFill />} />
+        <InteractionButton icon={<BsFillEyeFill />} action={() => addView()}/>
+        <InteractionButton icon={<BsFillSuitHeartFill />} action={() => addLike()}/>
+        <InteractionButton icon={<BsFillBookmarkFill />} action={() => addSave()}/>
         <InteractionButton icon={<FaListUl />} />
       </div>
       <div className='flex gap-[1rem] text-[1.75rem] items-center justify-between w-full'>
@@ -39,15 +43,15 @@ export default function FilmInteractions () {
         </p>
         <p className='flex justify-between'>
           <span className='text-[#667788]'>Views</span>
-          <span className='text-[#ffffe9] text-lg'>7.645</span>
+          <span className='text-[#ffffe9] text-lg'>{ views }</span>
         </p>
         <p className='flex justify-between'>
           <span className='text-[#667788]'>Likes</span>
-          <span className='text-[#ffffe9] text-lg'>7.645</span>
+          <span className='text-[#ffffe9] text-lg'>{ likes }</span>
         </p>
         <p className='flex justify-between'>
           <span className='text-[#667788]'>Lists</span>
-          <span className='text-[#ffffe9] text-lg'>7.645</span>
+          <span className='text-[#ffffe9] text-lg'>{ saves }</span>
         </p>
       </div>
     </>

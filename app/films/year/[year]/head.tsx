@@ -1,4 +1,8 @@
-export default async function Head({ params }: { params: { year: string } }) {
+interface Props {
+  params: { year: string }
+}
+
+export default async function Head({ params }: Props) {
   return (
     <>
       <title>{`Films of ${ params.year } ${"\u2022"} ${ process.env.NEXT_PUBLIC_APP_NAME }` }</title>

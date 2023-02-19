@@ -2,7 +2,11 @@ import './globals.css'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: React.ReactNode
+}
+
+export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <head />

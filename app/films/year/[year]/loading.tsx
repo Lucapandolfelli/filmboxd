@@ -1,4 +1,8 @@
-export default function Loading ({ listLenght }: any) { 
+interface Props {
+  listLenght: number
+}
+
+export default function Loading ({ listLenght }: Props) { 
   return (
     <ul className='flex justify-between flex-wrap gap-[.5rem]'>
       {[listLenght].map((i) => (

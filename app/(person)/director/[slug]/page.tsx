@@ -5,9 +5,12 @@ import { getDirectorBySlug } from "@/lib/director/utils";
 import { getAllFilms } from "@/lib/films/utils";
 import { Director, Film } from "types";
 
-export default async function DirectorDetailPage ({ params }: { params: { slug: string }}) {
-  const { slug } = params
-  const director: Director = await getDirectorBySlug(slug)
+interface Props {
+  params: { slug: string }
+}
+
+export default async function DirectorDetailPage ({ params }: Props) {
+  const director: Director = await getDirectorBySlug(params.slug)
   const films: Film[] = await getAllFilms()
 
   return (

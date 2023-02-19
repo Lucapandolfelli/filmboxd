@@ -1,10 +1,11 @@
-async function getActor(slug: string) {
-  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/actor/${slug}`);
-  return res.json();
+import { getActorBySlug } from "@/lib/actor/utils";
+
+interface Props {
+  params: { slug: string }
 }
 
-export default async function Head({ params }: { params: { slug: string } }) {
-  const { name } = await getActor(params.slug);
+export default async function Head({ params }: Props) {
+  const { name } = await getActorBySlug(params.slug);
   
   return (
     <>

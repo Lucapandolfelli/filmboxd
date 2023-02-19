@@ -2,7 +2,8 @@ import { Film } from "types";
 
 export const getFilmBySlug = async (slug: string): Promise<Film> => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST}/api/v1/films/${slug}`
+    `${process.env.NEXT_PUBLIC_HOST}/api/v1/films/${slug}`,
+    { cache: "no-store" }
   );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -11,7 +12,9 @@ export const getFilmBySlug = async (slug: string): Promise<Film> => {
 };
 
 export const getAllFilms = async (): Promise<Film[]> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/v1/films`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/v1/films`, {
+    cache: "no-store",
+  });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }

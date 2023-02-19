@@ -1,4 +1,9 @@
-export default async function Layout ({ children, params }: { children: React.ReactNode, params: { genre: string } }) {
+interface Props {
+  children: React.ReactNode, 
+  params: { genre: string }
+}
+
+export default async function Layout ({ children, params }: Props) {
   const genreTitle = params.genre.charAt(0).toUpperCase() + params.genre.slice(1);
   
   return (

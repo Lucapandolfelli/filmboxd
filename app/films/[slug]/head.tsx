@@ -1,10 +1,11 @@
-async function getFilmTitle(slug: string) {
-  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/films/${slug}`);
-  return res.json();
+import { getFilmBySlug } from "@/lib/films/utils";
+
+interface Props {
+  params: { slug: string }
 }
 
-export default async function Head({ params }: { params: { slug: string } }) {
-  const { title, year } = await getFilmTitle(params.slug);
+export default async function Head({ params }: Props) {
+  const { title, year } = await getFilmBySlug(params.slug);
   
   return (
     <>

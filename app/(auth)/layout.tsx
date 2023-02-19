@@ -1,4 +1,8 @@
-export default function UserLayout ({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: React.ReactNode
+}
+
+export default function UserLayout ({ children }: Props) {
   return (
     <main className='bg-gradient-to-tr from-[#765ab9] to-[#4982cf] h-screen flex justify-center items-center'>
       <section className='bg-white w-[1000px] h-[700px] flex shadow-2xl'>

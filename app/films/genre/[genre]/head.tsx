@@ -1,4 +1,8 @@
-export default async function Head({ params }: { params: { genre: string } }) {
+interface HeadProps { 
+  params: { genre: string } 
+}
+
+export default async function Head({ params }: HeadProps) {
   return (
     <>
       <title>{`Films of ${ params.genre } ${"\u2022"} ${ process.env.NEXT_PUBLIC_APP_NAME }` }</title>

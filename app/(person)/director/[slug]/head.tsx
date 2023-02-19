@@ -1,10 +1,11 @@
-async function getDirector(slug: string) {
-  const res = await fetch(`${ process.env.NEXT_PUBLIC_HOST }/api/v1/director/${slug}`);
-  return res.json();
+import { getDirectorBySlug } from "@/lib/director/utils";
+
+interface Props {
+  params: { slug: string }
 }
 
-export default async function Head({ params }: { params: { slug: string } }) {
-  const { name } = await getDirector(params.slug);
+export default async function Head({ params }: Props) {
+  const { name } = await getDirectorBySlug(params.slug);
   
   return (
     <>

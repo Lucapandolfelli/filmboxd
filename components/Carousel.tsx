@@ -1,12 +1,12 @@
 'use client'
 
 import { useRef } from 'react'
-import Film from "./Film";
 import { Actor, Film as FilmType} from "types";
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
 import { useInView } from "react-intersection-observer";
 import Link from 'next/link';
 import Image from 'next/image';
+import CarouselItem from './CarouselItem';
 
 type Props = {
   data: FilmType[] | Actor[],
@@ -45,32 +45,20 @@ export default function Carousel ({ data, width, height, itemPath }: Props) {
         {data.map((item, index) => {
           if (index == 0){
             return (
-              <li key={ item.id } ref={ firstItem }>
-                <Link href={`/${ itemPath }/[slug]`} as={`/${ itemPath }/${ item.slug }`}>
-                  <article className='hover:cursor-pointer relative' style={{ width: `${width}px`, height: `${height}px`}}>
-                    <Image src={`/images/${ itemPath }/${ item.thumbnail }`} alt={ item.slug } fill />
-                  </article>
-                </Link>
+              <li key={item.id} ref={firstItem}>
+                <CarouselItem item={item} itemPath={itemPath} width={width} height={height} />
               </li>
             )
           } else if (index == data.length - 1) {
             return (
               <li key={ item.id } ref={ lastItem }>
-                <Link href={`/${ itemPath }/[slug]`} as={`/${ itemPath }/${ item.slug }`}>
-                  <article className='hover:cursor-pointer relative' style={{ width: `${width}px`, height: `${height}px`}}>
-                    <Image src={`/images/${ itemPath }/${ item.thumbnail }`} alt={ item.slug } fill />
-                  </article>
-                </Link>
+                <CarouselItem item={item} itemPath={itemPath} width={width} height={height} />
               </li>
             )
           } else {
             return (
               <li key={ item.id }>
-                <Link href={`/${ itemPath }/[slug]`} as={`/${ itemPath }/${ item.slug }`}>
-                  <article className='hover:cursor-pointer relative' style={{ width: `${width}px`, height: `${height}px`}}>
-                    <Image src={`/images/${ itemPath }/${ item.thumbnail }`} alt={ item.slug } fill />
-                  </article>
-                </Link>
+                <CarouselItem item={item} itemPath={itemPath} width={width} height={height} />
               </li>
             )
           }
