@@ -15,13 +15,15 @@ interface Action {
 const initialState: state = {
   views: 0,
   likes: 0,
-  saves: 0
+  saves: 0,
+  rating: 0
 }
 
 interface state {
   views: number;
   likes: number;
-  saves: number
+  saves: number;
+  rating: number;
 }
 
 const reducer = (state: typeof initialState, action: Action) => {
@@ -50,14 +52,24 @@ const reducer = (state: typeof initialState, action: Action) => {
   }
 };
 
-export const useInteraction = (filmInteractions: { views: number, likes: number, saves: number}) => {
+interface Props {
+  initialInteractions: {
+    views: number;
+    likes: number;
+    saves: number;
+    rating: number;
+  }
+}
+
+export const useInteraction = (filmInteractions: { views: number, likes: number, saves: number, rating: number }) => {
   const [state, dispatch] = useReducer(reducer, {
     views: filmInteractions.views,
     likes: filmInteractions.likes,
     saves: filmInteractions.saves,
+    rating: filmInteractions.rating
   });
 
-  const { views, likes, saves } = state;
+  const { views, likes, saves, rating } = state;
 
   const addView = (): void => {
     dispatch({ type: ActionKind.ADD_VIEW })
@@ -75,6 +87,7 @@ export const useInteraction = (filmInteractions: { views: number, likes: number,
     views,
     likes,
     saves,
+    rating,
     addView,
     addLike,
     addSave,

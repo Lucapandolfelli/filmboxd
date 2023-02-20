@@ -9,7 +9,7 @@ import Image from 'next/image';
 import CarouselItem from './CarouselItem';
 
 type Props = {
-  data: FilmType[] | Actor[],
+  data: [],
   width: number,
   height: number,
   itemPath: string
@@ -42,7 +42,7 @@ export default function Carousel ({ data, width, height, itemPath }: Props) {
   return (
     <div className='relative'>
       <ul className='flex gap-[.5rem] overflow-x-hidden scroll-smooth' ref={carousel}>
-        {data.map((item, index) => {
+        {data.map((item: any, index) => {
           if (index == 0){
             return (
               <li key={item.id} ref={firstItem}>

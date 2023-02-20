@@ -5,7 +5,7 @@ export interface Film {
   synopsis: string;
   year: number;
   directors: Director[];
-  cast: Actor[];
+  cast: string[];
   reviews: Review[];
   thumbnail: string;
   background_thumbnail: string;

@@ -1,6 +1,8 @@
 'use client'
 
 import { useInteraction } from "@/hooks/useInteraction"
+import { useSession } from "next-auth/react"
+import Link from "next/link"
 import { BsFillBookmarkFill, BsFillEyeFill, BsFillStarFill, BsFillSuitHeartFill } from "react-icons/bs"
 import { FaListUl, FaShare } from "react-icons/fa"
 import { SlOptionsVertical } from 'react-icons/sl'
@@ -11,21 +13,35 @@ function InteractionButton ({ icon, action }: { icon: React.ReactNode, action?: 
   )
 }
 
-export default function FilmInteractions () {
-  const { views, likes, saves, addView, addLike, addSave } = useInteraction({ views: 0, likes: 0, saves: 0 })
+interface Props {
+  initialViews: number;
+  initialLikes: number;
+  initialSaves: number;
+  initialRating: number;
+}
+
+export default function FilmInteractions ({ initialViews, initialLikes, initialSaves, initialRating }: Props) {
+  const { views, likes, saves, rating, addView, addLike, addSave } = useInteraction({ views: initialViews, likes: initialLikes, saves: initialSaves, rating: initialRating})
+  const { data: session, status } = useSession() 
+
   return (
     <>
-      <div className='flex justify-between gap-[.5rem] w-full'>
-        <button className='bg-amber-600 text-[#ffffe9] border-0 uppercase font-semibold rounded-[.25rem] py-[.5rem] w-full'>Add Review</button>
-        <InteractionButton icon={<SlOptionsVertical />} />
-      </div>
-      <div className='flex justify-between w-full'>
-        <InteractionButton icon={<FaShare />} />
-        <InteractionButton icon={<BsFillEyeFill />} action={() => addView()}/>
-        <InteractionButton icon={<BsFillSuitHeartFill />} action={() => addLike()}/>
-        <InteractionButton icon={<BsFillBookmarkFill />} action={() => addSave()}/>
-        <InteractionButton icon={<FaListUl />} />
-      </div>
+      { session ?
+        <>
+          <div className='flex justify-between gap-[.5rem] w-full'>
+            <button className='bg-amber-600 text-[#ffffe9] border-0 uppercase font-semibold rounded-[.25rem] py-[.5rem] w-full'>Add Review</button>
+            <InteractionButton icon={<SlOptionsVertical />} />
+          </div>
+          <div className='flex justify-between w-full'>
+            <InteractionButton icon={<FaShare />} />
+            <InteractionButton icon={<BsFillEyeFill />} action={() => addView()}/>
+            <InteractionButton icon={<BsFillSuitHeartFill />} action={() => addLike()}/>
+            <InteractionButton icon={<BsFillBookmarkFill />} action={() => addSave()}/>
+            <InteractionButton icon={<FaListUl />} />
+          </div>
+        </>
+        : <p>You´re not logged yet? Do it <Link href='/login' className='text-amber-600'>here</Link></p>
+      }
       <div className='flex gap-[1rem] text-[1.75rem] items-center justify-between w-full'>
         <ul className='flex gap-[.5rem] text-[#667788]'>
           <li className='transition-all duration-150 ease-linear hover:scale-[1.1] hover:text-[#ffffe9]'><BsFillStarFill className='hover:cursor-pointer'/></li>
@@ -39,7 +55,7 @@ export default function FilmInteractions () {
       <div className='w-full flex flex-col gap-[1.5rem]'>
         <p className='flex justify-between'>
           <span className='text-[#667788]'>Rating</span>
-          <span className='text-[#ffffe9] text-lg'>7.645</span>
+          <span className='text-[#ffffe9] text-lg'>{ rating }</span>
         </p>
         <p className='flex justify-between'>
           <span className='text-[#667788]'>Views</span>

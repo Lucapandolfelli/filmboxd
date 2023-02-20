@@ -15,19 +15,19 @@ export default function LoginForm () {
       email,
       password,
       redirect: false,
-      callbackUrl: `${ process.env.HOST }`
+      callbackUrl: `${ process.env.NEXT_PUBLIC_HOST }`
     })
   }
 
   const handleGoogleSignIn = async () => {
     signIn('google', {
-      callbackUrl: `${ process.env.HOST }`
+      callbackUrl: `${ process.env.NEXT_PUBLIC_HOST }`
     })
   }
 
   const handleFacebookSignIn = async () => {
     signIn('facebook', {
-      callbackUrl: `${ process.env.HOST }`
+      callbackUrl: `${ process.env.NEXT_PUBLIC_HOST }`
     })
   }
 

@@ -1,11 +1,11 @@
-import { getActorBySlug } from "@/lib/actor/utils";
+import { getActorById } from "@/lib/actor/utils";
 
 interface Props {
-  params: { slug: string }
+  params: { person_id: string }
 }
 
-export default async function Head({ params }: Props) {
-  const { name } = await getActorBySlug(params.slug);
+export default async function Head({ params: { person_id } }: Props) {
+  const { name } = await getActorById(person_id);
   
   return (
     <>

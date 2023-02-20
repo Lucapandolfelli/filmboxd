@@ -1,15 +1,14 @@
-import { Review as TypeReview } from "types"
 import Review from "./Review"
 
 type Props = {
-  reviews: TypeReview[]
+  reviews: any
 }
 
 export default function ReviewsList ({ reviews }: Props) {
   return (
     <ul className='flex flex-col gap-[1.25rem]'>
-      { reviews.length > 0 
-      ? reviews.map((review, index) => (
+      { reviews 
+      ? reviews.map((review: any, index: number) => (
         <li key={ review.id } className='flex flex-col gap-[2rem]'>
           <Review review={review} />
         </li>
