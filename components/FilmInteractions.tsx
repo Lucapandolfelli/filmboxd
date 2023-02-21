@@ -1,6 +1,7 @@
 'use client'
 
 import { useInteraction } from "@/hooks/useInteraction"
+import { numberWithDot } from "@/lib/films/utils"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { BsFillBookmarkFill, BsFillEyeFill, BsFillStarFill, BsFillSuitHeartFill } from "react-icons/bs"
@@ -14,14 +15,15 @@ function InteractionButton ({ icon, action }: { icon: React.ReactNode, action?: 
 }
 
 interface Props {
-  initialViews: number;
-  initialLikes: number;
-  initialSaves: number;
-  initialRating: number;
+  initialAverage: string;
+  initialViews: string;
+  initialLikes: string;
+  initialSaves: string;
+  initialRating: string;
 }
 
-export default function FilmInteractions ({ initialViews, initialLikes, initialSaves, initialRating }: Props) {
-  const { views, likes, saves, rating, addView, addLike, addSave } = useInteraction({ views: initialViews, likes: initialLikes, saves: initialSaves, rating: initialRating})
+export default function FilmInteractions ({ initialAverage, initialViews, initialLikes, initialSaves, initialRating }: Props) {
+  const { average, views, likes, saves, rating, addView, addLike, addSave } = useInteraction({ average: parseFloat(initialAverage), views: parseInt(initialViews), likes: parseInt(initialLikes), saves: parseInt(initialSaves), rating: parseInt(initialRating) })
   const { data: session, status } = useSession() 
 
   return (
@@ -50,12 +52,12 @@ export default function FilmInteractions ({ initialViews, initialLikes, initialS
           <li className='transition-all duration-150 ease-linear hover:scale-[1.1] hover:text-[#ffffe9]'><BsFillStarFill className='hover:cursor-pointer'/></li>
           <li className='transition-all duration-150 ease-linear hover:scale-[1.1] hover:text-[#ffffe9]'><BsFillStarFill className='hover:cursor-pointer'/></li>
         </ul>
-        <span className='font-semibold text-[#ffffe9] text-[2.25rem]'>4.2</span>
+        <span className='font-semibold text-[#ffffe9] text-[2.25rem]'>{ average.toFixed(1) }</span>
       </div>
       <div className='w-full flex flex-col gap-[1.5rem]'>
         <p className='flex justify-between'>
           <span className='text-[#667788]'>Rating</span>
-          <span className='text-[#ffffe9] text-lg'>{ rating }</span>
+          <span className='text-[#ffffe9] text-lg'>{ numberWithDot(rating) }</span>
         </p>
         <p className='flex justify-between'>
           <span className='text-[#667788]'>Views</span>
@@ -67,7 +69,7 @@ export default function FilmInteractions ({ initialViews, initialLikes, initialS
         </p>
         <p className='flex justify-between'>
           <span className='text-[#667788]'>Lists</span>
-          <span className='text-[#ffffe9] text-lg'>{ saves }</span>
+          <span className='text-[#ffffe9] text-lg'>{ numberWithDot(saves) }</span>
         </p>
       </div>
     </>

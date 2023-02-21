@@ -2,6 +2,7 @@
 
 import { useReducer } from "react";
 
+
 enum ActionKind {
   ADD_VIEW = "ADD_VIEW",
   ADD_LIKE = "ADD_LIKE",
@@ -13,6 +14,7 @@ interface Action {
 }
 
 const initialState: state = {
+  average: 0,
   views: 0,
   likes: 0,
   saves: 0,
@@ -20,6 +22,7 @@ const initialState: state = {
 }
 
 interface state {
+  average: number;
   views: number;
   likes: number;
   saves: number;
@@ -54,6 +57,7 @@ const reducer = (state: typeof initialState, action: Action) => {
 
 interface Props {
   initialInteractions: {
+    average: number;
     views: number;
     likes: number;
     saves: number;
@@ -61,15 +65,16 @@ interface Props {
   }
 }
 
-export const useInteraction = (filmInteractions: { views: number, likes: number, saves: number, rating: number }) => {
+export const useInteraction = (filmInteractions: { average: number, views: number, likes: number, saves: number, rating: number }) => {
   const [state, dispatch] = useReducer(reducer, {
+    average: filmInteractions.average,
     views: filmInteractions.views,
     likes: filmInteractions.likes,
     saves: filmInteractions.saves,
     rating: filmInteractions.rating
   });
 
-  const { views, likes, saves, rating } = state;
+  const { average, views, likes, saves, rating } = state;
 
   const addView = (): void => {
     dispatch({ type: ActionKind.ADD_VIEW })
@@ -84,6 +89,7 @@ export const useInteraction = (filmInteractions: { views: number, likes: number,
   }
 
   return {
+    average,
     views,
     likes,
     saves,

@@ -7,14 +7,26 @@ type Props = {
 
 export default function Genres ({ genres }: Props) {
   return (
-    <ul className='flex gap-[.5rem] flex-wrap w-[300px]'>
-      {genres.map(genre => (
-        <li key={ genre.id }>
-          <Link href={'/films/genre/[genre]'} as={`/films/genre/${ genre.slug }`}>
-            <p className='bg-[#99aabb] text-[#171c21] text-[.7rem] rounded-[.25rem] py-[.25rem] px-[.5rem] hover:cursor-pointer'>{ genre.name }</p>
-          </Link>
-        </li>
-      ))}
+    <ul className='flex gap-[.25rem]'>
+      {genres.map((genre, index) => {
+        if (index < genres.length - 1){
+          return (
+            <li key={ genre.id }>
+              <Link href={`/films/genre/${ genre.id }`}>
+                <p className='hover:text-amber-600'>{ genre.name },</p>
+              </Link>
+            </li>
+          )
+        } else {
+          return (
+            <li key={ genre.id }>
+              <Link href={`/films/genre/${ genre.id }`}>
+                <p className='hover:text-amber-600'>{ genre.name }</p>
+              </Link>
+            </li>
+          )
+        }
+      })}
     </ul>
   )
 }

@@ -1,11 +1,12 @@
-import { getDirectorByMovieId } from "@/lib/director/utils";
+import { getPersonById } from "@/lib/person/fetch";
+
 
 interface Props {
-  params: { movie_id: string }
+  params: { person_id: string }
 }
 
-export default async function Head({ params: { movie_id } }: Props) {
-  const { name } = await getDirectorByMovieId(movie_id);
+export default async function Head({ params: { person_id } }: Props) {
+  const { name } = await getPersonById(person_id);
   
   return (
     <>

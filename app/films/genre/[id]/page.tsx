@@ -1,15 +1,16 @@
 import { Suspense } from "react";
-import { Film } from "types";
 import ListOfFilms from "@/components/ListOfFilms";
 import Loading from "./loading";
-import { getFilmsByGender } from "@/lib/films/utils";
+import { getFilmsByGenreId } from "@/lib/films/fetch";
 
 interface Props {
-  params: { genre: string }
+  params: { 
+    id: string 
+  }
 }
 
-export default async function GenresPage ({ params }: Props) {
-  const films: Film[] = await getFilmsByGender(params.genre)
+export default async function GenresPage ({ params: { id } }: Props) {
+  const films = await getFilmsByGenreId(id)
   
   return (
     <Suspense fallback={<Loading listLenght={ films.length } />}>

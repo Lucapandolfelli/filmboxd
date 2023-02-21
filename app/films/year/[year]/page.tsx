@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { Film } from "types";
 import ListOfFilms from "@/components/ListOfFilms";
 import Loading from "./loading";
-import { getFilmsByYear } from "@/lib/films/utils";
+import { getFilmsByYear } from "@/lib/films/fetch";
 
 interface Props {
   params: { year: string }

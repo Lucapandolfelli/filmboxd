@@ -1,21 +1,17 @@
 'use client'
 
 import { useRef } from 'react'
-import { Actor, Film as FilmType} from "types";
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
 import { useInView } from "react-intersection-observer";
-import Link from 'next/link';
-import Image from 'next/image';
 import CarouselItem from './CarouselItem';
 
 type Props = {
   data: [],
   width: number,
   height: number,
-  itemPath: string
 }
 
-export default function Carousel ({ data, width, height, itemPath }: Props) {
+export default function Carousel ({ data, width, height }: Props) {
   const { ref: firstItem, inView: inViewFirstItem } = useInView({
     threshold: .45,
   })
@@ -45,20 +41,20 @@ export default function Carousel ({ data, width, height, itemPath }: Props) {
         {data.map((item: any, index) => {
           if (index == 0){
             return (
-              <li key={item.id} ref={firstItem}>
-                <CarouselItem item={item} itemPath={itemPath} width={width} height={height} />
+              <li key={ index } ref={ firstItem }>
+                <CarouselItem item={item} width={width} height={height} />
               </li>
             )
           } else if (index == data.length - 1) {
             return (
-              <li key={ item.id } ref={ lastItem }>
-                <CarouselItem item={item} itemPath={itemPath} width={width} height={height} />
+              <li key={ index } ref={ lastItem }>
+                <CarouselItem item={item} width={width} height={height} />
               </li>
             )
           } else {
             return (
-              <li key={ item.id }>
-                <CarouselItem item={item} itemPath={itemPath} width={width} height={height} />
+              <li key={ index }>
+                <CarouselItem item={item} width={width} height={height} />
               </li>
             )
           }

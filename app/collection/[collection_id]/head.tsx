@@ -1,11 +1,11 @@
-import { getActorById } from "@/lib/actor/utils";
+import { getCollectionById } from "@/lib/films/fetch";
 
 interface Props {
-  params: { person_id: string }
+  params: { collection_id: string }
 }
 
-export default async function Head({ params: { person_id } }: Props) {
-  const { name } = await getActorById(person_id);
+export default async function Head({ params: { collection_id } }: Props) {
+  const { name } = await getCollectionById(collection_id);
   
   return (
     <>
