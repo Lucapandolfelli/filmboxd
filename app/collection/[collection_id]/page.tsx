@@ -50,7 +50,7 @@ export default async function CollectionPage ({ params: { collection_id } }: Pro
           </div>
           <div className='mb-[1rem] lg:mb-[2rem]'>
             <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1rem]'>Films<small className='text-[#667788] text-sm ml-[1rem]'>{ collection.parts.length } Films</small></h3>
-            <Carousel data={ collection.parts.sort((a: any, b: any) => new Date(a.release_date) - new Date(b.release_date)) } width={155} height={234} />
+            <Carousel data={ collection.parts.sort((a: any, b: any) => parseInt(a.release_date) - parseInt(b.release_date)) } width={155} height={234} />
           </div>
         </div>
       </section>
