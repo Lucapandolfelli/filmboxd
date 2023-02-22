@@ -4,7 +4,7 @@ import FilmInteractions from "@/components/FilmInteractions"
 import ReviewsList from "@/components/ReviewsList"
 import Carousel from "@/components/Carousel"
 import Genres from "@/components/Genres"
-import { getFilmById, getFilmListByMovieId, getRelatedFilms, getReviewsByMovieId } from "@/lib/films/fetch"
+import { getFilmById, getFilmListByMovieId, getRelatedFilms, getWatchProvidersByFilmId } from "@/lib/films/fetch"
 import { getCastByMovieId, getDirectorByMovieId } from "@/lib/person/fetch"
 import Backdrop from "@/components/Backdrop"
 import Collection from "@/components/Collection"
@@ -17,10 +17,10 @@ interface Props {
 export default async function FilmDetailPage ({ params: { movie_id } }: Props) {
   const film = await getFilmById(movie_id)
   const cast = await getCastByMovieId(movie_id)
-  const reviews = await getReviewsByMovieId(movie_id)
   const recommendedFilms = await getRelatedFilms(movie_id)
   const director = await getDirectorByMovieId(movie_id)
   const lists = await getFilmListByMovieId(movie_id)
+  /* const watchProviders = await getWatchProvidersByFilmId(movie_id) */
   let relatedFilms
   
   if (film.belongs_to_collection != null){

@@ -172,3 +172,18 @@ export const getCompleteFilmsData = async (filmsIds: number[]) => {
   );
   return getUniqueListBy(films, "id");
 };
+
+/** WATCH PROVIDERS **/
+export const getWatchProvidersByFilmId = async (movie_id: string) => {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${movie_id}/watch/providers?api_key=${process.env.TMDB_API_KEY}`,
+    {
+      cache: "no-store",
+    }
+  );
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const { results } = await res.json();
+  return results.US;
+};
