@@ -11,7 +11,7 @@ export function ensure<T>(
   return argument;
 }
 
-export function getUniqueListBy(arr: Genre[], key: any) {
+export function getUniqueListBy(arr: Genre[] | any[], key: any) {
   return [...new Map(arr.map((item: any) => [item[key], item])).values()];
 }
 
