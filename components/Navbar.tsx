@@ -36,7 +36,7 @@ export default function Navbar () {
           <h1 className='text-2xl'>{ process.env.NEXT_PUBLIC_APP_NAME }</h1>
         </Link>
         <nav>
-          <ul className='flex items-center gap-[.75rem] uppercase'>
+          <ul className='hidden sm:flex items-center gap-[.75rem] uppercase'>
             {navbarItems.map((navItem) => (
               <li key={ navItem.id }><Link className={ pathname == navItem.href ? 'text-amber-600' : 'transition-all duration-100 ease-linear hover:text-amber-600'} href={ navItem.href }>{ navItem.label }</Link></li>
             ))}
