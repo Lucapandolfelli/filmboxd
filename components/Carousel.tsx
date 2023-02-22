@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 import CarouselItem from './CarouselItem';
 
 type Props = {
-  data: [],
+  data: [] | any[],
   width: number,
   height: number,
 }
