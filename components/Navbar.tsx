@@ -29,8 +29,8 @@ export default function Navbar () {
   return (
     <header className={ pathname == '/login' || pathname == '/register' ? 'hidden' : showNavbar}>
       <div className='mx-auto h-full max-w-5xl flex justify-between items-center'>
-        <Link href='/' className='flex items-center gap-[.5rem]'>
-          <figure className='w-[60px] h-[25px] relative'>
+        <Link href='/' className='flex items-center gap-[.25rem]'>
+          <figure className='w-[60px] h-[20px] relative'>
             <Image src='/images/filmboxd-navbar.png' fill alt='Filmboxd Logo' className='object-contain' />
           </figure>
           <h1 className='text-2xl'>{ process.env.NEXT_PUBLIC_APP_NAME }</h1>
