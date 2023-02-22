@@ -8,7 +8,7 @@ type Props = {
 export default function Genres ({ genres }: Props) {
   return (
     <ul className='flex gap-[.25rem]'>
-      {genres.map((genre, index) => {
+      {genres.map((genre: Genre, index: number) => {
         if (index < genres.length - 1){
           return (
             <li key={ genre.id }>

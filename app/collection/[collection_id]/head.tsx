@@ -1,4 +1,4 @@
-import { getCollectionById } from "@/lib/films/fetch";
+import { getCollectionById } from "@/lib/collection/fetch";
 
 interface Props {
   params: { collection_id: string }

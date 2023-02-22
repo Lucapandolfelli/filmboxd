@@ -15,9 +15,9 @@ export default async function PersonDetailPage ({ params: { person_id } }: Props
     <>
       <div className='flex items-center flex-col gap-[1rem] md:flex-row md:items-start lg:gap-[3rem]'>
         <div className='min-w-[280px] w-[280px]'>
-          <div className='relative w-full h-[400px] mb-[1rem]'>
+          <figure className='relative w-full h-[400px] mb-[1rem]'>
             <Image src={`https://image.tmdb.org/t/p/original/${ person.profile_path }`} alt={ person.name } fill className='object-cover' />
-          </div>
+          </figure>
         </div>  
         <div className='lg:w-[600px]'>
           <h1 className='text-[#ffffe9] font-semibold text-[1.5rem] lg:text-[2rem] mb-[.75rem]'>{ person.name }</h1>

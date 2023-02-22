@@ -1,3 +1,5 @@
+import { getUniqueListBy } from "helpers";
+
 /** ONE FILM **/
 export const getFilmById = async (movie_id: string) => {
   const res = await fetch(
@@ -22,7 +24,7 @@ export const getTrendingFilms = async () => {
     throw new Error("Failed to fetch data");
   }
   const { results } = await res.json();
-  return results;
+  return results.filter((film: any) => film.poster_path != null);
 };
 
 /** CREDIST (ACTOS/DIRECTORS/ETC) **/
@@ -66,7 +68,7 @@ export const getRelatedFilms = async (movie_id: string) => {
     throw new Error("Failed to fetch data");
   }
   const { results } = await res.json();
-  return results;
+  return results.filter((film: any) => film.poster_path != null);
 };
 
 /** POPULAR **/
@@ -81,7 +83,7 @@ export const getPopularFilms = async () => {
     throw new Error("Failed to fetch data");
   }
   const { results } = await res.json();
-  return results;
+  return results.filter((film: any) => film.poster_path != null);
 };
 
 /** TOP RATED **/
@@ -96,13 +98,28 @@ export const getTopRatedFilms = async () => {
     throw new Error("Failed to fetch data");
   }
   const { results } = await res.json();
-  return results;
+  return results.filter((film: any) => film.poster_path != null);
 };
 
 /** UPCOMING **/
 export const getUpcomingFilms = async () => {
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.TMDB_API_KEY}`,
+    {
+      cache: "no-store",
+    }
+  );
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const { results } = await res.json();
+  return results;
+};
+
+/** UPCOMING **/
+export const getNowPlayingFilms = async () => {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.TMDB_API_KEY}`,
     {
       cache: "no-store",
     }
@@ -129,22 +146,10 @@ export const getFilmListByMovieId = async (movie_id: string) => {
   return total_results;
 };
 
-export const getCollectionById = async (collection_id: string) => {
-  const res = await fetch(
-    `https://api.themoviedb.org/3/collection/${collection_id}?api_key=${process.env.TMDB_API_KEY}`,
-    {
-      cache: "no-store",
-    }
-  );
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-  return res.json();
-};
-
+/** FILMS BY GENRE ID **/
 export const getFilmsByGenreId = async (id: string) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&sort_by=release_date.desc&page=1&with_genres=${id}`,
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&page=1&with_genres=${id}`,
     {
       cache: "no-store",
     }
@@ -153,5 +158,17 @@ export const getFilmsByGenreId = async (id: string) => {
     throw new Error("Failed to fetch data");
   }
   const { results } = await res.json();
-  return results;
+  return results.filter((film: any) => film.poster_path != null);
+};
+
+/** COMPLETE FILMS DATA BY FILMS ID **/
+export const getCompleteFilmsData = async (filmsIds: number[]) => {
+  let films: any = [];
+  await Promise.all(
+    filmsIds.map(async (filmId: number) => {
+      const film = await getFilmById(filmId.toString());
+      films.push(film);
+    })
+  );
+  return getUniqueListBy(films, "id");
 };

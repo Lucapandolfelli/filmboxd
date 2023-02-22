@@ -4,10 +4,11 @@ import FilmInteractions from "@/components/FilmInteractions"
 import ReviewsList from "@/components/ReviewsList"
 import Carousel from "@/components/Carousel"
 import Genres from "@/components/Genres"
-import { getFilmById, getFilmListByMovieId, getCollectionById, getRelatedFilms, getReviewsByMovieId } from "@/lib/films/fetch"
+import { getFilmById, getFilmListByMovieId, getRelatedFilms, getReviewsByMovieId } from "@/lib/films/fetch"
 import { getCastByMovieId, getDirectorByMovieId } from "@/lib/person/fetch"
 import Backdrop from "@/components/Backdrop"
 import Collection from "@/components/Collection"
+import { getCollectionById } from "@/lib/collection/fetch"
 
 interface Props {
   params: { movie_id: string }
@@ -32,9 +33,13 @@ export default async function FilmDetailPage ({ params: { movie_id } }: Props) {
       <section className='max-w-5xl h-fit mx-auto pb-[2rem] px-[1.25rem] md:px-0 flex flex-col md:flex-row gap-[4rem] relative'>{/* bg-[#161b20] */}
         <aside className='w-full mx-[1.25rem] flex items-center'>
           <div className='w-[calc(100%_-_2.5rem)] md:min-w-[280px] md:w-[280px] absolute top-[-11rem] md:top-[-7rem] right-0 md:right-[unset] left-0 mx-auto'>
-            <div className='relative w-[150px] md:w-full h-[214px] md:h-[400px] md:mb-[2rem] shadow-xl'>
-              <Image src={`https://image.tmdb.org/t/p/original/${ film?.poster_path }`} alt={ film?.title } fill />
-            </div>
+            <figure className='relative w-[150px] md:w-full h-[214px] md:h-[400px] md:mb-[2rem] shadow-xl'>
+              {
+                film?.poster_path ?
+                <Image src={`https://image.tmdb.org/t/p/original/${ film?.poster_path }`} alt={ film?.title } fill /> :
+                <Image src={`https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg`} alt={ film?.title } fill className='bg-[#dbdbdb]' />
+              }
+            </figure>
             <div className='hidden sm:flex flex-col items-center gap-[1rem]'>
               <FilmInteractions initialAverage={ film?.vote_average } initialViews={'0'} initialLikes={'0'} initialSaves={ lists } initialRating={ film?.vote_count } />
             </div>
@@ -43,16 +48,18 @@ export default async function FilmDetailPage ({ params: { movie_id } }: Props) {
         <div className='md:w-[680px]'>
           <div className='flex items-center sm:items-start flex-col gap-[3rem] mb-[1rem]'>
             <div className='w-full'>
-              <small className='text-lg text-[#667788]'>{ film?.release_date.substr(0,4) }</small>
-              <h1 className='text-[#ffffe9] text-[2rem] font-semibold lg:text-[2.5rem] mb-[.75rem]'>{ film?.title }</h1>
+              <small className='inline-block text-lg text-[#667788] mb-[1rem]'>{ film?.release_date.substr(0,4) }</small>
+              <h1 className='text-[#ffffe9] text-[2rem] font-semibold lg:text-[2.5rem] mb-[2rem] leading-[1]'>{ film?.title }</h1>
               <h5 className='text-[#667788] mb-[2rem]'>Directed by <Link href={`/person/${ director?.id }`} className='text-[#ffffe9] hover:text-amber-600'>{ director?.name }</Link></h5>
               <h6 className='text-[#667788] font-semibold uppercase mb-[1rem]'>{ film?.tagline }</h6>
               <p className='mb-[1rem] leading-[1.8]'>{ film?.overview }</p>
               <div className='w-full mt-[2rem] mb-[1rem] font-lighter flex gap-[2.5rem] flex-wrap'>
-                <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
-                  <p className='text-[#667788]'>Duration</p>
-                  { film.runtime } mins.
-                </span>
+                { film?.runtime > 0 && 
+                  <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
+                    <p className='text-[#667788]'>Duration</p>
+                    { film.runtime } mins.
+                  </span>
+                }
                 <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
                   <p className='text-[#667788]'>Genres</p>
                   <Genres genres={ film?.genres } />
@@ -61,10 +68,12 @@ export default async function FilmDetailPage ({ params: { movie_id } }: Props) {
                   <p className='text-[#667788]'>Released</p>
                   <p>{`${ new Date(film?.release_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }`}</p>
                 </span>
-                <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
-                  <p className='text-[#667788]'>Revenue</p>
-                  <p>${ film?.revenue.toLocaleString() }</p>
-                </span>
+                { film?.revenue > 0 && 
+                  <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
+                    <p className='text-[#667788]'>Revenue</p>
+                    <p>${ film?.revenue.toLocaleString() }</p>
+                  </span>
+                }
                 {/* <span className='flex flex-col gap-[.25rem]'>
                   <p className='text-[#667788]'>More at</p>
                   <div>

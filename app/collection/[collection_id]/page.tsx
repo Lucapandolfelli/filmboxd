@@ -1,8 +1,9 @@
 import Image from "next/image"
 import Backdrop from "@/components/Backdrop"
-import { getCollectionById } from "@/lib/films/fetch"
 import Carousel from "@/components/Carousel"
-import { calculateCollectionRevenue } from "@/lib/films/utils"
+import Genres from "@/components/Genres"
+import { Genre } from "types"
+import { getCollectionById, getCollectionGenres, getCollectionRevenue } from "@/lib/collection/fetch"
 
 interface Props {
   params: {
@@ -12,7 +13,10 @@ interface Props {
 
 export default async function CollectionPage ({ params: { collection_id } }: Props) {
   const collection = await getCollectionById(collection_id)
-  const revenue = await calculateCollectionRevenue(collection.parts)
+  const collectionRevenue: number = await getCollectionRevenue(collection.parts)
+  const collectionGenres: Genre[] = await getCollectionGenres(collection.parts)
+
+  console.log(collectionGenres);
 
   return (
     <main className='text-[#99aabb]'>
@@ -20,9 +24,9 @@ export default async function CollectionPage ({ params: { collection_id } }: Pro
       <section className='max-w-5xl h-fit mx-auto pb-[2rem] px-[1.25rem] md:px-0 flex flex-col md:flex-row gap-[4rem] relative'>{/* bg-[#161b20] */}
         <aside className='w-full mx-[1.25rem] flex items-center'>
           <div className='w-[calc(100%_-_2.5rem)] md:min-w-[280px] md:w-[280px] absolute top-[-11rem] md:top-[-7rem] right-0 md:right-[unset] left-0 mx-auto'>
-            <div className='relative w-[150px] md:w-full h-[214px] md:h-[400px] md:mb-[2rem] shadow-xl'>
+            <figure className='relative w-[150px] md:w-full h-[214px] md:h-[400px] md:mb-[2rem] shadow-xl'>
               <Image src={`https://image.tmdb.org/t/p/original/${ collection?.poster_path }`} alt={ collection?.name } fill />
-            </div>
+            </figure>
           </div>  
         </aside>
         <div className='md:w-[680px]'>
@@ -36,13 +40,13 @@ export default async function CollectionPage ({ params: { collection_id } }: Pro
                   <p className='text-[#667788]'>Number of films</p>
                   { collection.parts.length } films
                 </span>
-                {/* <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
+                <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
                   <p className='text-[#667788]'>Genres</p>
-                  <Genres genres={ film?.genres } />
-                </span> */}
+                  <Genres genres={ collectionGenres } />
+                </span>
                 <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
                   <p className='text-[#667788]'>Revenue</p>
-                  <p>{`$${ revenue.toLocaleString() }`}</p>
+                  <p>{`$${ collectionRevenue.toLocaleString() }`}</p>
                 </span>
               </div> 
             </div>
