@@ -8,7 +8,6 @@ export default function handle(req: NextApiRequest, res: NextApiResponse) {
       email,
       password,
     };
-    console.log(user);
     res.redirect("/login");
   } catch (error) {}
 }

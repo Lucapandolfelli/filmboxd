@@ -16,8 +16,6 @@ export default async function CollectionPage ({ params: { collection_id } }: Pro
   const collectionRevenue: number = await getCollectionRevenue(collection.parts)
   const collectionGenres: Genre[] = await getCollectionGenres(collection.parts)
 
-  console.log(collectionGenres);
-
   return (
     <main className='text-[#99aabb]'>
       <Backdrop height="large" url={ collection?.backdrop_path } />
@@ -33,6 +31,9 @@ export default async function CollectionPage ({ params: { collection_id } }: Pro
           <div className='flex items-center sm:items-start flex-col gap-[3rem] mb-[1rem]'>
             <div className='w-full'>
               <h1 className='text-[#ffffe9] text-[2rem] font-semibold lg:text-[2.5rem] mb-[.75rem]'>{ collection?.name }</h1>
+              <div className='mb-[1rem] text-[#667788]'>
+                <Genres genres={ collectionGenres } />
+              </div>
               {/* <h5 className='text-[#667788] mb-[2rem]'>Directed by <Link href={`/director/${ director?.id }`} className='text-[#ffffe9] hover:text-amber-600'>{ director?.name }</Link></h5> */}
               <p className='mb-[1rem] leading-[1.8]'>{ collection?.overview }</p>
               <div className='w-full mt-[2rem] mb-[1rem] font-lighter flex gap-[2.5rem] flex-wrap'>
@@ -41,27 +42,16 @@ export default async function CollectionPage ({ params: { collection_id } }: Pro
                   { collection.parts.length } films
                 </span>
                 <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
-                  <p className='text-[#667788]'>Genres</p>
-                  <Genres genres={ collectionGenres } />
-                </span>
-                <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
                   <p className='text-[#667788]'>Revenue</p>
                   <p>{`$${ collectionRevenue.toLocaleString() }`}</p>
                 </span>
               </div> 
             </div>
           </div>
-          {/* <div className='sm:hidden flex flex-col items-center gap-[1rem] mb-[2rem]'>
-            <FilmInteractions initialAverage={ Number.parseFloat(film?.vote_average).toFixed(1) } initialViews={'0'} initialLikes={'0'} initialSaves={ lists } initialRating={ film?.vote_count } />
-          </div> */}
           <div className='mb-[1rem] lg:mb-[2rem]'>
             <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1rem]'>Films<small className='text-[#667788] text-sm ml-[1rem]'>{ collection.parts.length } Films</small></h3>
-            <Carousel data={ collection.parts } width={155} height={234} />
+            <Carousel data={ collection.parts.sort((a: any, b: any) => new Date(a.release_date) - new Date(b.release_date)) } width={155} height={234} />
           </div>
-          {/* <div className='mb-[1rem] lg:mb-[2rem]'>
-            <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[1rem] md:mb-[1.25rem]'>Reviews</h3>
-            <ReviewsList reviews={ reviews } />
-          </div> */}
         </div>
       </section>
       {/* <section className='max-w-5xl h-fit mx-auto pb-[4rem] px-[1.25rem] md:px-0'>
