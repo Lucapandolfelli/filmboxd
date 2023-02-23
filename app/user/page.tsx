@@ -13,7 +13,7 @@ export default function UserPage () {
         <h1>{ session?.user?.name }</h1>
         <span>{ session?.user?.email }</span>
         <div className='w-[60px] h-[60px] rounded-full relative'>
-          {/* <img src={ session?.user?.image } alt='user'/> */}
+          <img src={ session?.user?.image } alt='user'/>
         </div>
       </section>
     </main>

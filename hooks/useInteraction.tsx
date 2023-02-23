@@ -2,7 +2,6 @@
 
 import { useReducer } from "react";
 
-
 enum ActionKind {
   ADD_VIEW = "ADD_VIEW",
   ADD_LIKE = "ADD_LIKE",

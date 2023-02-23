@@ -9,41 +9,62 @@ export default function LoginForm () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    await signIn('credentials', {
+    signIn('credentials', {
       email,
       password,
-      redirect: false,
-      callbackUrl: `${ process.env.NEXT_PUBLIC_HOST }`
+      callbackUrl: '/'
     })
   }
 
-  const handleGoogleSignIn = async () => {
+  const handleGoogleSignIn = () => {
     signIn('google', {
       callbackUrl: `${ process.env.NEXT_PUBLIC_HOST }`
     })
   }
 
-  const handleFacebookSignIn = async () => {
+  const handleFacebookSignIn = () => {
     signIn('facebook', {
       callbackUrl: `${ process.env.NEXT_PUBLIC_HOST }`
     })
   }
 
   return (
-    <form className='flex flex-col gap-[1rem] w-[300px]' onSubmit={handleSubmit}>
-      <input className='border-[1px] border-[#d7dadf] rounded-[.25rem] p-[.75rem]' onChange={e => setEmail(e.target.value)} value={email} type="mail" name="email" id="email" placeholder="Email" />
-      <input className='border-[1px] border-[#d7dadf] rounded-[.25rem] p-[.75rem]' onChange={e => setPassword(e.target.value)} value={password} type="password" name="password" id="password" placeholder="Password" />
-      <button className='bg-[#4982cf] py-[.75rem] rounded-[.25rem] text-white transition-all duration-300 ease-linear hover:bg-[#386eb4]' type="submit">Login</button>
-      <div className='mt-[2rem] flex flex-col items-center gap-[1rem]'>
+    <div className='w-[300px]'>
+      <form className='flex flex-col gap-[1rem] w-full' onSubmit={handleSubmit}>
+        <div>
+          <input 
+            className='w-full bg-transparent border-[1px] border-[#384653] rounded-[.25rem] p-[.75rem] focus:outline-none focus:bg-[#232930]' 
+            onChange={e => setEmail(e.target.value)} 
+            value={email} 
+            type="mail" 
+            name="email" 
+            placeholder="Email" />
+        </div>
+        <div className='relative mb-[2.5rem]'>
+          <input 
+            className='w-full bg-transparent border-[1px] border-[#384653] rounded-[.25rem] p-[.75rem] focus:outline-none focus:bg-[#232930]' 
+            onChange={e => setPassword(e.target.value)} 
+            value={password} 
+            type="password" 
+            name="password" 
+            placeholder="Password" />
+          <span className='text-sm text-[#667788] font-semibold absolute bottom-[-2rem] right-0 transition-all duration-150 ease-in hover:cursor-pointer hover:text-[#4d5b69]'>Forgot Password?</span>
+        </div>
+        <button 
+          className='bg-amber-600 py-[.75rem] rounded-[.25rem] text-white font-semibold transition-all duration-150 ease-linear hover:bg-amber-700' 
+          type="submit">Login
+        </button>
+      </form>
+      <div className='mt-[3rem] flex flex-col items-center gap-[1rem]'>
         <span className='text-sm text-[#a2a4a7]'>Or Sign Up Using</span>
         <div className='flex gap-[.5rem] justify-center'>
-          <button onClick={(handleGoogleSignIn)} className='bg-[#4982cf] text-white h-[40px] w-[40px] rounded-full flex justify-center items-center transition-all duration-300 ease-in hover:bg-[#386eb4]'><BsGoogle /></button>
-          <button onClick={handleFacebookSignIn} className='bg-[#4982cf] text-white h-[40px] w-[40px] rounded-full flex justify-center items-center transition-all duration-300 ease-in hover:bg-[#386eb4]'><FaFacebookF /></button>
-          <button className='bg-[#4982cf] text-white h-[40px] w-[40px] rounded-full flex justify-center items-center transition-all duration-300 ease-in hover:bg-[#386eb4]'><BsTwitter /></button>
+          <button onClick={(handleGoogleSignIn)} className='bg-[#2c3440] text-white h-[40px] w-[40px] rounded-full flex justify-center items-center transition-all duration-150 ease-in hover:bg-[#222933]'><BsGoogle /></button>
+          <button onClick={handleFacebookSignIn} className='bg-[#2c3440] text-white h-[40px] w-[40px] rounded-full flex justify-center items-center transition-all duration-150 ease-in hover:bg-[#222933]'><FaFacebookF /></button>
+          <button className='bg-[#2c3440] text-white h-[40px] w-[40px] rounded-full flex justify-center items-center transition-all duration-150 ease-in hover:bg-[#222933]'><BsTwitter /></button>
         </div>
       </div>
-    </form>
+    </div>
   )
 }

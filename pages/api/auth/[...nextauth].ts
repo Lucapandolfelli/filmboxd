@@ -2,12 +2,13 @@ import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import clientPromise from "@/lib/mongodb";
+import { compare } from "bcrypt";
+import dbConnect from "@/lib/dbConnect";
+import User from "models/User";
 
 export const authOptions: NextAuthOptions = {
-  session: {
-    strategy: "jwt",
-  },
-  secret: process.env.NEXT_PUBLIC_SECRET,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -18,26 +19,47 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     }),
     CredentialsProvider({
-      name: "credentials",
-      credentials: {},
-      authorize(credentials, req) {
-        const { email, password } = credentials as {
-          email: string;
-          password: string;
-        };
+      id: "credentials",
+      name: "Credentials",
+      credentials: {
+        email: {
+          label: "Email",
+          type: "text",
+        },
+        password: {
+          label: "Password",
+          type: "password",
+        },
+      },
+      async authorize(credentials) {
+        await dbConnect();
 
-        if (email !== "lucapandolfelli@gmail.com" || password !== "1234") {
-          throw new Error("invalid credentials");
-        }
+        const user = await User.findOne({
+          email: credentials?.email,
+        });
 
-        return {
-          id: "1",
-          name: "luca pandolfelli",
-          email: "lucapandolfelli@gmail.com",
-        };
+        if (!user) throw new Error("Email is not registered.");
+
+        const isPasswordCorrect = await compare(
+          credentials!.password,
+          user.hashedPassword
+        );
+
+        if (!isPasswordCorrect) throw new Error("Password is incorrect.");
+
+        return user;
       },
     }),
   ],
+  debug: process.env.NODE_ENV === "development",
+  adapter: MongoDBAdapter(clientPromise),
+  secret: process.env.NEXT_PUBLIC_SECRET,
+  session: {
+    strategy: "jwt",
+  },
+  jwt: {
+    secret: process.env.NEXTAUTH_JWT_SECRET,
+  },
 };
 
 export default NextAuth(authOptions);
