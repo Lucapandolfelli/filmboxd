@@ -37,9 +37,9 @@ export default function Navbar () {
           <h1 className='text-2xl'>{ process.env.NEXT_PUBLIC_APP_NAME }</h1>
         </Link>
         <nav>
-          <ul className='hidden sm:flex items-center gap-[.75rem] uppercase'>
+          <ul className='hidden sm:flex items-center gap-[.75rem] h-[24px]'>
             {navbarItems.map((navItem) => (
-              <li key={ navItem.id }><Link className={ pathname == navItem.href ? 'text-amber-600' : 'transition-all duration-100 ease-linear hover:text-amber-600'} href={ navItem.href }>{ navItem.label }</Link></li>
+              <li key={ navItem.id }><Link className={ pathname == navItem.href ? 'uppercase text-[#ff8000] inline-block' : 'inline-block uppercase transition-all duration-100 ease-linear hover:text-[#ff8000]'} href={ navItem.href }>{ navItem.label }</Link></li>
             ))}
             <SearchBar />
             { session 

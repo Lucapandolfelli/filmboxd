@@ -35,7 +35,7 @@ export default function Hero ({ films }: Props) {
                 <div className='max-w-5xl w-full mx-auto h-fit text-[#99aabb]'>
                     <div className='flex gap-[1rem] items-center'>
                       <h1 className='font-bold text-[3rem] text-[#ffffe9] mb-[.75rem]'>{ film?.title }</h1>
-                      <span className='bg-[#14181c] h-fit text-[.75rem] text-[#99aabb] font-bold uppercase rounded-[1rem] px-[.75rem] py-[.25rem]'>Trending</span>
+                      <span className='bg-[#14181c] border-[2px] border-[#00e054] h-fit text-[.65rem] text-[#00e054] font-bold uppercase rounded-[1rem] px-[.75rem] py-[.25rem]'>Trending</span>
                     </div>
                     <div className='flex gap-[.5rem] mb-[.75rem] text-lg text-[#667788]'>
                       <Genres genres={ film?.genres } />
@@ -43,7 +43,7 @@ export default function Hero ({ films }: Props) {
                       <span>{ toHoursAndMinutes(film?.runtime) }</span>
                     </div>
                     <p className='mb-[1.5rem]'>{ film?.overview }</p>
-                    <Link href={`/films/${ film?.id }`} className='bg-[#667788] text-[#ffffe9] text-sm font-bold uppercase rounded-[.5rem] px-[1rem] py-[.5rem]'>View Film</Link>
+                    <Link href={`/films/${ film?.id }`} className='block w-fit bg-[#41bbf4] text-[#ffffe9] rounded-[.75rem] px-[1.5rem] py-[.5rem]'>View Film</Link>
                   </div>
               </section>
             )

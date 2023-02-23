@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation"
 
 export default function SearchBar () {
   const [query, setQuery] = useState('')
+  const [showBar, setShowBar] = useState(false) 
   const router = useRouter()
   
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -17,20 +18,24 @@ export default function SearchBar () {
   }
 
   return (
-    <form onSubmit={handleSubmit} className='flex items-center gap-[.5rem]'>
-      <input 
-        className='bg-[#ffffe9] text-[#384653] border-[1px] border-[#384653] rounded-[.25rem] p-[.25rem] focus:outline-none'
-        type="text"
-        placeholder="Search for a film"
-        value={query} 
-        onChange={e => setQuery(e.target.value)} 
-      />
+    <>
+      { showBar &&
+        <form onSubmit={handleSubmit}>
+          <input 
+            className='bg-[#ffffe9] text-[#384653] text-sm rounded-[.75rem] py-[.35rem] px-[1rem] focus:outline-none placeholder:text-[#667788]'
+            type="text"
+            placeholder="Search for a film"
+            value={query} 
+            onChange={e => setQuery(e.target.value)} 
+          />
+        </form>
+      }
       <button 
-        className='text-lg w-[24px] h-full flex justify-center items-center'
-        disabled={!query}>
+        className={ showBar ? 'text-lg w-[24px] h-full flex justify-center items-center transition-all duration-150 ease-in text-[#ff8000] hover:text-amber-700' : 'text-lg w-[24px] h-full flex justify-center items-center transition-all duration-150 ease-in hover:text-[#ff8000]' }
+        onClick={() => setShowBar(!showBar)}>
         <span className='sr-only'>Search</span>
         <FaSearch />
       </button>
-    </form>
+    </>
   )
 }
