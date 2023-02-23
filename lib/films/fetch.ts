@@ -187,3 +187,14 @@ export const getWatchProvidersByFilmId = async (movie_id: string) => {
   const { results } = await res.json();
   return results.US;
 };
+
+export const searchMovie = async (query: string) => {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&include_adult=false&page=1&query=${query}`
+  );
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const { results } = await res.json();
+  return results.filter((film: any) => film.poster_path != null);
+};

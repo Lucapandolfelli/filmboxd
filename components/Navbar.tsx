@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import IsLogin from "./IsLogin"
 import IsLogout from "./IsLogout"
+import SearchBar from "./SearchBar"
 
 const navbarItems = [
   { id: 1, label: 'Home', href: '/'},
@@ -40,6 +41,7 @@ export default function Navbar () {
             {navbarItems.map((navItem) => (
               <li key={ navItem.id }><Link className={ pathname == navItem.href ? 'text-amber-600' : 'transition-all duration-100 ease-linear hover:text-amber-600'} href={ navItem.href }>{ navItem.label }</Link></li>
             ))}
+            <SearchBar />
             { session 
             ? <IsLogin username={ session.user?.name } avatar={ session.user?.image } />
             : <IsLogout /> }
