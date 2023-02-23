@@ -61,8 +61,8 @@ export default function Carousel ({ data, width, height }: Props) {
         })}
         { data.length > 4
           ? <>
-            <button onClick={handleLeftClick} className={ !inViewFirstItem ? 'bg-black/75 text-white w-[35px] h-[35px] rounded-full grid place-items-center absolute top-[calc(50%_-_17.5px)] left-[.5rem] hover:bg-black hover:scale-[1.125]' : 'hidden'}><span className='sr-only'>Previous</span><MdArrowBackIos /></button>
-            <button onClick={handleRightClick} className={ !inViewLastItem ? 'bg-black/75 text-white w-[35px] h-[35px] rounded-full grid place-items-center absolute top-[calc(50%_-_17.5px)] right-[.5rem] hover:bg-black hover:scale-[1.125]' : 'hidden'}><span className='sr-only'>Next</span><MdArrowForwardIos /></button>
+            <button onClick={handleLeftClick} className={ !inViewFirstItem ? 'bg-black/75 text-white w-[35px] h-[35px] rounded-full grid place-items-center absolute top-[calc(50%_-_17.5px)] left-[.5rem] transition-all duration-150 ease-in hover:bg-black hover:scale-[1.125]' : 'hidden'}><span className='sr-only'>Previous</span><MdArrowBackIos /></button>
+            <button onClick={handleRightClick} className={ !inViewLastItem ? 'bg-black/75 text-white w-[35px] h-[35px] rounded-full grid place-items-center absolute top-[calc(50%_-_17.5px)] right-[.5rem] transition-all duration-150 ease-in hover:bg-black hover:scale-[1.125]' : 'hidden'}><span className='sr-only'>Next</span><MdArrowForwardIos /></button>
           </>
           : ''}
       </ul>

@@ -18,7 +18,7 @@ export default function SearchBar () {
   }
 
   return (
-    <>
+    <div className='flex items-center gap-[.25rem]'>
       { showBar &&
         <form onSubmit={handleSubmit}>
           <input 
@@ -31,11 +31,11 @@ export default function SearchBar () {
         </form>
       }
       <button 
-        className={ showBar ? 'text-lg w-[24px] h-full flex justify-center items-center transition-all duration-150 ease-in text-[#ff8000] hover:text-amber-700' : 'text-lg w-[24px] h-full flex justify-center items-center transition-all duration-150 ease-in hover:text-[#ff8000]' }
+        className={ showBar ? 'text-lg w-[24px] h-[24px] flex justify-center items-center transition-all duration-150 ease-in text-[#ff8000] hover:text-amber-700' : 'text-lg w-[24px] h-full flex justify-center items-center transition-all duration-150 ease-in hover:text-[#ff8000]' }
         onClick={() => setShowBar(!showBar)}>
         <span className='sr-only'>Search</span>
         <FaSearch />
       </button>
-    </>
+    </div>
   )
 }
