@@ -9,7 +9,7 @@ interface Props {
   }
 }
 
-export default async function GenresPage ({ params: { id } }: Props) {
+export default async function GenresPage ({ params: { id } }: Props): Promise<JSX.Element> {
   const films = await getFilmsByGenreId(id)
   
   return (

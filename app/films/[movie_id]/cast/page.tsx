@@ -2,6 +2,7 @@ import Backdrop from "@/components/Backdrop"
 import Carousel from "@/components/Carousel"
 import { getCastByMovieId, getCrewByMovieId } from "@/lib/person/fetch"
 import { getFilmById } from "@/lib/films/fetch"
+import { Cast, Crew } from "types"
 
 interface Props {
   params: {
@@ -9,14 +10,14 @@ interface Props {
   }
 }
 
-export default async function CastPage ({ params: { movie_id } }: Props) {
-  const cast = await getCastByMovieId(movie_id)
-  const crew = await getCrewByMovieId(movie_id)
+export default async function CastPage ({ params: { movie_id } }: Props): Promise<JSX.Element> {
+  const cast: Cast[] = await getCastByMovieId(movie_id)
+  const crew: Crew[] = await getCrewByMovieId(movie_id)
   const { title, release_date, backdrop_path } = await getFilmById(movie_id)
 
   return (
     <main className='text-[#99aabb]'>
-      <Backdrop height='large' url={ backdrop_path } />
+      <Backdrop height='large' url={`${backdrop_path}`} />
       <section className='max-w-5xl mx-auto px-[1.25rem] md:px-0 flex flex-col md:flex-row gap-[4rem] relative'>
         <h1 className='text-[#ffffe9] text-[2rem] pt-[1rem] font-semibold lg:text-[2.5rem] mb-[2rem]'>{`${ title } (${ release_date.substr(0,4) }) - Cast & Crew`}</h1>
       </section>

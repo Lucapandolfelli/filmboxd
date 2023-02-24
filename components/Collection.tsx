@@ -4,7 +4,7 @@ interface Props {
   collection: any
 }
 
-export default function Collection ({ collection }: Props) {
+export default function Collection ({ collection }: Props): JSX.Element {
   return (
     <section className='bg-black rounded-[.75rem] overflow-hidden mb-[1rem] lg:mb-[2rem] w-full h-[300px] bg-center bg-cover p-[3rem]' style={{ backgroundImage: `linear-gradient(0deg, rgba(20,24,28,0.01162471824667366) 0%, rgba(20,24,28,0.725910432532388) 0%), url('https://image.tmdb.org/t/p/original/${ collection.backdrop_path }')` }}>
       <div className='text-[#ffffe9]'>

@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactNode
 }
 
-export default function UserLayout ({ children }: Props) {
+export default function UserLayout ({ children }: Props): JSX.Element {
   return (
     <main className='bg-gradient-to-tr from-[#000] to-[#0e1114] h-screen flex justify-center items-center'>
       <section className='bg-[#14181c] w-[1000px] h-[700px] flex shadow-2xl rounded-[.75rem] overflow-hidden'>

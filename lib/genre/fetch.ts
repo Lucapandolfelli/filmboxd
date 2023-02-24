@@ -18,7 +18,7 @@ export const getGenres = async (): Promise<Genre[]> => {
 export const getGenreById = async (id: string): Promise<Genre> => {
   const genres: Genre[] = await getGenres();
   const genre: Genre = ensure(
-    genres.find((genre: Genre) => genre.id == Number(id))
+    genres.find((genre: Genre): boolean => genre.id == Number(id))
   );
   return genre;
 };
@@ -27,7 +27,7 @@ export const getGenresByIds = async (genresIds: number[]): Promise<Genre[]> => {
   let genres: Genre[] = [];
   await Promise.all(
     genresIds.map(async (genreId: number) => {
-      const genre = await getGenreById(genreId.toString());
+      const genre: Genre = await getGenreById(genreId.toString());
       if (!genres.includes(genre)) {
         genres.push(genre);
       }

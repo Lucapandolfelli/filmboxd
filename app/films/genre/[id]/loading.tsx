@@ -2,7 +2,7 @@ interface Props {
   listLenght: number
 }
 
-export default function Loading ({ listLenght }: Props) { 
+export default function Loading ({ listLenght }: Props): JSX.Element { 
   return (
     <ul className='flex justify-between flex-wrap gap-[.5rem]'>
       {[...Array(listLenght).keys()].map((i) => (

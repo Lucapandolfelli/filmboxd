@@ -1,8 +1,10 @@
 import { getFilmById } from "../films/fetch";
-import { Genre } from "types";
+import { Collection, FilmResult, Genre } from "types";
 import { getUniqueListBy } from "helpers";
 
-export const getCollectionById = async (collection_id: string) => {
+export const getCollectionById = async (
+  collection_id: string
+): Promise<Collection> => {
   const res = await fetch(
     `https://api.themoviedb.org/3/collection/${collection_id}?api_key=${process.env.TMDB_API_KEY}`,
     {
@@ -16,13 +18,13 @@ export const getCollectionById = async (collection_id: string) => {
 };
 
 export const getCollectionRevenue = async (
-  collection: any
+  collection: FilmResult[]
 ): Promise<number> => {
-  let totalRevenue = 0;
-  const films = collection.map((film: any) => film.id);
+  let totalRevenue: number = 0;
+  const films: number[] = collection.map((film: FilmResult): number => film.id);
   await Promise.all(
-    films.map(async (f: any) => {
-      const { revenue } = await getFilmById(f);
+    films.map(async (filmId: number) => {
+      const { revenue } = await getFilmById(filmId.toString());
       totalRevenue += revenue;
       return totalRevenue;
     })
@@ -31,13 +33,13 @@ export const getCollectionRevenue = async (
 };
 
 export const getCollectionGenres = async (
-  collection: any
+  collection: FilmResult[]
 ): Promise<Genre[]> => {
   let collectionGenres: Genre[] = [];
-  const films = collection.map((film: any) => film.id);
+  const films: number[] = collection.map((film: FilmResult): number => film.id);
   await Promise.all(
-    films.map(async (f: any) => {
-      const { genres } = await getFilmById(f);
+    films.map(async (filmId: number) => {
+      const { genres } = await getFilmById(filmId.toString());
       genres.map((genre: Genre) => {
         if (!collectionGenres.includes(genre)) {
           collectionGenres.push(genre);

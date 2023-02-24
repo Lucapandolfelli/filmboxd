@@ -1,9 +1,10 @@
 import Carousel from "@/components/Carousel";
 import { getTrendingFilms, getTopRatedFilms } from "@/lib/films/fetch";
+import { FilmResult } from "types";
 
-export default async function FilmsPage () {
-  const trendingFilms = await getTrendingFilms()
-  const topRatedFilms = await getTopRatedFilms()
+export default async function FilmsPage (): Promise<JSX.Element> {
+  const trendingFilms: FilmResult[] = await getTrendingFilms()
+  const topRatedFilms: FilmResult[] = await getTopRatedFilms()
 
   return (
     <main className='text-[#99aabb] min-h-screen'>

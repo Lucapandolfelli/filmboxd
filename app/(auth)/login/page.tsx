@@ -1,7 +1,7 @@
 import Link from "next/link"
 import LoginForm from "@/components/LoginForm"
 
-export default function LoginPage (){
+export default function LoginPage (): JSX.Element {
   return (
     <>
       {/* <h1 className='text-[2rem] text-center font-semibold'>Login</h1> */}

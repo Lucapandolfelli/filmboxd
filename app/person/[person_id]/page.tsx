@@ -7,7 +7,7 @@ interface Props {
   params: { person_id: string }
 }
 
-export default async function PersonDetailPage ({ params: { person_id } }: Props) {
+export default async function PersonDetailPage ({ params: { person_id } }: Props): Promise<JSX.Element> {
   const person = await getPersonById(person_id)
   const films = await getFilmsOfActorById(person_id)
 

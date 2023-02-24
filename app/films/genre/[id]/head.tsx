@@ -4,7 +4,7 @@ interface HeadProps {
   params: { id: string } 
 }
 
-export default async function Head({ params: { id } }: HeadProps) {
+export default async function Head({ params: { id } }: HeadProps): Promise<JSX.Element> {
   const { name } = await getGenreById(id)
   
   return (

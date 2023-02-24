@@ -7,7 +7,7 @@ interface Props {
   height: number,
 }
 
-export default function CarouselItem ({ item, width, height }: Props) {
+export default function CarouselItem ({ item, width, height }: Props): JSX.Element {
   let imageSource = ''
 
   if (item.poster_path != null) {

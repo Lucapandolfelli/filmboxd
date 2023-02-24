@@ -2,7 +2,7 @@ import Image from "next/image"
 import Backdrop from "@/components/Backdrop"
 import Carousel from "@/components/Carousel"
 import Genres from "@/components/Genres"
-import { Genre } from "types"
+import { Collection, Genre } from "types"
 import { getCollectionById, getCollectionGenres, getCollectionRevenue } from "@/lib/collection/fetch"
 
 interface Props {
@@ -11,14 +11,14 @@ interface Props {
   }
 }
 
-export default async function CollectionPage ({ params: { collection_id } }: Props) {
-  const collection = await getCollectionById(collection_id)
+export default async function CollectionPage ({ params: { collection_id } }: Props): Promise<JSX.Element> {
+  const collection: Collection = await getCollectionById(collection_id)
   const collectionRevenue: number = await getCollectionRevenue(collection.parts)
   const collectionGenres: Genre[] = await getCollectionGenres(collection.parts)
 
   return (
     <main className='text-[#99aabb]'>
-      <Backdrop height="large" url={ collection?.backdrop_path } />
+      <Backdrop height="large" url={`${collection?.backdrop_path}`} />
       <section className='max-w-5xl h-fit mx-auto pb-[2rem] px-[1.25rem] md:px-0 flex flex-col md:flex-row gap-[4rem] relative'>{/* bg-[#161b20] */}
         <aside className='w-full mx-[1.25rem] flex items-center'>
           <div className='w-[calc(100%_-_2.5rem)] md:min-w-[280px] md:w-[280px] absolute top-[-11rem] md:top-[-7rem] right-0 md:right-[unset] left-0 mx-auto'>

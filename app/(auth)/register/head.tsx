@@ -1,4 +1,4 @@
-export default function Head() {
+export default function Head(): JSX.Element {
   return (
     <>
       <title>{`Sign Up ${"\u2022"} ${ process.env.NEXT_PUBLIC_APP_NAME }`}</title>

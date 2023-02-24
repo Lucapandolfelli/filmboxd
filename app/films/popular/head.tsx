@@ -1,4 +1,4 @@
-export default async function Head() {
+export default async function Head(): Promise<JSX.Element> {
    return (
     <>
       <title>{`Popular Films ${"\u2022"} ${ process.env.NEXT_PUBLIC_APP_NAME }` }</title>

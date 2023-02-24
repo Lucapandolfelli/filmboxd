@@ -4,7 +4,7 @@ interface Props {
   children: React.ReactNode
 }
 
-export default function PersonLayout ({ children }: Props) {
+export default function PersonLayout ({ children }: Props): JSX.Element {
   return (
     <main className='text-[#99aabb]'>
       <section className='w-full h-[160px] bg-center bg-cover' style={{ backgroundImage: `linear-gradient(0deg, rgba(20,24,28,1) 2%, rgba(20,24,28,0.725910432532388) 18%, rgba(20,24,28,0.01162471824667366) 100%), url('/images/login_background.jpg')` }}></section>

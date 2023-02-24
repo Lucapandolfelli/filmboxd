@@ -1,5 +1,6 @@
 import ListOfFilms from "@/components/ListOfFilms"
 import { searchMovie } from "@/lib/films/fetch"
+import { FilmResult } from "types"
 
 interface Props {
   params: {
@@ -7,8 +8,8 @@ interface Props {
   }
 }
 
-export default async function SearchPage ({ params: { query } }: Props) {
-  const searchResults = await searchMovie(query)
+export default async function SearchPage ({ params: { query } }: Props): Promise<JSX.Element> {
+  const searchResults: FilmResult[] = await searchMovie(query)
 
   return (
     <div className='mb-[3rem]'> 

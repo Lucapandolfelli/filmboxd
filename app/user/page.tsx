@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react"
 import Image from "next/image"
 
-export default function UserPage () {
+export default function UserPage (): JSX.Element {
   const { data: session } = useSession()
 
   return (

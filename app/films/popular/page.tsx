@@ -1,8 +1,9 @@
 import ListOfFilms from "@/components/ListOfFilms";
 import { getPopularFilms } from "@/lib/films/fetch";
+import { FilmResult } from "types";
 
-export default async function PopularFilmsPage () {
-  const popularFilms = await getPopularFilms()
+export default async function PopularFilmsPage (): Promise<JSX.Element> {
+  const popularFilms: FilmResult[] = await getPopularFilms()
   
   return (
     <div className='mb-[3rem]'> 

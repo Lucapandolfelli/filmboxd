@@ -1,7 +1,7 @@
 import Link from "next/link"
 import RegisterForm from "@/components/RegisterForm"
 
-export default function RegisterPage (){
+export default function RegisterPage (): JSX.Element {
   return (
     <>
       <h1 className='text-[2rem] text-center font-semibold'>Sign Up</h1>

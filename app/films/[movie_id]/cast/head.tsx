@@ -4,7 +4,7 @@ interface Props {
   params: { movie_id: string }
 }
 
-export default async function Head({ params: { movie_id } }: Props) {
+export default async function Head({ params: { movie_id } }: Props): Promise<JSX.Element> {
   const { title, release_date } = await getFilmById(movie_id);
   
   return (

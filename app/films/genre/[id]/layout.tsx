@@ -5,7 +5,7 @@ interface Props {
   params: { id: string }
 }
 
-export default async function Layout ({ children, params: { id } }: Props) {
+export default async function Layout ({ children, params: { id } }: Props): Promise<JSX.Element> {
   const { name } = await getGenreById(id)
   
   return (

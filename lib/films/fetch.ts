@@ -1,7 +1,8 @@
 import { getUniqueListBy } from "helpers";
+import { Film, FilmResult } from "types";
 
 /** ONE FILM **/
-export const getFilmById = async (movie_id: string) => {
+export const getFilmById = async (movie_id: string): Promise<Film> => {
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${process.env.TMDB_API_KEY}`,
     { cache: "no-store" }
@@ -13,7 +14,7 @@ export const getFilmById = async (movie_id: string) => {
 };
 
 /** TRENDING **/
-export const getTrendingFilms = async () => {
+export const getTrendingFilms = async (): Promise<FilmResult[]> => {
   const res = await fetch(
     `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.TMDB_API_KEY}`,
     {
@@ -42,7 +43,9 @@ export const getCredits = async (movie_id: string) => {
 };
 
 /** REVIEWS **/
-export const getReviewsByMovieId = async (movie_id: string) => {
+export const getReviewsByMovieId = async (
+  movie_id: string
+): Promise<FilmResult[]> => {
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/${movie_id}/reviews?api_key=${process.env.TMDB_API_KEY}`,
     {
@@ -57,7 +60,9 @@ export const getReviewsByMovieId = async (movie_id: string) => {
 };
 
 /** RELATED **/
-export const getRelatedFilms = async (movie_id: string) => {
+export const getRelatedFilms = async (
+  movie_id: string
+): Promise<FilmResult[]> => {
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/${movie_id}/similar?api_key=${process.env.TMDB_API_KEY}`,
     {
@@ -72,7 +77,7 @@ export const getRelatedFilms = async (movie_id: string) => {
 };
 
 /** POPULAR **/
-export const getPopularFilms = async () => {
+export const getPopularFilms = async (): Promise<FilmResult[]> => {
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_API_KEY}`,
     {
@@ -87,7 +92,7 @@ export const getPopularFilms = async () => {
 };
 
 /** TOP RATED **/
-export const getTopRatedFilms = async () => {
+export const getTopRatedFilms = async (): Promise<FilmResult[]> => {
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.TMDB_API_KEY}`,
     {
@@ -102,7 +107,7 @@ export const getTopRatedFilms = async () => {
 };
 
 /** UPCOMING **/
-export const getUpcomingFilms = async () => {
+export const getUpcomingFilms = async (): Promise<FilmResult[]> => {
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.TMDB_API_KEY}`,
     {
@@ -117,7 +122,7 @@ export const getUpcomingFilms = async () => {
 };
 
 /** UPCOMING **/
-export const getNowPlayingFilms = async () => {
+export const getNowPlayingFilms = async (): Promise<FilmResult[]> => {
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.TMDB_API_KEY}`,
     {
@@ -147,7 +152,7 @@ export const getFilmListByMovieId = async (movie_id: string) => {
 };
 
 /** FILMS BY GENRE ID **/
-export const getFilmsByGenreId = async (id: string) => {
+export const getFilmsByGenreId = async (id: string): Promise<FilmResult[]> => {
   const res = await fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&page=1&with_genres=${id}`,
     {
@@ -188,7 +193,7 @@ export const getWatchProvidersByFilmId = async (movie_id: string) => {
   return results.US;
 };
 
-export const searchMovie = async (query: string) => {
+export const searchMovie = async (query: string): Promise<FilmResult[]> => {
   const res = await fetch(
     `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&include_adult=false&page=1&query=${query}`
   );

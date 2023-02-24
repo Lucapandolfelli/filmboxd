@@ -9,27 +9,30 @@ import { getCastByMovieId, getDirectorByMovieId } from "@/lib/person/fetch"
 import Backdrop from "@/components/Backdrop"
 import Collection from "@/components/Collection"
 import { getCollectionById } from "@/lib/collection/fetch"
+import { Film, FilmResult } from "types"
 
 interface Props {
-  params: { movie_id: string }
+  params: { 
+    movie_id: string 
+  }
 }
 
-export default async function FilmDetailPage ({ params: { movie_id } }: Props) {
-  const film = await getFilmById(movie_id)
+export default async function FilmDetailPage ({ params: { movie_id } }: Props): Promise<JSX.Element> {
+  const film: Film = await getFilmById(movie_id)
   const cast = await getCastByMovieId(movie_id)
-  const recommendedFilms = await getRelatedFilms(movie_id)
+  const recommendedFilms: FilmResult[] = await getRelatedFilms(movie_id)
   const director = await getDirectorByMovieId(movie_id)
   const lists = await getFilmListByMovieId(movie_id)
   /* const watchProviders = await getWatchProvidersByFilmId(movie_id) */
   let relatedFilms
   
   if (film.belongs_to_collection != null){
-    relatedFilms = await getCollectionById(film?.belongs_to_collection.id)
+    relatedFilms = await getCollectionById(film?.belongs_to_collection.id.toString())
   }
 
   return (
     <main className='text-[#99aabb]'>
-      <Backdrop height="large" url={ film?.backdrop_path } />
+      <Backdrop height="large" url={`${film?.backdrop_path}`} />
       <section className='max-w-5xl h-fit mx-auto pb-[2rem] px-[1.25rem] md:px-0 flex flex-col md:flex-row gap-[4rem] relative'>{/* bg-[#161b20] */}
         <aside className='w-full mx-[1.25rem] flex items-center'>
           <div className='w-[calc(100%_-_2.5rem)] md:min-w-[280px] md:w-[280px] absolute top-[-11rem] md:top-[-7rem] right-0 md:right-[unset] left-0 mx-auto'>
@@ -41,7 +44,7 @@ export default async function FilmDetailPage ({ params: { movie_id } }: Props) {
               }
             </figure>
             <div className='hidden sm:flex flex-col items-center gap-[1rem]'>
-              <FilmInteractions initialAverage={ film?.vote_average } initialViews={'0'} initialLikes={'0'} initialSaves={ lists } initialRating={ film?.vote_count } />
+              <FilmInteractions initialAverage={ film?.vote_average.toString() } initialViews={'0'} initialLikes={'0'} initialSaves={ lists } initialRating={ film?.vote_count.toString() } />
             </div>
           </div>  
         </aside>
@@ -54,7 +57,7 @@ export default async function FilmDetailPage ({ params: { movie_id } }: Props) {
               <h6 className='text-[#667788] font-semibold uppercase mb-[1rem]'>{ film?.tagline }</h6>
               <p className='mb-[1rem] leading-[1.8]'>{ film?.overview }</p>
               <div className='w-full mt-[2rem] mb-[1rem] font-lighter flex gap-[2.5rem] flex-wrap'>
-                { film?.runtime > 0 && 
+                { film?.runtime != null && 
                   <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
                     <p className='text-[#667788]'>Duration</p>
                     { film.runtime } mins.
@@ -85,7 +88,7 @@ export default async function FilmDetailPage ({ params: { movie_id } }: Props) {
             </div>
           </div>
           <div className='sm:hidden flex flex-col items-center gap-[1rem] mb-[2rem]'>
-            <FilmInteractions initialAverage={ Number.parseFloat(film?.vote_average).toFixed(1) } initialViews={'0'} initialLikes={'0'} initialSaves={ lists } initialRating={ film?.vote_count } />
+            <FilmInteractions initialAverage={ Number.parseFloat(film?.vote_average.toString()).toFixed(1) } initialViews={'0'} initialLikes={'0'} initialSaves={ lists } initialRating={ film?.vote_count.toString() } />
           </div>
           <div className='mb-[1rem] lg:mb-[2rem]'>
             <header className="flex justify-between items-center">

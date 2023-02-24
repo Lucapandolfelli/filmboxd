@@ -4,7 +4,7 @@ interface Props {
   params: { collection_id: string }
 }
 
-export default async function Head({ params: { collection_id } }: Props) {
+export default async function Head({ params: { collection_id } }: Props): Promise<JSX.Element> {
   const { name } = await getCollectionById(collection_id);
   
   return (
