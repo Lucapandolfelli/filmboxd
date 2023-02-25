@@ -193,6 +193,22 @@ export const getWatchProvidersByFilmId = async (movie_id: string) => {
   return results.US;
 };
 
+/** FILMS KEYWORDS **/
+export const getKeywordsByFilmId = async (movie_id: string) => {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/${movie_id}/keywords?api_key=${process.env.TMDB_API_KEY}`,
+    {
+      cache: "no-store",
+    }
+  );
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const { keywords } = await res.json();
+  return keywords;
+};
+
+/** SEARCH FILM RESULTS **/
 export const searchMovie = async (query: string): Promise<FilmResult[]> => {
   const res = await fetch(
     `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&include_adult=false&page=1&query=${query}`

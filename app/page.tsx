@@ -11,7 +11,7 @@ export default async function HomePage (): Promise<JSX.Element> {
   return (
     <main>
       <Hero films={films} />
-      <section className='py-[3rem] max-w-5xl mx-auto overflow-hidden'>
+      <section className='py-[3rem] max-w-5xl mx-auto overflow-hidden px-[1.25rem]'>
         <div className='mb-[3rem]'> 
           <div className='flex items-center gap-[1rem]'>
             <h2 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1.25rem]'>Trending</h2>

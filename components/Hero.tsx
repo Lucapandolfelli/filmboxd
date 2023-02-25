@@ -31,7 +31,7 @@ export default function Hero ({ films }: Props) {
         films.map((film: any, index: number) => {
           if (index === currentIndex){
             return (
-              <section key={ film?.id } className='w-full h-full bg-center bg-cover flex justify-start items-center bg-black' style={{ backgroundImage: `linear-gradient(0deg, rgba(20,24,28,0.01162471824667366) 0%, rgba(20,24,28,0.725910432532388) 0%), url('https://image.tmdb.org/t/p/original/${ film?.backdrop_path }')` }}>
+              <section key={ film?.id } className='px-[1.25rem] w-full h-full bg-center bg-cover flex justify-start items-center bg-black' style={{ backgroundImage: `linear-gradient(0deg, rgba(20,24,28,0.01162471824667366) 0%, rgba(20,24,28,0.725910432532388) 0%), url('https://image.tmdb.org/t/p/original/${ film?.backdrop_path }')` }}>
                 <div className='max-w-5xl w-full mx-auto h-fit text-[#99aabb]'>
                     <div className='flex gap-[1rem] items-center'>
                       <h1 className='font-bold text-[3rem] text-[#ffffe9] mb-[.75rem]'>{ film?.title }</h1>

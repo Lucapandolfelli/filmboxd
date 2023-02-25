@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 import IsLogin from "./IsLogin"
 import IsLogout from "./IsLogout"
 import SearchBar from "./SearchBar"
+import { FaBars } from 'react-icons/fa'
 
 const navbarItems = [
   { id: 1, label: 'Home', href: '/'},
@@ -34,7 +35,7 @@ export default function Navbar () {
           <figure className='w-[60px] h-[20px] relative'>
             <Image src='/images/filmboxd-navbar.png' fill alt='Filmboxd Logo' className='object-contain' />
           </figure>
-          <h1 className='text-2xl'>{ process.env.NEXT_PUBLIC_APP_NAME }</h1>
+          <h1 className='text-xl md:text-2xl'>{ process.env.NEXT_PUBLIC_APP_NAME }</h1>
         </Link>
         <nav>
           <ul className='hidden sm:flex items-center gap-[.75rem] h-[24px]'>
@@ -46,6 +47,7 @@ export default function Navbar () {
             ? <IsLogin username={`${session.user?.name}`} avatar={`${session.user?.image}`} />
             : <IsLogout /> }
           </ul>
+          <button className='text-xl sm:hidden'><FaBars /></button>
         </nav>
       </div>
     </header>
