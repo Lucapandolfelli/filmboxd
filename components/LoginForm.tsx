@@ -2,8 +2,7 @@
 
 import { useState } from 'react'
 import { signIn } from 'next-auth/react'
-import { BsTwitter, BsGoogle } from 'react-icons/bs'
-import { FaFacebookF } from 'react-icons/fa'
+import { FcGoogle } from 'react-icons/fc'
 
 export default function LoginForm () {
   const [email, setEmail] = useState('')
@@ -20,12 +19,6 @@ export default function LoginForm () {
 
   const handleGoogleSignIn = () => {
     signIn('google', {
-      callbackUrl: `${ process.env.NEXT_PUBLIC_HOST }`
-    })
-  }
-
-  const handleFacebookSignIn = () => {
-    signIn('facebook', {
       callbackUrl: `${ process.env.NEXT_PUBLIC_HOST }`
     })
   }
@@ -57,14 +50,10 @@ export default function LoginForm () {
           type="submit">Login
         </button>
       </form>
-      <div className='mt-[3rem] flex flex-col items-center gap-[1rem]'>
-        <span className='text-sm text-[#a2a4a7]'>Or Sign Up Using</span>
-        <div className='flex gap-[.5rem] justify-center'>
-          <button onClick={(handleGoogleSignIn)} className='bg-[#2c3440] text-white h-[40px] w-[40px] rounded-full flex justify-center items-center transition-all duration-150 ease-in hover:bg-[#222933]'><BsGoogle /></button>
-          <button onClick={handleFacebookSignIn} className='bg-[#2c3440] text-white h-[40px] w-[40px] rounded-full flex justify-center items-center transition-all duration-150 ease-in hover:bg-[#222933]'><FaFacebookF /></button>
-          <button className='bg-[#2c3440] text-white h-[40px] w-[40px] rounded-full flex justify-center items-center transition-all duration-150 ease-in hover:bg-[#222933]'><BsTwitter /></button>
-        </div>
-      </div>
+      <button className='mt-[.75rem] bg-white py-[.75rem] w-full rounded-[.25rem] text-[#757575] border-[2px] border-white font-semibold transition-all duration-150 ease-linear hover:border-[#4285f4] hover:outline hover:outline-4 hover:outline-[#4285f4]/10 flex justify-center items-center gap-[.5rem]' onClick={handleGoogleSignIn}>
+        <FcGoogle className='text-2xl' />
+        <p>Sign in with Google</p>
+      </button>
     </div>
   )
 }

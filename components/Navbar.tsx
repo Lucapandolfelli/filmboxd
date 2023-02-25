@@ -43,7 +43,7 @@ export default function Navbar () {
             ))}
             <SearchBar />
             { session 
-            ? <IsLogin username={ session.user?.name } avatar={ session.user?.image } />
+            ? <IsLogin username={`${session.user?.name}`} avatar={`${session.user?.image}`} />
             : <IsLogout /> }
           </ul>
         </nav>
