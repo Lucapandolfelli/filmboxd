@@ -19,7 +19,7 @@ export default function LoginForm () {
 
   const handleGoogleSignIn = () => {
     signIn('google', {
-      callbackUrl: '/'
+      callbackUrl: `${window.location.origin}`
     })
   }
 
