@@ -19,7 +19,7 @@ export default function LoginForm () {
 
   const handleGoogleSignIn = () => {
     signIn('google', {
-      callbackUrl: `${ process.env.NEXT_PUBLIC_HOST }`
+      callbackUrl: '/'
     })
   }
 
