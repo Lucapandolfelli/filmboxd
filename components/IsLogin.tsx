@@ -14,7 +14,8 @@ export default function IsLogin ({ username, avatar }: Props) {
 
   const handleSignOut = () => {
     signOut({
-      callbackUrl: `${window.location.origin}`
+      callbackUrl: `${ process.env.NEXT_PUBLIC_HOST }`
+
     })
   }
 
