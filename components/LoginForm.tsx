@@ -46,7 +46,7 @@ export default function LoginForm () {
           <span className='text-sm text-[#667788] font-semibold absolute bottom-[-2rem] right-0 transition-all duration-150 ease-in hover:cursor-pointer hover:text-[#4d5b69]'>Forgot Password?</span>
         </div>
         <button 
-          className='bg-amber-600 py-[.75rem] rounded-[.25rem] text-white font-semibold transition-all duration-150 ease-linear hover:bg-amber-700' 
+          className='bg-[#ff8000] py-[.75rem] rounded-[.25rem] text-white font-semibold transition-all duration-150 ease-linear hover:bg-amber-700' 
           type="submit">Login
         </button>
       </form>

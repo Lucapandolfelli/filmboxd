@@ -15,7 +15,7 @@ export default async function HomePage (): Promise<JSX.Element> {
         <div className='mb-[3rem]'> 
           <div className='flex items-center gap-[1rem]'>
             <h2 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1.25rem]'>Trending</h2>
-            <div className='flex gap-[.5rem]'>
+            <div className='flex gap-[.5rem] mb-[1rem]'>
               <button className='bg-[#14181c] border-[2px] border-[#00e054] h-fit text-[.65rem] text-[#00e054] font-bold uppercase rounded-[1rem] px-[.75rem] py-[.25rem]'>Today</button>
               <button className='bg-[#14181c] border-[2px] border-[#00e054] h-fit text-[.65rem] text-[#00e054] font-bold uppercase rounded-[1rem] px-[.75rem] py-[.25rem]'>This Week</button>
             </div>

@@ -15,7 +15,8 @@ export default async function handle(
       name: username,
       email,
       hashedPassword,
-      image: "",
+      image:
+        "https://cedicdiagnostico.com.ar/wp-content/uploads/2020/08/generic-avatar.jpg",
     });
 
     newUser
