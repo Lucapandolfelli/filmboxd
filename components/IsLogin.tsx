@@ -43,9 +43,17 @@ function Dropdown ({ children }: { children: React.ReactNode }) {
 }
 
 function DropdownItem ({ children, href, action }: { children: React.ReactNode, href?: string, action?: any }) {
-  return (
-    <Link href={`${href}`} className='w-full h-[50px] rounded-[.25rem] bg-[#14181c] p-[.5rem] flex items-center' onClick={action}>
-      { children }
-    </Link>
-  )
+  if (href) {
+    return (
+      <Link href={`${href}`} className='w-full h-[50px] rounded-[.25rem] bg-[#14181c] p-[.5rem] flex items-center'>
+        { children }
+      </Link>
+    )
+  } else {
+    return (
+      <button className='w-full h-[50px] rounded-[.25rem] bg-[#14181c] p-[.5rem] flex items-center' onClick={action}>
+        { children }
+      </button>
+    )
+  }
 }
