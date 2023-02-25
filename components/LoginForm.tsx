@@ -24,7 +24,7 @@ export default function LoginForm () {
   }
 
   return (
-    <div className='w-[300px]'>
+    <div className='w-[300px] text-sm md:text-base'>
       <form className='flex flex-col gap-[1rem] w-full' onSubmit={handleSubmit}>
         <div>
           <input 
@@ -51,7 +51,7 @@ export default function LoginForm () {
         </button>
       </form>
       <button className='mt-[.75rem] bg-white py-[.75rem] w-full rounded-[.25rem] text-[#757575] border-[2px] border-white font-semibold transition-all duration-150 ease-linear hover:border-[#4285f4] hover:outline hover:outline-4 hover:outline-[#4285f4]/10 flex justify-center items-center gap-[.5rem]' onClick={handleGoogleSignIn}>
-        <FcGoogle className='text-2xl' />
+        <FcGoogle className='text-xl md:text-2xl' />
         <p>Sign in with Google</p>
       </button>
     </div>
