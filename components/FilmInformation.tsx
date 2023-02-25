@@ -5,6 +5,7 @@ import Link from "next/link";
 import Carousel from "./Carousel";
 import { Cast, Crew, Film, Genre } from "types";
 import Genres from './Genres';
+import { toHoursAndMinutes } from 'helpers';
 
 interface Props {
   film: Film,
@@ -75,7 +76,9 @@ function Data ({ selectedItem }: { selectedItem: Item}) {
     )
   } else {
     return (
-      <></>
+      <>
+        <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1rem]'>Studio</h3>
+      </>
     )
   }
 }
@@ -87,11 +90,11 @@ function Details ({ data }: { data: any[] }) {
   return (
     <>
       <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1rem]'>Details</h3>
-      <div className='w-full mt-[2rem] font-lighter flex gap-[2.5rem] flex-wrap mb-[1rem]'>
+      <div className='w-full mt-[2rem] font-lighter flex gap-[2.5rem] flex-wrap mb-[2rem]'>
         { details.runtime != null && 
           <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
             <p className='text-[#667788]'>Duration</p>
-            {details.runtime } mins.
+            <p>{`${ toHoursAndMinutes(details.runtime) }`}</p>
           </span>
         }
         <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
@@ -104,18 +107,18 @@ function Details ({ data }: { data: any[] }) {
             <p>${ details.revenue.toLocaleString() }</p>
           </span>
         }
-        <span className='flex flex-col gap-[.25rem]'>
-          <p className='text-[#667788]'>More at</p>
-          <div>
-            <Link className='text-[.7rem] border-2 border-[#465058] rounded-sm py-[.125rem] px-[.25rem] ml-[.25rem] transition-all duration-300 ease-linear hover:border-[#8295a4]' href={`http://www.imdb.com/title/${ details.imdb_id }/maindetails`}>IMBD</Link> 
-            <Link className='text-[.7rem] border-2 border-[#465058] rounded-sm py-[.125rem] px-[.25rem] ml-[.25rem] transition-all duration-300 ease-linear hover:border-[#8295a4]' href={`https://www.themoviedb.org/movie/${ details.tmdb_id }`}>TMDB</Link>
-          </div>
+        <span className='flex flex-col text-[#ffffe9]'>
+          <p className='text-[#667788]'>Genres</p>
+          <Genres genres={genres}/>
         </span>
       </div> 
-      <div className='flex flex-col text-[#ffffe9]'>
-        <p className='text-[#667788]'>Genres</p>
-        <Genres genres={genres}/>
-      </div>
+      <span className='flex flex-col gap-[.25rem]'>
+        <p className='text-[#667788]'>More at</p>
+        <div>
+          <Link className='text-[.7rem] border-2 border-[#465058] rounded-sm py-[.125rem] px-[.25rem] ml-[.25rem] transition-all duration-300 ease-linear hover:border-[#8295a4]' href={`http://www.imdb.com/title/${ details.imdb_id }/maindetails`}>IMBD</Link> 
+          <Link className='text-[.7rem] border-2 border-[#465058] rounded-sm py-[.125rem] px-[.25rem] ml-[.25rem] transition-all duration-300 ease-linear hover:border-[#8295a4]' href={`https://www.themoviedb.org/movie/${ details.tmdb_id }`}>TMDB</Link>
+        </div>
+      </span>
     </>
   )
 }

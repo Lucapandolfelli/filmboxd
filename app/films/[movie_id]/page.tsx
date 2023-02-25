@@ -49,14 +49,12 @@ export default async function FilmDetailPage ({ params: { movie_id } }: Props): 
           </div>  
         </aside>
         <div className='max-w-[680px] w-full'>
-          <div className='flex items-center sm:items-start flex-col gap-[3rem] mb-[3rem]'>
-            <div className='w-full'>
-              <small className='inline-block text-lg text-[#667788] mb-[1rem]'>{ film?.release_date.substr(0,4) }</small>
-              <h1 className='text-[#ffffe9] text-[2rem] font-semibold lg:text-[2.5rem] mb-[2rem] leading-[1]'>{ film?.title }</h1>
-              <h5 className='text-[#667788] mb-[2rem]'>Directed by <Link href={`/person/${ director?.id }`} className='text-[#ffffe9] hover:text-amber-600'>{ director?.name }</Link></h5>
-              <h6 className='text-[#667788] font-semibold uppercase mb-[1rem]'>{ film?.tagline }</h6>
-              <p className='mb-[1rem] leading-[1.8]'>{ film?.overview }</p>
-            </div>
+          <div className='w-full mb-[3rem]'>
+            <small className='inline-block text-lg text-[#667788] mb-[1rem]'>{ film?.release_date.substr(0,4) }</small>
+            <h1 className='text-[#ffffe9] text-[2rem] font-semibold lg:text-[2.5rem] mb-[2rem] leading-[1]'>{ film?.title }</h1>
+            <h5 className='text-[#667788] mb-[2rem]'>Directed by <Link href={`/person/${ director?.id }`} className='text-[#ffffe9] hover:text-amber-600'>{ director?.name }</Link></h5>
+            <h6 className='text-[#667788] font-semibold uppercase mb-[1rem]'>{ film?.tagline }</h6>
+            <p className='mb-[1rem] leading-[1.8]'>{ film?.overview }</p>
           </div>
           <div className='sm:hidden flex flex-col items-center gap-[1rem] mb-[2rem]'>
             <FilmInteractions initialAverage={ Number.parseFloat(film?.vote_average.toString()).toFixed(1) } initialViews={'0'} initialLikes={'0'} initialSaves={ lists } initialRating={ film?.vote_count.toString() } />
