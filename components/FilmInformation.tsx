@@ -78,20 +78,22 @@ function Data ({ selectedItem }: { selectedItem: Item}) {
 
 function GenresDetail ({ data }: { data: any[] }) {
   const genres: Genre[] = data[0]
-  const keywords = data[1]
+  const keywords: Keyword[] = data[1]
 
   return (
     <>
       {/* <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1rem]'>Genres</h3> */}
-      <div className='w-full mt-[2rem] font-lighter flex gap-[1rem] flex-wrap text-sm'>
+      <div className='w-full mt-[2rem] font-lighter flex flex-col gap-[1rem] flex-wrap text-sm'>
         <span className='flex flex-col gap-[.75rem] text-[#ffffe9]'>
           <p className='text-[#667788] text-base'>Genres</p>
           <TextList data={genres} path='genre' buttonStyle={true} />
         </span>
-        <span className='flex flex-col gap-[.75rem] text-[#ffffe9]'>
-          <p className='text-[#667788] text-base'>Keywords</p>
-          <TextList data={keywords} path='keyword' buttonStyle={true} />
-        </span>
+        { keywords.length > 0 &&
+          <span className='flex flex-col gap-[.75rem] text-[#ffffe9]'>
+            <p className='text-[#667788] text-base'>Keywords</p>
+            <TextList data={keywords} path='keyword' buttonStyle={true} />
+          </span>
+        }
       </div> 
       {/* <span className='flex flex-col gap-[.25rem]'>
         <p className='text-[#667788]'>More at</p>
@@ -134,20 +136,22 @@ function Details ({ data }: { data: any }) {
             ))}
           </ul>
         </div>
+        { languages.length > 0 &&
         <div className="flex gap-[.5rem]">
           <p className='text-[#667788]'>Spoken Languages:</p>
           <ul className='flex gap-[.25rem]'>
-            {languages.map((language: any) => (
-              <li key={language.name}>
-                <Link href='#' className='text-[#ffffe9] transition-all duration-150 ease-in hover:text-[#ff8000]'>{ language.name }</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="flex gap-[.5rem]">
-          <p className='text-[#667788]'>Original Language:</p>
-          <Link href='#' className='text-[#ffffe9] transition-all duration-150 ease-in hover:text-[#ff8000]'>{ originalLanguage.name }</Link>
-        </div>
+          {languages.map((language: any) => (
+            <li key={language.name}>
+              <Link href='#' className='text-[#ffffe9] transition-all duration-150 ease-in hover:text-[#ff8000]'>{ language.name }</Link>
+            </li>
+          ))}
+        </ul>
+        </div>}
+        { originalLanguage != undefined && 
+          <div className="flex gap-[.5rem]">
+            <p className='text-[#667788]'>Original Language:</p>
+            <Link href='#' className='text-[#ffffe9] transition-all duration-150 ease-in hover:text-[#ff8000]'>{ originalLanguage.name }</Link>
+          </div>}
       </div>
     </>
   )
