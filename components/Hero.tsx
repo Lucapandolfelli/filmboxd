@@ -38,7 +38,7 @@ export default function Hero ({ films }: Props) {
                       <span className='bg-[#14181c] border-[2px] border-[#00e054] h-fit text-[.65rem] text-[#00e054] font-bold uppercase rounded-[1rem] px-[.75rem] py-[.25rem]'>Trending</span>
                     </div>
                     <div className='flex gap-[.5rem] mb-[.75rem] text-lg text-[#667788]'>
-                      <TextList data={ film?.genres } path='genre' />
+                      <TextList data={ film?.genres } path='genre' buttonStyle={false} />
                       &#8226;
                       <span>{ toHoursAndMinutes(film?.runtime) }</span>
                     </div>
