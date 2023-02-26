@@ -42,7 +42,9 @@ export const getPersonById = async (person_id: string): Promise<Person> => {
   return res.json();
 };
 
-export const getFilmsOfActorById = async (person_id: string): Promise<Cast> => {
+export const getFilmsOfActorById = async (
+  person_id: string
+): Promise<Cast[]> => {
   const res = await fetch(
     `https://api.themoviedb.org/3/person/${person_id}/movie_credits?api_key=${process.env.TMDB_API_KEY}`,
     {
@@ -54,6 +56,22 @@ export const getFilmsOfActorById = async (person_id: string): Promise<Cast> => {
   }
   const { cast } = await res.json();
   return cast.filter(({ popularity }: any) => popularity >= 10);
+};
+
+export const getFilmsOfDirectorById = async (
+  person_id: string
+): Promise<Crew[]> => {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/person/${person_id}/movie_credits?api_key=${process.env.TMDB_API_KEY}`,
+    {
+      cache: "no-store",
+    }
+  );
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const { crew } = await res.json();
+  return crew.filter(({ job }: any) => job === "Director");
 };
 
 export const getDirectorByMovieId = async (movie_id: string): Promise<Crew> => {

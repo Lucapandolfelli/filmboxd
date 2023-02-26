@@ -1,15 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import ListOfFilms from "@/components/ListOfFilms";
-import { getFilmsOfActorById, getPersonById } from "@/lib/person/fetch";
+import { getFilmsOfActorById, getFilmsOfDirectorById, getPersonById } from "@/lib/person/fetch";
 
 interface Props {
-  params: { person_id: string }
+  params: { 
+    person_id: string 
+  }
 }
 
 export default async function PersonDetailPage ({ params: { person_id } }: Props): Promise<JSX.Element> {
   const person = await getPersonById(person_id)
-  const films = await getFilmsOfActorById(person_id)
+  const actorFilms = await getFilmsOfActorById(person_id)
+  const directorFilms = await getFilmsOfDirectorById(person_id)
 
   return (
     <>
@@ -32,7 +35,7 @@ export default async function PersonDetailPage ({ params: { person_id } }: Props
       </div>
       <div className='my-[1rem]'>
         <h3 className='text-[1.5rem] text-[#ffffe9] font-semibold mb-[1.5rem]'>Known For</h3>
-        <ListOfFilms films={ films } /* width={155} height={234} */ /> {/* 234px x 354px */}
+        <ListOfFilms films={ person.know_for_department === 'Acting' ? actorFilms : directorFilms } /* width={155} height={234} */ /> {/* 234px x 354px */}
       </div>
     </>
   )
