@@ -166,6 +166,21 @@ export const getFilmsByGenreId = async (id: string): Promise<FilmResult[]> => {
   return results.filter((film: any) => film.poster_path != null);
 };
 
+/** FILMS BY YEAR **/
+export const getFilmsByYear = async (year: number): Promise<FilmResult[]> => {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&page=1&primary_release_date.gte=${year}-01-01&primary_release_date.lte=${year}-12-31`,
+    {
+      cache: "no-store",
+    }
+  );
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const { results } = await res.json();
+  return results.filter((film: any) => film.poster_path != null);
+};
+
 /** COMPLETE FILMS DATA BY FILMS ID **/
 export const getCompleteFilmsData = async (filmsIds: number[]) => {
   let films: any = [];

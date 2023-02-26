@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Backdrop from "@/components/Backdrop"
 import Carousel from "@/components/Carousel"
-import Genres from "@/components/Genres"
+import TextList from "@/components/TextList"
 import { Collection, Genre } from "types"
 import { getCollectionById, getCollectionGenres, getCollectionRevenue } from "@/lib/collection/fetch"
 
@@ -31,7 +31,7 @@ export default async function CollectionPage ({ params: { collection_id } }: Pro
           <div className='w-full mb-[2rem]'>
             <h1 className='text-[#ffffe9] text-[2rem] font-semibold lg:text-[2.5rem] mb-[.75rem]'>{ collection?.name }</h1>
             <div className='mb-[1rem] text-[#667788]'>
-              <Genres genres={ collectionGenres } />
+              <TextList data={ collectionGenres } path='genre' buttonStyle={false} />
             </div>
             {/* <h5 className='text-[#667788] mb-[2rem]'>Directed by <Link href={`/director/${ director?.id }`} className='text-[#ffffe9] hover:text-amber-600'>{ director?.name }</Link></h5> */}
             <p className='mb-[1rem] leading-[1.8]'>{ collection?.overview }</p>

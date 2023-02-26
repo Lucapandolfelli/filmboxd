@@ -3,14 +3,17 @@
 import { useState } from 'react'
 import Link from "next/link";
 import Carousel from "./Carousel";
-import { Cast, Crew, Film, Genre } from "types";
-import Genres from './Genres';
+import Genres from './TextList';
 import { toHoursAndMinutes } from 'helpers';
+import { languages } from 'languagues';
+import { Cast, Crew, Film, Genre, Keyword } from "types";
+import TextList from './TextList';
 
 interface Props {
   film: Film,
   cast: Cast[],
-  crew: Crew[]
+  crew: Crew[],
+  keywords: Keyword[]
 }
 
 interface Item {
@@ -20,22 +23,14 @@ interface Item {
   small?: string;
 }
 
-export default function FilmInformation ({ film, cast, crew }: Props) {
+export default function FilmInformation ({ film, cast, crew, keywords }: Props) {
   const [selectedItem, setSelectedItem] = useState<Item>({ id: 1, title: 'Cast', data: cast })
-
-  const details = {
-    tmdb_id: film.id,
-    imdb_id: film.imdb_id,
-    revenue: film.revenue,
-    release_date: film.release_date,
-    runtime: film.runtime
-  }
 
   const items: Item[] = [
     { id: 1, title: 'Cast', data: cast, small: 'Actors' },
     { id: 2, title: 'Crew', data: crew, small: 'Members' },
-    { id: 3, title: 'Studio', data: cast },
-    { id: 4, title: 'Details', data: [film.genres, details] }
+    { id: 3, title: 'Details', data: [film.production_companies, film.production_countries, film.spoken_languages, film.original_language] },
+    { id: 4, title: 'Genres', data: [film.genres, keywords] }
   ]
 
   return (
@@ -70,55 +65,90 @@ function Data ({ selectedItem }: { selectedItem: Item}) {
         <Carousel data={ selectedItem.data.slice(0, 9) } width={155} height={234} />
       </>
     )
-  } else if (selectedItem.title === 'Details') {
+  } else if (selectedItem.title === 'Genres') {
     return (
-      <Details data={selectedItem.data} />
+      <GenresDetail data={selectedItem.data} />
     )
   } else {
     return (
-      <>
-        <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1rem]'>Studio</h3>
-      </>
+      <Details data={selectedItem.data} />
     )
   }
 }
 
-function Details ({ data }: { data: any[] }) {
+function GenresDetail ({ data }: { data: any[] }) {
   const genres: Genre[] = data[0]
-  const details = data[1]
+  const keywords = data[1]
 
   return (
     <>
-      <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1rem]'>Details</h3>
-      <div className='w-full mt-[2rem] font-lighter flex gap-[2.5rem] flex-wrap mb-[2rem]'>
-        { details.runtime != null && 
-          <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
-            <p className='text-[#667788]'>Duration</p>
-            <p>{`${ toHoursAndMinutes(details.runtime) }`}</p>
-          </span>
-        }
-        <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
-          <p className='text-[#667788]'>Released</p>
-          <p>{`${ new Date(details.release_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }`}</p>
+      {/* <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1rem]'>Genres</h3> */}
+      <div className='w-full mt-[2rem] font-lighter flex gap-[1rem] flex-wrap text-sm'>
+        <span className='flex flex-col gap-[.75rem] text-[#ffffe9]'>
+          <p className='text-[#667788] text-base'>Genres</p>
+          <TextList data={genres} path='genre' buttonStyle={true} />
         </span>
-        { details.revenue > 0 && 
-          <span className='flex flex-col gap-[.25rem] text-[#ffffe9]'>
-            <p className='text-[#667788]'>Revenue</p>
-            <p>${ details.revenue.toLocaleString() }</p>
-          </span>
-        }
-        <span className='flex flex-col text-[#ffffe9]'>
-          <p className='text-[#667788]'>Genres</p>
-          <Genres genres={genres}/>
+        <span className='flex flex-col gap-[.75rem] text-[#ffffe9]'>
+          <p className='text-[#667788] text-base'>Keywords</p>
+          <TextList data={keywords} path='keyword' buttonStyle={true} />
         </span>
       </div> 
-      <span className='flex flex-col gap-[.25rem]'>
+      {/* <span className='flex flex-col gap-[.25rem]'>
         <p className='text-[#667788]'>More at</p>
         <div>
           <Link className='text-[.7rem] border-2 border-[#465058] rounded-sm py-[.125rem] px-[.25rem] ml-[.25rem] transition-all duration-300 ease-linear hover:border-[#8295a4]' href={`http://www.imdb.com/title/${ details.imdb_id }/maindetails`}>IMBD</Link> 
           <Link className='text-[.7rem] border-2 border-[#465058] rounded-sm py-[.125rem] px-[.25rem] ml-[.25rem] transition-all duration-300 ease-linear hover:border-[#8295a4]' href={`https://www.themoviedb.org/movie/${ details.tmdb_id }`}>TMDB</Link>
         </div>
-      </span>
+      </span> */}
+    </>
+  )
+}
+
+function Details ({ data }: { data: any }) {
+  const companies = data[0]
+  const countries = data[1]
+  const languages = data[2]
+  const originalLanguage = languages.find((languague: any) => languague.iso_639_1 === data[3])
+
+  return (
+    <>
+      {/* <h3 className='text-[1.5rem] md:text-[1.75rem] text-[#ffffe9] font-semibold mb-[.75rem] md:mb-[1rem]'>Details</h3> */}
+      <div className='w-full flex flex-col gap-[.75rem]'>
+        <div className='flex gap-[.5rem]'>
+          <p className='text-[#667788]'>{ companies === 1 ? 'Studio:' : 'Studios:' }</p>
+          <ul className='flex gap-[.25rem] flex-wrap'>
+            {companies.map((company: any, index: number) => (
+              <li key={company.id}>
+                <Link href='#' className='text-[#ffffe9] transition-all duration-150 ease-in hover:text-[#ff8000]'>{ index === companies.length - 1 ? `${ company.name }` : `${ company.name },` }</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex gap-[.5rem]">
+          <p className='text-[#667788]'>{ countries.lenght > 0 ? 'Country:' : 'Countries:'}</p>
+          <ul className='flex gap-[.25rem] flex-wrap'>
+            {countries.map((country: any, index: number) => (
+              <li key={country.name}>
+                <Link href='#' className='text-[#ffffe9] transition-all duration-150 ease-in hover:text-[#ff8000]'>{ index === companies.length - 1 ? `${ country.name }` : `${ country.name },` }</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex gap-[.5rem]">
+          <p className='text-[#667788]'>Spoken Languages:</p>
+          <ul className='flex gap-[.25rem]'>
+            {languages.map((language: any) => (
+              <li key={language.name}>
+                <Link href='#' className='text-[#ffffe9] transition-all duration-150 ease-in hover:text-[#ff8000]'>{ language.name }</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex gap-[.5rem]">
+          <p className='text-[#667788]'>Original Language:</p>
+          <Link href='#' className='text-[#ffffe9] transition-all duration-150 ease-in hover:text-[#ff8000]'>{ originalLanguage.name }</Link>
+        </div>
+      </div>
     </>
   )
 }

@@ -1,15 +1,17 @@
 import { Suspense } from "react";
-import { FilmResult } from "types";
 import ListOfFilms from "@/components/ListOfFilms";
 import Loading from "./loading";
-import { getFilmsByYear } from "@/lib/films/fetch";
+import { getFilmsByKeyword } from "@/lib/keyword/fetch";
 
 interface Props {
-  params: { year: string }
+  params: { 
+    id: string 
+  }
 }
 
-export default async function YearPage ({ params: { year } }: Props) {
-  const films: FilmResult[] = await getFilmsByYear(Number(year))
+export default async function KeywordPage ({ params: { id } }: Props): Promise<JSX.Element> {
+  const films = await getFilmsByKeyword(id)
+  
   return (
     <Suspense fallback={<Loading listLenght={ films.length } />}>
       <ListOfFilms films={films} />

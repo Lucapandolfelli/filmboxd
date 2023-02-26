@@ -12,12 +12,29 @@ export interface Film {
   overview: string | null;
   popularity: number;
   poster_path: string | null;
-  production_companies: [object];
-  production_countries: [object];
+  production_companies: [
+    {
+      name: string;
+      id: number;
+      logo_path: string | null;
+      origin_country: string;
+    }
+  ];
+  production_countries: [
+    {
+      iso_3166_1: string;
+      name: string;
+    }
+  ];
   release_date: string;
   revenue: number;
   runtime: number | null;
-  spoken_languages: [object];
+  spoken_languages: [
+    {
+      iso_639_1: string;
+      name: string;
+    }
+  ];
   status: string;
   tagline: string | null;
   title: string;
@@ -118,6 +135,11 @@ export interface Person {
 }
 
 export interface Genre {
+  id: number;
+  name: string;
+}
+
+export interface Keyword {
   id: number;
   name: string;
 }
