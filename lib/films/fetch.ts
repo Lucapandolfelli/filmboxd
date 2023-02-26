@@ -169,7 +169,7 @@ export const getFilmsByGenreId = async (id: string): Promise<FilmResult[]> => {
 /** FILMS BY YEAR **/
 export const getFilmsByYear = async (year: number): Promise<FilmResult[]> => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&page=1&primary_release_date.gte=${year}-01-01&primary_release_date.lte=${year}-12-31`,
+    `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&include_adult=false&page=1&primary_release_date.gte=${year}-01-01&primary_release_date.lte=${year}-12-31`,
     {
       cache: "no-store",
     }
